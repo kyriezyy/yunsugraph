@@ -1,10 +1,10 @@
 <template>
   <div class="search-page">
     <div>
-      <el-input placeholder="请输入内容" v-model="seatchkey" size="mini" class="input-with-select">
+      <el-input placeholder="请输入内容" v-model="seatchkey" size="mini" @keyup.native.enter="seatchByKey" class="input-with-select">
         <el-select v-model="select" slot="prepend" placeholder="请选择" size="mini">
           <el-option label="实体" value="实体"></el-option>
-          <el-option label="关系" value="关系"></el-option>
+          <!-- <el-option label="关系" value="关系"></el-option> -->
         </el-select>
       </el-input>
     </div>
@@ -28,10 +28,9 @@
     <el-collapse v-model="activeNames" @change="handleChange">
       <el-collapse-item title="类别过滤" name="1">
         <div>
-          <el-checkbox-group v-model="categorys" size="mini">
-            <el-checkbox label="All" border>All</el-checkbox>
-            <el-checkbox label="1" border>类别1</el-checkbox>
-            <el-checkbox label="2" border>类别2</el-checkbox>
+          <el-checkbox-group v-model="categorys" size="mini" @change="handleCategoryChange">
+            <!-- <el-checkbox label="" border>All</el-checkbox> -->
+            <el-checkbox  border v-for="item in entity.categorys" :label="item" :key="item">{{item}}</el-checkbox>
           </el-checkbox-group>
         </div>
       </el-collapse-item>
@@ -64,7 +63,11 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+import _ from 'lodash';
 import SearchResult from './SearchResult';
+import GraphChart from '../GraphChart';
+
 
 export default {
   name: 'search',
@@ -73,7 +76,7 @@ export default {
   },
   data() {
     return {
-      seatchkey: '',
+      seatchkey: '107-66-4',
       select: '实体',
       categorys: [],
       properties: [],
@@ -81,10 +84,37 @@ export default {
       switchActive: '数据库',
       tags: [],
       activeNames: '',
+      entity: {
+        categorys: [],
+      },
+      catchResult: null,
     };
   },
   methods: {
     handleChange() {},
+    init() {
+      this.categorys = [];
+      this.properties = [];
+      this.entity.categorys = [];
+    },
+    async seatchByKey() {
+      if (this.seatchkey) {
+        this.init();
+        const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${this.seatchkey}`);
+        const result = GraphChart.loadingData(res.data.data);
+        const categorys = _.groupBy(result.links, 'value');
+        this.entity.categorys = Object.keys(categorys);
+        this.catchResult = result;
+        this.$emit('updateGraph', result);
+      }
+    },
+    handleCategoryChange(values) {
+      if (this.catchResult) {
+        let { links, nodes } = _.cloneDeep(this.catchResult);
+        links = links.filter(item => this.categorys.includes(item.value));
+        this.$emit('updateGraph', { links, nodes });
+      }
+    },
   },
 };
 </script>

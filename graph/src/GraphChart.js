@@ -18,11 +18,11 @@ class GraphChart {
   }
 
 
-  loadingData(data, cas, key = []) {
+  static loadingData(data, cas, key = []) {
     this.keys = key;
     const nodes = [];
     const links = [];
-    this.cass = this.cass.unshift({ name: cas });
+    // this.cass = this.cass.unshift({ name: cas });
 
     function genEleNode(v, cate) {
       if (key.indexOf(v.cas) < 0) {
@@ -81,6 +81,87 @@ class GraphChart {
     loadingupdown(data, cas);
 
     return { nodes, links };
+  }
+  static option(categories, graph) {
+    // console.log(this.a);
+    // let height = window.innerHeight
+    // let width = window.innerWidth
+    graph.nodes.map((n) => {
+      // n.draggable = true;
+      // n.x = Math.random()*width
+      // n.y = Math.random()*height
+      n.x = n.y = null;
+    });
+    return {
+      tooltip: {
+        show: false,
+      },
+      legend: [],
+      animationDuration: 1,
+      animationEasingUpdate: 'quinticInOut',
+      series: [
+        {
+          name: '',
+          type: 'graph',
+          layout: 'force',
+          // layout: 'none',
+          data: graph.nodes,
+          links: graph.links,
+          categories,
+          roam: true,
+          focusNodeAdjacency: true,
+          draggable: true,
+          symbolRotate: 2,
+          itemStyle: {
+            normal: {
+              borderColor: '#fff',
+              borderWidth: 2,
+              shadowBlur: 10,
+              shadowColor: 'rgba(0, 0, 0, 0.3)',
+            },
+          },
+          edgeSymbol: ['circle', 'arrow'],
+          edgeSymbolSize: [1, 10],
+          edgeLabel: {
+            normal: {
+              textStyle: {
+                fontSize: 12,
+              },
+            },
+          },
+          force: {
+            edgeLength: 50,
+            repulsion: 500,
+            layoutAnimation: false,
+          },
+          label: {
+            position: 'right',
+            formatter: '{b}',
+          },
+          lineStyle: {
+            color: 'source',
+            // curveness: 0.3,
+            width: 1,
+          },
+          emphasis: {
+            lineStyle: {
+              width: 3,
+            },
+          },
+          markPoint: {
+            silent: true,
+          },
+          markLine: {
+            silent: true,
+          },
+          markArea: {
+            silent: true,
+          },
+          zlevel: 100,
+        },
+
+      ],
+    };
   }
 
 
@@ -164,110 +245,18 @@ class GraphChart {
     return { nodes, links };
   }
 
-  option(categories, graph) {
-    console.log(this.a);
-    // let height = window.innerHeight
-    // let width = window.innerWidth
-    graph.nodes.map((n) => {
-      // n.draggable = true;
-      // n.x = Math.random()*width
-      // n.y = Math.random()*height
-      n.x = n.y = null;
-    });
-    return {
-      title: {
-        text: '',
-        subtext: 'Default layout',
-        top: 'bottom',
-        left: 'right',
-      },
-      tooltip: {
-        show: false,
-      },
-      legend: [{
-        // selectedMode: 'single',
-        // data: categories.map(function (a) {
-        //     return a.name;
-        // })
-      }],
-      animationDuration: 1,
-      animationEasingUpdate: 'quinticInOut',
-      series: [
-        {
-          name: 'Les Miserables',
-          type: 'graph',
-          layout: 'force',
-          // layout: 'none',
-          data: graph.nodes,
-          links: graph.links,
-          categories,
-          roam: true,
-          focusNodeAdjacency: true,
-          draggable: true,
-          symbolRotate: 2,
-          itemStyle: {
-            normal: {
-              borderColor: '#fff',
-              borderWidth: 2,
-              shadowBlur: 10,
-              shadowColor: 'rgba(0, 0, 0, 0.3)',
-            },
-          },
-          edgeSymbol: ['circle', 'arrow'],
-          edgeSymbolSize: [1, 10],
-          edgeLabel: {
-            normal: {
-              textStyle: {
-                fontSize: 12,
-              },
-            },
-          },
-          force: {
-            edgeLength: 50,
-            repulsion: 500,
-            layoutAnimation: false,
-          },
-          label: {
-            position: 'right',
-            formatter: '{b}',
-          },
-          lineStyle: {
-            color: 'source',
-            // curveness: 0.3,
-            width: 1,
-          },
-          emphasis: {
-            lineStyle: {
-              width: 3,
-            },
-          },
-          markPoint: {
-            silent: true,
-          },
-          markLine: {
-            silent: true,
-          },
-          markArea: {
-            silent: true,
-          },
-          zlevel: 100,
-        },
-
-      ],
-    };
-  }
 
   show(d, merge = false) {
     // var d = {nodes, links};
-    // console.log(d);
-    const options = this.option(this.cass, d);
+    const options = GraphChart.option(this.cass, d);
     // options.series[0].fixed = false;
     this.app.setOption(options, merge);
     options.series[0].fixed = true;
 
-    setTimeout(() => {
-      this.app.setOption(options);
-    }, 1000);
+
+    // setTimeout(() => {
+    //   this.app.setOption(options);
+    // }, 1000);
     window.onresize = () => {
       this.app.setOption(options);
     };

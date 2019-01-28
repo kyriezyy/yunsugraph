@@ -16,7 +16,7 @@
       </el-radio-group>
     </div>
     <div class="tab-container">
-      <search v-if="activeTab==='搜索'" />
+      <search @updateGraph="(result)=>$emit('updateGraph', result)"  v-if="activeTab==='搜索'" />
       <route  v-if="activeTab==='路径'" />
     </div>
 

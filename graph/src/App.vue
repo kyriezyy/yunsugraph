@@ -30,7 +30,13 @@ html,body{
 }
 header{
   height: 60px;
-  background: cornflowerblue;
+  background: #2b3643;
+  padding-left: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold
 }
 
 
