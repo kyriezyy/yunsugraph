@@ -80,7 +80,11 @@ export default {
       propertySearch: '',
       switchActive: '数据库',
       tags: [],
+      activeNames: '',
     };
+  },
+  methods: {
+    handleChange() {},
   },
 };
 </script>

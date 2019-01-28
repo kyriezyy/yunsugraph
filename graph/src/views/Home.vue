@@ -5,15 +5,16 @@
       <div
         id="main"
         class="chart"
-      @click.capture="handleChartClick" ></div>
+        @click.capture="handleChartClick" ></div>
       <tooltip :node="activeNode" />
     </div>
   </div>
 </template>
 <script>
 import echarts from 'echarts';
-
-import graph from '../graph.json';
+import axios from 'axios';
+import GraphChart from '../GraphChart';
+// import graph from '../graph.json';
 
 import myAside from '../components/aside';
 import tooltip from '../components/tooltip';
@@ -29,15 +30,28 @@ export default {
       activeNode: null,
       filters: new Set(),
       myChart: null,
-
+      chartApp: null,
     };
   },
   created() {},
   mounted() {
     // console.log(graph);
-    this.init();
+    // this.init();
+    this.$nextTick(() => {
+      this.chartApp = new GraphChart(document.getElementById('main'));
+
+      this.fetchData();
+    });
   },
   methods: {
+    async fetchData() {
+      // 10.102.21.89:8000/relaction
+      const res = await axios.get('http://10.102.21.89:8000/relaction?cas=622-33-3');
+      // console.log(res);
+      const result = this.chartApp.loadingData(res.data.data);
+      console.log(result);
+      this.chartApp.show(result);
+    },
     handleChartClick() {
       this.activeNode = null;
     },

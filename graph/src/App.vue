@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      header 部分
+      ChemistryGraph
     </header>
     <router-view/>
   </div>
