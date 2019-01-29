@@ -15,11 +15,11 @@
           :class="{active:switchActive==='数据库'}"
           @click="switchActive='数据库'"
         >数据库</div>
-        <div
+        <!-- <div
           class="switch-btn"
           :class="{active:switchActive==='工作区'}"
           @click="switchActive='工作区'"
-        >工作区</div>
+        >工作区</div> -->
       </div>
       <div class="reset-btn" @click="reset">重置
         <i class="el-icon-refresh"></i>
