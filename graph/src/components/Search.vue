@@ -1,7 +1,7 @@
 <template>
   <div class="search-page">
     <div>
-      <el-input placeholder="请输入内容" v-model="seatchkey" size="mini" @keyup.native.enter="seatchByKey" class="input-with-select">
+      <el-input placeholder="请输入内容" v-model="searchkey" size="mini" @keyup.native.enter="seatchByKey" class="input-with-select">
         <el-select v-model="select" slot="prepend" placeholder="请选择" size="mini">
           <el-option label="实体" value="实体"></el-option>
           <!-- <el-option label="关系" value="关系"></el-option> -->
@@ -30,11 +30,11 @@
         <div>
           <el-checkbox-group v-model="categorys" size="mini" @change="handleCategoryChange">
             <!-- <el-checkbox label="" border>All</el-checkbox> -->
-            <el-checkbox  border v-for="item in entity.categorys" :label="item" :key="item">{{item}}</el-checkbox>
+            <el-checkbox class="category-item" border v-for="item in entity.categorys" :label="item" :key="item">{{item}}</el-checkbox>
           </el-checkbox-group>
         </div>
       </el-collapse-item>
-      <el-collapse-item title="属性过滤" name="2">
+      <!-- <el-collapse-item title="属性过滤" name="2">
         <div>
           <div class="properties-box">
             <el-checkbox-group v-model="properties" size="mini">
@@ -50,16 +50,15 @@
           </div>
 
           <div class="property-tags">
-             <!-- @close="handleClose(tag)" -->
             <el-tag v-for="item in tags" :key="item.value" closable @close="handleClose(tag)">{{item.key}} </el-tag>
           </div>
         </div>
-      </el-collapse-item>
+      </el-collapse-item> -->
       <el-collapse-item title="排序" name="3">
         <div></div>
       </el-collapse-item>
     </el-collapse>
-    <search-result/>
+    <search-result ref="searchResult" :searchkey="searchkey" />
   </div>
 </template>
 <script>
@@ -76,7 +75,7 @@ export default {
   },
   data() {
     return {
-      seatchkey: '107-66-4',
+      searchkey: '107-66-4',
       select: '实体',
       categorys: [],
       properties: [],
@@ -85,27 +84,39 @@ export default {
       tags: [],
       activeNames: '',
       entity: {
-        categorys: [],
+        categorys: ['生物及医药化学品',
+          '农用化学品',
+          '有机原料与中间体',
+          '催化剂及助剂',
+          '香精与香料',
+          '染料及颜料',
+          '无机化学品',
+          '其他',
+          '食品与饲料添加剂'],
       },
       catchResult: null,
     };
   },
   methods: {
-    handleChange() {},
+    handleChange() {
+      console.log(this.categorys = []);
+    },
     init() {
       this.categorys = [];
       this.properties = [];
-      this.entity.categorys = [];
+      // this.entity.categorys = [];
     },
     async seatchByKey() {
-      if (this.seatchkey) {
-        this.init();
-        const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${this.seatchkey}`);
-        const result = GraphChart.loadingData(res.data.data);
-        const categorys = _.groupBy(result.links, 'value');
-        this.entity.categorys = Object.keys(categorys);
-        this.catchResult = result;
-        this.$emit('updateGraph', result);
+      if (this.searchkey) {
+        this.$refs.searchResult.search();
+        console.log(this.searchkey);
+        // this.init();
+        // const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${this.searchkey}`);
+        // const result = GraphChart.loadingData(res.data.data);
+        // const categorys = _.groupBy(result.links, 'value');
+        // this.entity.categorys = Object.keys(categorys);
+        // this.catchResult = result;
+        // this.$emit('updateGraph', result);
       }
     },
     handleCategoryChange(values) {
@@ -130,6 +141,7 @@ export default {
   justify-content: space-between;
   height: 40px;
   align-items: center;
+  flex-shrink: 0;
 }
 .switch-btns {
   display: flex;
@@ -152,5 +164,8 @@ export default {
 }
 .property-search{
   margin-bottom: 10px;
+}
+.category-item{
+  margin-bottom: 4px;
 }
 </style>
