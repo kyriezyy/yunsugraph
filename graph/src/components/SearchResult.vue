@@ -1,11 +1,5 @@
 <template>
   <div class="seatch-result">
-    <div class="result-header">
-      <p class="total-str">共{{total}}条结果，当前展示{{pageNoStart}}-{{pageNoEnd}}</p>
-      <el-select v-model="pageSize" size='mini' class="page-select" @change="search">
-        <el-option v-for="item in pageSizeArr" :key="item" :label="item" :value="item"></el-option>
-      </el-select>
-    </div>
     <div class="result-body" v-infinite-scroll="loadMore" :infinite-scroll-disabled="busy" infinite-scroll-distance="20">
       <ul >
         <li class="result-item" v-for="item in list" :key="item.detail_basic['CAS号']" :title="item.detail_basic['中文名称']" @click="hanldeSelect(item)">
@@ -20,14 +14,6 @@
         <i class="el-icon-loading"></i>
       </div>
     </div>
-    <div class="result-footer">
-      <div class="page-box">
-        <div class="page-pre" @click="prePage"> < </div>
-        <div>页面 {{pageIndex}}/{{totalPage}} </div>
-        <div class="page-next" @click="nextPage"> > </div>
-      </div>
-      <!-- <div class="add-all">添加全部</div> -->
-    </div>
   </div>
 </template>
 <script>
@@ -39,34 +25,16 @@ export default {
   props: ['searchkey', 'categorys'],
   data() {
     return {
-      pageSizeArr: [10, 20, 50],
       pageSize: 20,
       pageIndex: 1,
       list: [],
-      total: 0,
       busy: false,
     };
   },
   computed: {
-    pageNoStart() {
-      if (this.total === 0) {
-        return 0;
-      }
-      return (this.pageIndex - 1) * this.pageSize + 1;
-    },
-    pageNoEnd() {
-      if (this.total === 0) {
-        return 0;
-      }
-      return this.pageNoStart + this.pageSize - 1;
-    },
-    totalPage() {
-      return Math.ceil(this.total / this.pageSize);
-    },
   },
   methods: {
     clear() {
-      this.total = 0;
       this.pageIndex = 1;
       this.list = [];
     },
@@ -79,6 +47,7 @@ export default {
     },
     async search() {
       this.pageIndex = 1;
+      this.list = [];
       this.fetchData();
     },
     async fetchData() {
@@ -99,20 +68,7 @@ export default {
       this.pageIndex = this.pageIndex + 1;
       this.fetchData();
     },
-    prePage() {
-      if (this.loading) return;
-      if (this.pageIndex !== 1) {
-        this.pageIndex = this.pageIndex - 1;
-        this.fetchData();
-      }
-    },
-    nextPage() {
-      if (this.loading) return;
-      if (this.pageIndex !== this.totalPage) {
-        this.pageIndex = this.pageIndex + 1;
-        this.fetchData();
-      }
-    },
+
   },
 };
 </script>
@@ -156,6 +112,7 @@ export default {
   display: flex;
 }
 .result-body{
+  margin-top: 10px;
   flex-grow: 2;
   overflow: auto;
 }
