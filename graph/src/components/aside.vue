@@ -19,7 +19,6 @@
       <search @updateGraph="(result)=>$emit('updateGraph', result)"  v-show="activeTab==='搜索'" />
       <route  v-show="activeTab==='路径'" />
     </div>
-
   </div>
 </template>
 <script>

@@ -1,74 +1,33 @@
 <template>
-  <div
-    class="tooltip-box"
-    v-if="node"
-  >
-    <template v-if="node.type==1">
-      <div class="type">化学品</div>
+  <div class="tooltip-box" v-if="node">
+    <template>
+      <!-- <div class="type">化学品</div> -->
       <div class="content">
         <div class="content-item">
           <div class="label">CAS</div>
-          <div class="value">{{node.CAS}}</div>
+          <div class="value">{{node.detail_basic['CAS号']}}</div>
         </div>
-        <div class="section-item">
-          <div class="label">基本信息</div>
-          <div>
-            <div
-              class="value"
-              @click="showBI=!showBI"
-            >{{showBI?'折叠':'展开'}} </div>
-            <div v-if="showBI">
-              <div
-                class="child-attr-item"
-                v-for="item in node.BI"
-                :key="item.key"
-              >
-                <div class="child-attr-label">{{item.key}}</div>
-                <div class="child-attr-value">{{item.value}}</div>
+        <div class="section-collapse">
+          <el-collapse>
+            <el-collapse-item title="基本信息" name="1" class="collapse-item">
+              <div class="child-attr-item" v-for="(item,key) in node.detail_basic" :key="key">
+                <div class="child-attr-label">{{key}}</div>
+                <div class="child-attr-value">{{item}}</div>
               </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="section-item">
-          <div class="label">物化性质</div>
-          <div>
-            <div
-              class="value"
-              @click="showPP=!showPP"
-            >{{showPP?'折叠':'展开'}} </div>
-            <div v-if="showPP">
-              <div
-                class="child-attr-item"
-                v-for="item in node.PP"
-                :key="item.key"
-              >
-                <div class="child-attr-label">{{item.key}}</div>
-                <div class="child-attr-value">{{item.value}}</div>
+            </el-collapse-item>
+            <el-collapse-item title="物化性质" name="2" class="collapse-item">
+              <div class="child-attr-item" v-for="(item,key) in node.detail_quality" :key="key">
+                <div class="child-attr-label">{{key}}</div>
+                <div class="child-attr-value">{{item}}</div>
               </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="section-item">
-          <div class="label">安全信息</div>
-          <div>
-            <div
-              class="value"
-              @click="showSI=!showSI"
-            >{{showSI?'折叠':'展开'}} </div>
-            <div v-if="showSI">
-              <div
-                class="child-attr-item"
-                v-for="item in node.SI"
-                :key="item.key"
-              >
-                <div class="child-attr-label">{{item.key}}</div>
-                <div class="child-attr-value">{{item.value}}</div>
+            </el-collapse-item>
+            <el-collapse-item title="安全信息" name="3" class="collapse-item">
+              <div class="child-attr-item" v-for="(item,key) in node.safe_info" :key="key">
+                <div class="child-attr-label">{{key}}</div>
+                <div class="child-attr-value">{{item}}</div>
               </div>
-            </div>
-
-          </div>
+            </el-collapse-item>
+          </el-collapse>
         </div>
       </div>
     </template>
@@ -85,7 +44,9 @@
         </div>
         <div class="content-item">
           <div class="label">链接</div>
-          <div class="value"><a :href="node.fulltext_link">{{node.fulltext_link}}</a></div>
+          <div class="value">
+            <a :href="node.fulltext_link">{{node.fulltext_link}}</a>
+          </div>
         </div>
         <div class="content-item">
           <div class="label">摘要</div>
@@ -93,7 +54,6 @@
         </div>
       </div>
     </template>
-
   </div>
 </template>
 <script>
@@ -114,7 +74,7 @@ export default {
 .tooltip-box {
   width: 350px;
   white-space: normal;
-  background: rgba(220, 220, 220, 0.5);
+  background: rgba(220, 220, 220, 0.9);
   padding: 10px;
   max-height: 400px;
   overflow: auto;
@@ -133,29 +93,42 @@ export default {
 .content-item {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .label {
   width: 80px;
   flex-shrink: 0;
 }
-.value{
+.value {
   font-size: 13px;
 }
-.section-item{
+.section-item {
   padding: 8px 0;
   border-bottom: 1px solid #e0e0e0;
 }
-.child-attr-item{
+.child-attr-item {
   display: flex;
-
 }
-.child-attr-label{
+.child-attr-label {
   width: 90px;
   flex-shrink: 0;
   font-size: 13px;
 }
-.child-attr-value{
+.child-attr-value {
   font-size: 13px;
+}
+.collapse-item{
+  background: transparent;
 }
 </style>
 
+<style >
+
+.collapse-item .el-carousel__mask,
+ .collapse-item .el-cascader-menu,
+ .collapse-item .el-cascader-menu__item.is-disabled:hover,
+  .collapse-item .el-collapse-item__header,
+  .collapse-item .el-collapse-item__wrap{
+    background: transparent;
+  }
+</style>

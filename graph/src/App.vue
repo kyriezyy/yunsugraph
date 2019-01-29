@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <header>
-      ChemistryGraph
-    </header>
+    <div class="header">
+<span> ChemistryGraph</span>
+      </div>
+
     <router-view/>
   </div>
 </template>
@@ -28,7 +29,7 @@ html,body{
 #app {
   height: 100%;
 }
-header{
+.header{
   height: 60px;
   background: #2b3643;
   padding-left: 20px;

@@ -108,11 +108,12 @@ export default {
       // this.properties = [];
       // this.entity.categorys = [];
     },
-    async hanldeSelectEntity(cas) {
+    async hanldeSelectEntity(selectItem) {
+      const cas = selectItem.detail_basic['CAS号'];
       const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${cas}`);
       const result = GraphChart.loadingData(res.data.data);
       // console.log(result);
-      this.$emit('updateGraph', result);
+      this.$emit('updateGraph', { graph: result, node: selectItem });
     },
     async seatchByKey() {
       if (this.searchkey) {

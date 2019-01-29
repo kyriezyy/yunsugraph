@@ -42,7 +42,7 @@ export default {
       // selectEntity
       const cas = item.detail_basic['CAS号'];
       if (cas) {
-        this.$emit('selectEntity', cas);
+        this.$emit('selectEntity', item);
       }
     },
     async search() {
@@ -65,6 +65,7 @@ export default {
     },
     loadMore() {
       if (this.busy) return;
+      if (!this.searchkey) return;
       this.pageIndex = this.pageIndex + 1;
       this.fetchData();
     },
@@ -103,10 +104,12 @@ export default {
 }
 .result-tag{
   display: inline-block;
-  background: red;
+  background: darkolivegreen;
   align-self: flex-start;
   padding: 2px 4px;
-  border-radius: 4px
+  border-radius: 4px;
+  color: #f0f0f0;
+  font-size: 11px;
 }
 .page-box{
   display: flex;

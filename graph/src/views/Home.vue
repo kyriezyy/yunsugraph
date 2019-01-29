@@ -3,7 +3,7 @@
     <my-aside
       :filters="filters"
       @onFilter="hanldeFilter"
-      @updateGraph = "handleUpdateGraph"
+      @updateGraph="handleUpdateGraph"
      />
     <div class="content">
       <div
@@ -43,8 +43,9 @@ export default {
     // this.fetchData();
   },
   methods: {
-    handleUpdateGraph(graph) {
-      this.chartApp.show(graph);
+    handleUpdateGraph(data) {
+      this.chartApp.show(data.graph);
+      this.activeNode = data.node;
     },
     async fetchData() {
       const res = await axios.get('http://10.102.21.89:8000/relaction?cas=947-42-2');
@@ -53,7 +54,7 @@ export default {
       this.chartApp.show(result);
     },
     handleChartClick() {
-      this.activeNode = null;
+      // this.activeNode = null;
     },
     hanldeFilter(filters) {
       if (filters.length) {
