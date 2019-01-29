@@ -21,7 +21,7 @@
           @click="switchActive='工作区'"
         >工作区</div>
       </div>
-      <div class="reset-btn">重置
+      <div class="reset-btn" @click="reset">重置
         <i class="el-icon-refresh"></i>
       </div>
     </div>
@@ -58,7 +58,7 @@
         <div></div>
       </el-collapse-item>
     </el-collapse>
-    <search-result ref="searchResult" :searchkey="searchkey" />
+    <search-result ref="searchResult" :searchkey="searchkey" :categorys="categorys" @selectEntity="hanldeSelectEntity" />
   </div>
 </template>
 <script>
@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      searchkey: '107-66-4',
+      searchkey: '',
       select: '实体',
       categorys: [],
       properties: [],
@@ -99,32 +99,34 @@ export default {
   },
   methods: {
     handleChange() {
-      console.log(this.categorys = []);
+      console.log(this.categorys);
     },
-    init() {
+    reset() {
       this.categorys = [];
-      this.properties = [];
+      this.searchkey = '';
+      this.$refs.searchResult.clear();
+      // this.properties = [];
       // this.entity.categorys = [];
+    },
+    async hanldeSelectEntity(cas) {
+      const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${cas}`);
+      const result = GraphChart.loadingData(res.data.data);
+      // console.log(result);
+      this.$emit('updateGraph', result);
     },
     async seatchByKey() {
       if (this.searchkey) {
         this.$refs.searchResult.search();
-        console.log(this.searchkey);
-        // this.init();
-        // const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${this.searchkey}`);
-        // const result = GraphChart.loadingData(res.data.data);
-        // const categorys = _.groupBy(result.links, 'value');
-        // this.entity.categorys = Object.keys(categorys);
-        // this.catchResult = result;
-        // this.$emit('updateGraph', result);
       }
     },
     handleCategoryChange(values) {
-      if (this.catchResult) {
-        let { links, nodes } = _.cloneDeep(this.catchResult);
-        links = links.filter(item => this.categorys.includes(item.value));
-        this.$emit('updateGraph', { links, nodes });
-      }
+      this.$refs.searchResult.search();
+      // console.log(values);
+      // if (this.catchResult) {
+      // let { links, nodes } = _.cloneDeep(this.catchResult);
+      // links = links.filter(item => this.categorys.includes(item.value));
+      // this.$emit('updateGraph', { links, nodes });
+      // }
     },
   },
 };

@@ -75,6 +75,7 @@ export default {
   z-index: 10;
   padding: 5px 10px;
   font-size: 13px;
+  flex-shrink: 0;
 }
 .slide-tab {
   width: 100%;

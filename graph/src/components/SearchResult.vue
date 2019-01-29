@@ -6,9 +6,9 @@
         <el-option v-for="item in pageSizeArr" :key="item" :label="item" :value="item"></el-option>
       </el-select>
     </div>
-    <div class="result-body">
-      <ul v-if="!loading">
-        <li class="result-item" v-for="item in list" :key="item.detail_basic['CAS号']" :title="item.detail_basic['中文名称']">
+    <div class="result-body" v-infinite-scroll="loadMore" :infinite-scroll-disabled="busy" infinite-scroll-distance="20">
+      <ul >
+        <li class="result-item" v-for="item in list" :key="item.detail_basic['CAS号']" :title="item.detail_basic['中文名称']" @click="hanldeSelect(item)">
           <div>
             <p class="title">{{item.detail_basic['中文名称']}} </p>
             <!-- <p class="result-str">name:</p> -->
@@ -16,7 +16,7 @@
           <div class="result-tag">化学品</div>
         </li>
       </ul>
-      <div class="loading-box" v-if="loading">
+      <div class="loading-box" v-if="busy">
         <i class="el-icon-loading"></i>
       </div>
     </div>
@@ -36,15 +36,15 @@ import dotProp from 'dot-prop';
 
 export default {
   name: 'search-result',
-  props: ['searchkey'],
+  props: ['searchkey', 'categorys'],
   data() {
     return {
       pageSizeArr: [10, 20, 50],
-      pageSize: 10,
+      pageSize: 20,
       pageIndex: 1,
       list: [],
       total: 0,
-      loading: false,
+      busy: false,
     };
   },
   computed: {
@@ -65,18 +65,39 @@ export default {
     },
   },
   methods: {
+    clear() {
+      this.total = 0;
+      this.pageIndex = 1;
+      this.list = [];
+    },
+    hanldeSelect(item) {
+      // selectEntity
+      const cas = item.detail_basic['CAS号'];
+      if (cas) {
+        this.$emit('selectEntity', cas);
+      }
+    },
     async search() {
       this.pageIndex = 1;
       this.fetchData();
     },
     async fetchData() {
-      this.loading = true;
-      const res = await axios.get(`http://10.102.21.89:8000/search?kw=${this.searchkey}&pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`);
-      console.log(res);
+      this.busy = true;
+      const cate = this.categorys.toString();
+      let url = `http://10.102.21.89:8000/search?kw=${this.searchkey}&pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`;
+      if (cate) {
+        url += `&cate=${cate}`;
+      }
+      const res = await axios.get(url);
       const list = dotProp.get(res, 'data.data.result') || [];
-      this.list = list;
+      this.list = this.list.concat(list);
       this.total = dotProp.get(res, 'data.data.total') || 0;
-      this.loading = false;
+      this.busy = false;
+    },
+    loadMore() {
+      if (this.busy) return;
+      this.pageIndex = this.pageIndex + 1;
+      this.fetchData();
     },
     prePage() {
       if (this.loading) return;
@@ -156,9 +177,9 @@ export default {
   width: 180px;
 }
 .loading-box{
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
-    padding-top: 30px;
-    color: #666;
+  padding-top: 15px;
+  color: #666;
 }
 </style>
