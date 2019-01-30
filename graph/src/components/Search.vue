@@ -109,6 +109,7 @@ export default {
       // this.entity.categorys = [];
     },
     async hanldeSelectEntity(selectItem) {
+      this.$emit('showLoading');
       const cas = selectItem.detail_basic['CAS号'];
       const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${cas}`);
       const result = GraphChart.loadingData(res.data.data);

@@ -4,8 +4,9 @@
       :filters="filters"
       @onFilter="hanldeFilter"
       @updateGraph="handleUpdateGraph"
+      @showLoading="loading = true"
      />
-    <div class="content">
+    <div class="content" v-loading="loading">
       <div
         id="main"
         class="chart"
@@ -35,6 +36,7 @@ export default {
       filters: new Set(),
       myChart: null,
       chartApp: null,
+      loading: false,
     };
   },
   created() {},
@@ -45,6 +47,7 @@ export default {
   methods: {
     handleUpdateGraph(data) {
       this.chartApp.show(data.graph);
+      this.loading = false;
       this.activeNode = data.node;
     },
     async fetchData() {

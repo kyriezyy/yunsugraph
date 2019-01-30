@@ -1,12 +1,8 @@
 <template>
   <div class="slide">
     <div class="slide-tab-box">
-      <el-radio-group
-        v-model="activeTab"
-        size="mini"
-        class="slide-tab"
-      >
-        <el-radio-button  class="slide-tab-item" label="搜索">
+      <el-radio-group v-model="activeTab" size="mini" class="slide-tab">
+        <el-radio-button class="slide-tab-item" label="搜索">
           <i class="el-icon-search"></i>搜索
         </el-radio-button>
         <el-radio-button class="slide-tab-item" label="路径">
@@ -16,8 +12,12 @@
       </el-radio-group>
     </div>
     <div class="tab-container">
-      <search @updateGraph="(result)=>$emit('updateGraph', result)"  v-show="activeTab==='搜索'" />
-      <route  v-show="activeTab==='路径'" />
+      <search
+        @updateGraph="(result)=>$emit('updateGraph', result)"
+        @showLoading="$emit('showLoading')"
+        v-show="activeTab==='搜索'"
+      />
+      <route v-show="activeTab==='路径'"/>
     </div>
   </div>
 </template>
@@ -70,7 +70,7 @@ export default {
   height: 100%;
   background: #fff;
   bottom: 0;
-  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 10px, rgba(0, 0, 0, 0.23) 0 3px 10px;
+  box-shadow: rgba(0, 0, 0, 0.26) 0 3px 10px, rgba(0, 0, 0, 0.33) 0 3px 10px;
   z-index: 10;
   padding: 5px 10px;
   font-size: 13px;
@@ -94,7 +94,7 @@ export default {
 .slide-tab-item:last-child {
   border-right: none;
 }
-.tab-container{
+.tab-container {
   height: calc(100% - 30px);
 }
 </style>
