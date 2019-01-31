@@ -1,39 +1,53 @@
 <template>
   <div class="seatch-result">
-    <div class="result-header">
+    <!-- <div class="result-header">
       <p class="total-str">共350条结果，当前展示1-20</p>
       <el-select v-model="pageSize" size='mini' class="page-select">
         <el-option v-for="item in pageSizeArr" :key="item" :label="item" :value="item"></el-option>
       </el-select>
-    </div>
+    </div> -->
     <div class="result-body">
       <ul>
-        <li class="result-item">
+        <li class="result-item" v-for=" (item,index) in list" :key="index" @click="handleSelect(item)">
           <span class="label">A</span>
-           - [关系名字] -
+           - [{{item.type}}] -
           <span class="label">B</span>
         </li>
 
       </ul>
+      <div class="loading-box" v-if="loading">
+        <i class="el-icon-loading"></i>
+      </div>
     </div>
-    <div class="result-footer">
+    <!-- <div class="result-footer">
       <div class="page-box">
         <div class="page-pre"> < </div>
         <div>页面 7/8</div>
         <div class="page-next"> > </div>
       </div>
       <div class="add-all">添加全部</div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
+
+
 export default {
   name: 'route-result',
-  data() {
-    return {
-      pageSizeArr: [10, 20, 50],
-      pageSize: 10,
-    };
+  props: ['list', 'loading'],
+  // data() {
+  //   return {
+  //     pageSizeArr: [10, 20, 50],
+  //     pageSize: 10,
+  //     list: [],
+  //     loading: false,
+  //   };
+  // },
+  methods: {
+
+    handleSelect(item) {
+      this.$emit('selectRoute', item);
+    },
   },
 };
 </script>
@@ -91,9 +105,11 @@ export default {
   flex-grow: 2;
   overflow: auto;
 }
-.result-footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center
+
+.loading-box{
+  font-size: 20px;
+  text-align: center;
+  padding-top: 15px;
+  color: #666;
 }
 </style>

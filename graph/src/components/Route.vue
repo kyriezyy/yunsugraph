@@ -1,11 +1,21 @@
 <template>
   <div class="rote-page">
     <div>
-      <el-input placeholder="请输入内容" v-model="seatchkey" size="mini">
+      <el-input
+        placeholder="请输入内容"
+        v-model="searchkey1"
+        @keyup.native.enter="searchByKey"
+        size="mini"
+      >
         <p slot="prepend">A</p>
       </el-input>
       <p style="height:5px"></p>
-      <el-input placeholder="请输入内容" v-model="seatchkey" size="mini">
+      <el-input
+        placeholder="请输入内容"
+        v-model="searchkey2"
+        @keyup.native.enter="searchByKey"
+        size="mini"
+      >
         <p slot="prepend">B</p>
       </el-input>
     </div>
@@ -20,33 +30,77 @@
         <el-collapse v-model="activeNames">
           <el-collapse-item title="关系过滤" name="1">
             <div>
-              <el-checkbox-group v-model="categorys" size="mini">
-                <el-checkbox label="All" border>All</el-checkbox>
-                <el-checkbox label="1" border>关系1</el-checkbox>
-                <el-checkbox label="2" border>关系2</el-checkbox>
+              <el-checkbox-group v-model="categorys" size="mini" @change="handleCategoryChange">
+                <el-checkbox :label="item" v-for="item in types " border :key="item">{{item}}</el-checkbox>
               </el-checkbox-group>
             </div>
           </el-collapse-item>
         </el-collapse>
       </div>
     </div>
-    <route-result/>
+    <route-result
+      ref="searchResult"
+      :loading="loading"
+      :list="showList"
+      @selectRoute="(graph)=>$emit('updateRoute',graph)"
+    />
   </div>
 </template>
 <script>
 import RouteResult from './RouteResult';
+import axios from 'axios';
+import dotProp from 'dot-prop';
 
 export default {
   name: 'route',
   components: {
     RouteResult,
   },
+  computed: {
+    types() {
+      return this.list.map(item => item.type);
+    },
+  },
   data() {
     return {
-      seatchkey: '',
+      searchkey1: '39515-47-4',
+      searchkey2: '151-50-8',
       activeNames: '',
       categorys: [],
+      loading: false,
+      list: [],
+      showList: [],
     };
+  },
+  methods: {
+    async searchByKey() {
+      if (this.searchkey1 && this.searchkey2) {
+        this.loading = true;
+        const url = `http://10.102.21.89:8000/searchrela/?source=${
+          this.searchkey1
+        }&target=${this.searchkey2}`;
+        const res = await axios.get(url);
+        const list = dotProp.get(res, 'data.data');
+        list.forEach((item) => {
+          item.links.forEach((it) => {
+            it.label = {
+              show: true,
+              formatter: '{c}',
+            };
+          });
+        });
+        this.showList = this.list = list;
+        this.loading = false;
+        console.log(res);
+      }
+    },
+    handleCategoryChange() {
+      if (this.categorys.length) {
+        this.showList = this.list.filter(item => this.categorys.includes(item.type));
+      } else {
+        this.showList = this.list;
+      }
+    },
   },
 };
 </script>

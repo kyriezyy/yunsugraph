@@ -112,7 +112,7 @@ export default {
       this.$emit('showLoading');
       const cas = selectItem.detail_basic['CAS号'];
       const res = await axios.get(`http://10.102.21.89:8000/relaction?cas=${cas}`);
-      const result = GraphChart.loadingData(res.data.data);
+      const result = GraphChart.loadingData(res.data.data, cas);
       // console.log(result);
       this.$emit('updateGraph', { graph: result, node: selectItem });
     },

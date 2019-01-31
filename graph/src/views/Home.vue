@@ -4,6 +4,7 @@
       :filters="filters"
       @onFilter="hanldeFilter"
       @updateGraph="handleUpdateGraph"
+      @updateRoute="handleUpdateRoute"
       @showLoading="loading = true"
      />
     <div class="content" v-loading="loading">
@@ -49,6 +50,11 @@ export default {
       this.chartApp.show(data.graph);
       this.loading = false;
       this.activeNode = data.node;
+    },
+    handleUpdateRoute(data) {
+      this.chartApp.show(data);
+      this.loading = false;
+      this.activeNode = null;
     },
     async fetchData() {
       const res = await axios.get('http://10.102.21.89:8000/relaction?cas=947-42-2');

@@ -57,11 +57,11 @@ class GraphChart {
         });
         val.front.forEach((v) => {
           genEleNode(v, 3);
-          links.push({ name: null, source: v.cas, target: mid, value: '构成', lineStyle: { normal: {} } });
+          links.push({ name: null, source: v.cas, target: mid, value: '构成', lineStyle: { color: 'red' } });
         });
         val.back.forEach((v) => {
           genEleNode(v, 3);
-          links.push({ name: null, source: mid, target: v.cas, value: '转化', lineStyle: { normal: {} } });
+          links.push({ name: null, source: mid, target: v.cas, value: '转化', lineStyle: { color: 'blue' } });
         });
       });
     }
@@ -69,11 +69,13 @@ class GraphChart {
     function loadingupdown(data, cas) {
       data.updown.ups.forEach((val) => {
         genEleNode(val, 1);
-        links.push({ name: null, source: cas, target: val.cas, value: '上游', lineStyle: { normal: {} } });
+        // console.log(val);
+        links.push({ name: null, source: cas, target: val.cas, value: '上游', lineStyle: { color: 'gray' } });
       });
       data.updown.downs.forEach((val) => {
         genEleNode(val, 2);
-        links.push({ name: null, source: cas, target: val.cas, value: '下游', lineStyle: { normal: {} } });
+        // console.log(val);
+        links.push({ name: null, source: cas, target: val.cas, value: '下游', lineStyle: { color: 'yellow' } });
       });
     }
 
@@ -249,6 +251,7 @@ class GraphChart {
   show(d, merge = false) {
     // var d = {nodes, links};
     const options = GraphChart.option(this.cass, d);
+    console.log(d);
     // options.series[0].fixed = false;
     this.app.setOption(options, merge);
     options.series[0].fixed = true;

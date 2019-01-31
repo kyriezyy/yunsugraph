@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="header">
-<span> ChemistryGraph</span>
-      </div>
+      <span> ChemistryGraph</span>
+    </div>
 
     <router-view/>
   </div>

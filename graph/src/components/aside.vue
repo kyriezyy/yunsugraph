@@ -17,7 +17,7 @@
         @showLoading="$emit('showLoading')"
         v-show="activeTab==='搜索'"
       />
-      <route v-show="activeTab==='路径'"/>
+      <route v-show="activeTab==='路径'"  @updateRoute="(result)=>$emit('updateRoute', result)" />
     </div>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
     return {
       open: true,
       selectd: [],
-      activeTab: '搜索',
+      activeTab: '路径',
     };
   },
   computed: {
