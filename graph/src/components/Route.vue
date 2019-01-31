@@ -58,13 +58,15 @@ export default {
   },
   computed: {
     types() {
-      return this.list.map(item => item.type);
+      const set = new Set();
+      this.list.map(item => set.add(item.type));
+      return Array.from(set);
     },
   },
   data() {
     return {
-      searchkey1: '39515-47-4',
-      searchkey2: '151-50-8',
+      searchkey1: '112-54-9',
+      searchkey2: '143-07-7',
       activeNames: '',
       categorys: [],
       loading: false,
@@ -78,11 +80,17 @@ export default {
         this.loading = true;
         const url = `http://10.102.21.89:8000/searchrela/?source=${
           this.searchkey1
-        }&target=${this.searchkey2}`;
+        }&target=${this.searchkey2}&level=10`;
         const res = await axios.get(url);
         const list = dotProp.get(res, 'data.data');
         list.forEach((item) => {
           item.links.forEach((it) => {
+            it.label = {
+              show: true,
+              formatter: '{c}',
+            };
+          });
+          item.nodes.forEach((it) => {
             it.label = {
               show: true,
               formatter: '{c}',
