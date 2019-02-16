@@ -43,13 +43,39 @@ export default {
   created() {},
   mounted() {
     this.chartApp = new GraphChart(document.getElementById('main'));
-    // this.fetchData();
+    this.chartApp.app.on('click', (params) => {
+      console.log(params);
+      this.getNodeDetail(params.data);
+    });
+    this.fetchData();
   },
   methods: {
     handleUpdateGraph(data) {
       this.chartApp.show(data.graph);
       this.loading = false;
       this.activeNode = data.node;
+      const cas = data.node.detail_basic['CAS号'];
+      data.graph.nodes.forEach((item) => {
+        if (item.name === cas) {
+          this.activeNode.image = item.img;
+        }
+        // console.log(item);
+      });
+    },
+    async getNodeDetail(node) {
+      if (node.type === 'element') {
+        const res = await axios.get(`http://10.102.20.251:8000/cas/?cas=${node.id}`).catch(() => {
+          this.$message.error('当前数据库中无此CAS号数据');
+        });
+        if (res) {
+          this.activeNode = res.data.data;
+          this.activeNode.type = 'element';
+        }
+      }
+      if (node.type === 'news') {
+        // 新闻节点
+        this.activeNode = node;
+      }
     },
     handleUpdateRoute(data) {
       this.chartApp.show(data);
@@ -57,9 +83,8 @@ export default {
       this.activeNode = null;
     },
     async fetchData() {
-      const res = await axios.get('http://10.102.21.89:8000/relaction?cas=947-42-2');
+      const res = await axios.get('http://10.102.20.251:8000/relaction?cas=947-42-2');
       const result = GraphChart.loadingData(res.data.data);
-      console.log(result);
       this.chartApp.show(result);
     },
     handleChartClick() {
@@ -95,6 +120,7 @@ export default {
 .chart {
   width: 100%;
   height: 100%;
+  background: url('../assets/noise.png') #f5f5f5;
 }
 </style>
 

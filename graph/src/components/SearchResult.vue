@@ -53,7 +53,7 @@ export default {
     async fetchData() {
       this.busy = true;
       const cate = this.categorys.toString();
-      let url = `http://10.102.21.89:8000/search?kw=${this.searchkey}&pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`;
+      let url = `http://10.102.20.251:8000/search?kw=${this.searchkey}&pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`;
       if (cate) {
         url += `&cate=${cate}`;
       }

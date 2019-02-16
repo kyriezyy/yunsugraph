@@ -36,7 +36,7 @@ export default {
     return {
       open: true,
       selectd: [],
-      activeTab: '路径',
+      activeTab: '搜索',
     };
   },
   computed: {

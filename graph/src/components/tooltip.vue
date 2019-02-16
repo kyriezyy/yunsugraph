@@ -1,8 +1,15 @@
 <template>
-  <div class="tooltip-box" v-if="node">
-    <template>
-      <!-- <div class="type">化学品</div> -->
+  <div class="tooltip-box" v-if="node" :style="{width:show?'350px':'66px'}">
+    <template v-if="!show">
+      <div class="show-btn" @click="show = true">
+        最大化
+      </div>
+    </template>
+    <template v-if="show && node.type==='element'">
       <div class="content">
+         <div @click="show = false" class="show-btn">
+        最小化
+      </div>
         <div class="content-item">
           <div class="label">CAS</div>
           <div class="value">{{node.detail_basic['CAS号']}}</div>
@@ -10,6 +17,12 @@
         <div class="section-collapse">
           <el-collapse>
             <el-collapse-item title="基本信息" name="1" class="collapse-item">
+               <div class="child-attr-item" v-if="node.image">
+                <div class="child-attr-label">分子式</div>
+                <div class="child-attr-value">
+                  <img class="huaxue-icon" :src="node.image"/>
+                </div>
+              </div>
               <div class="child-attr-item" v-for="(item,key) in node.detail_basic" :key="key">
                 <div class="child-attr-label">{{key}}</div>
                 <div class="child-attr-value">{{item}}</div>
@@ -31,27 +44,27 @@
         </div>
       </div>
     </template>
-    <template v-if="node.type==2">
-      <div class="type">文献</div>
+    <template v-if="show && node.type==='news'">
+       <div @click="show = false" class="show-btn">
+        最小化
+      </div>
+      <div class="type">新闻</div>
       <div class="content">
         <div class="content-item">
           <div class="label">标题</div>
-          <div class="value">{{node.title}}</div>
+          <div class="value">{{node.name}}</div>
         </div>
         <div class="content-item">
-          <div class="label">作者</div>
-          <div class="value">{{node.author}}</div>
+          <div class="label">摘要</div>
+          <div class="value">{{node.name}}</div>
         </div>
         <div class="content-item">
           <div class="label">链接</div>
           <div class="value">
-            <a :href="node.fulltext_link">{{node.fulltext_link}}</a>
+            <a :href="node.url" target="_blank">{{node.url}}</a>
           </div>
         </div>
-        <div class="content-item">
-          <div class="label">摘要</div>
-          <div class="value">{{node.abstract.substr(0, 180)}}...</div>
-        </div>
+
       </div>
     </template>
   </div>
@@ -62,9 +75,7 @@ export default {
   props: ['node'],
   data() {
     return {
-      showBI: false,
-      showPP: false,
-      showSI: false,
+      show: true,
     };
   },
 };
@@ -75,7 +86,7 @@ export default {
   width: 350px;
   white-space: normal;
   background: rgba(220, 220, 220, 0.9);
-  padding: 10px;
+  padding: 20px 10px 10px 10px;
   max-height: 400px;
   overflow: auto;
   position: absolute;
@@ -119,6 +130,19 @@ export default {
 }
 .collapse-item{
   background: transparent;
+}
+.huaxue-icon{
+  width: 100px;
+}
+.show-btn{
+  position: absolute;
+  top:5px;
+  right:10px;
+  font-size: 12px;
+  background: #2b3643;
+  color:#fff;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 </style>
 
