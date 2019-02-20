@@ -49142,6 +49142,7 @@ extendChartView({
                 });
             }, this)
             .on('zoom', function (e) {
+               
                 updateViewOnZoom(controllerHost, e.scale, e.originX, e.originY);
                 api.dispatchAction({
                     seriesId: seriesModel.id,
@@ -54944,7 +54945,7 @@ extendChartView({
                 api.dispatchAction({
                     seriesId: seriesModel.id,
                     type: 'graphRoam',
-                    zoom: e.scale,
+                    zoom: controllerHost.zoom,
                     originX: e.originX,
                     originY: e.originY
                 });

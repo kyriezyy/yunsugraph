@@ -17,10 +17,8 @@
   </div>
 </template>
 <script>
-import echarts from 'echarts';
 import axios from 'axios';
-import GraphChart from '../GraphChart';
-// import graph from '../graph.json';
+import { initChart, execData, getOption, removeDuplicateNodes } from '../utils/chart';
 
 import myAside from '../components/aside';
 import tooltip from '../components/tooltip';
@@ -42,18 +40,20 @@ export default {
   },
   created() {},
   mounted() {
-    this.chartApp = new GraphChart(document.getElementById('main'));
-    this.chartApp.app.on('click', (params) => {
-      console.log(params);
-      this.getNodeDetail(params.data);
-    });
-    this.fetchData();
+    this.chartApp = initChart(document.getElementById('main'));
+    this.initChartEvents();
+    // console.log(this.chartApp);
+    // this.fetchData();
   },
   methods: {
     handleUpdateGraph(data) {
-      this.chartApp.show(data.graph);
+      const options = getOption(data.graph);
+      this.chartApp.clear();
+      this.chartApp.setOption(options, false);
+
       this.loading = false;
       this.activeNode = data.node;
+      this.activeNode.type = 'element';
       const cas = data.node.detail_basic['CAS号'];
       data.graph.nodes.forEach((item) => {
         if (item.name === cas) {
@@ -68,6 +68,7 @@ export default {
           this.$message.error('当前数据库中无此CAS号数据');
         });
         if (res) {
+          this.addNodes(node.id);
           this.activeNode = res.data.data;
           this.activeNode.type = 'element';
         }
@@ -77,6 +78,19 @@ export default {
         this.activeNode = node;
       }
     },
+    async addNodes(cas) {
+      const res = await axios.get(`http://10.102.20.251:8000/relaction?cas=${cas}`);
+      const result = execData(res.data.data, cas);
+      const originOptions = this.chartApp.getOption();
+      const originNodes = originOptions.series[0].data;
+      const originLinks = originOptions.series[0].links;
+
+      const nodes = removeDuplicateNodes(originNodes.concat(result.nodes));
+      const links = originLinks.concat(result.links);
+      const options = getOption({ nodes, links });
+      this.chartApp.clear();
+      this.chartApp.setOption(options, false);
+    },
     handleUpdateRoute(data) {
       this.chartApp.show(data);
       this.loading = false;
@@ -84,8 +98,11 @@ export default {
     },
     async fetchData() {
       const res = await axios.get('http://10.102.20.251:8000/relaction?cas=947-42-2');
-      const result = GraphChart.loadingData(res.data.data);
-      this.chartApp.show(result);
+      // const result = GraphChart.loadingData();
+      const result = execData(res.data.data);
+      const chartOption = getOption(result);
+      this.chartApp.setOption(chartOption);
+      // this.chartApp.show(result);
     },
     handleChartClick() {
       // this.activeNode = null;
@@ -102,6 +119,14 @@ export default {
       if (params.dataType === 'node') {
         this.activeNode = params.data;
       }
+    },
+    initChartEvents() {
+      this.chartApp.on('click', (params) => {
+        this.getNodeDetail(params.data);
+      });
+
+      // zoom 隐藏节点 && 加载新节点
+      //
     },
   },
 };

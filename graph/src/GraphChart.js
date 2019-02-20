@@ -19,16 +19,21 @@ class GraphChart {
     // this.app.setOption(option);
     // console.log(option, params);
     // });
-    // this.app.on('click', (params) => {
-    //   console.log(params);
-    // });
+    this.app.on('graphRoam', (params) => {
+      console.log(params.zoom);
+    });
+    // window.onresize = () => {
+    //   console.log(1);
+    //   this.app.resize();
+    // };
   }
 
 
-  static loadingData(data, cas, key = []) {
+  static loadingData(data, cas, key = [], news = []) {
     this.keys = key;
     const nodes = [];
     const links = [];
+    console.log(news);
     // this.cass = this.cass.unshift({ name: cas });
 
     function genEleNode(v, cate) {
@@ -52,22 +57,24 @@ class GraphChart {
         // nodes.push({name: v.cas, id: v.cas, category: cate, symbolSize: 30, label: {normal: {show: true}}})
         key.push(v.cas);
 
-        if (Math.random() > 0.5) {
+        if (news.length) {
+          const selectNews = news.splice(0, 1);
           nodes.push({
             type: 'news',
-            url: 'http://www.baidu.com',
-            name: `新闻标题${v.cas}`,
+            url: selectNews[0].link,
+            name: selectNews[0].title,
+            source_web: selectNews[0].source_web,
             id: `news${v.cas}`,
             symbol: newsIcon,
             symbolSize: 40,
-            label: { normal: { show: true } },
+            // label: { normal: { show: true } },
             emphasis: {
               itemStyle: {
                 borderColor: 'blue',
               },
             },
           });
-          links.push({ name: null, source: v.cas, target: `news${v.cas}`, value: '新闻', lineStyle: { color: 'darkyellow' } });
+          links.push({ name: null, source: v.cas, target: `news${v.cas}`, value: '新闻', lineStyle: { color: 'red' } });
         }
       }
     }
@@ -145,9 +152,14 @@ class GraphChart {
           links: graph.links,
           categories,
           roam: true,
+          nodeScaleRatio: 0.8,
           focusNodeAdjacency: true,
           draggable: true,
           symbolRotate: 2,
+          scaleLimit: {
+            max: 2,
+            min: 0.3,
+          },
           itemStyle: {
             normal: {
               borderColor: '#fff',
@@ -291,13 +303,14 @@ class GraphChart {
     this.app.setOption(options, merge);
     options.series[0].fixed = true;
 
-
     // setTimeout(() => {
     //   this.app.setOption(options);
     // }, 1000);
-    window.onresize = () => {
-      this.app.setOption(options);
-    };
+    // window.onresize = () => {
+    // this.app.clear();
+    // this.app.setOption(options, merge);
+    // this.app.setOption(options);
+    // };
   }
 }
 

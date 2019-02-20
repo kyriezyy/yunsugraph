@@ -49,14 +49,14 @@
         最小化
       </div>
       <div class="type">新闻</div>
-      <div class="content">
+      <div class="content news-content">
         <div class="content-item">
           <div class="label">标题</div>
           <div class="value">{{node.name}}</div>
         </div>
         <div class="content-item">
-          <div class="label">摘要</div>
-          <div class="value">{{node.name}}</div>
+          <div class="label">来源</div>
+          <div class="value">{{node.source_web}}</div>
         </div>
         <div class="content-item">
           <div class="label">链接</div>
@@ -143,6 +143,9 @@ export default {
   color:#fff;
   padding: 2px 4px;
   border-radius: 3px;
+}
+.news-content .value{
+  flex-grow: 2
 }
 </style>
 

@@ -65,7 +65,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import SearchResult from './SearchResult';
-import GraphChart from '../GraphChart';
+import { execData } from '../utils/chart';
 
 
 export default {
@@ -82,6 +82,7 @@ export default {
       propertySearch: '',
       switchActive: '数据库',
       tags: [],
+      news: [],
       activeNames: '',
       entity: {
         categorys: ['生物及医药化学品',
@@ -112,23 +113,21 @@ export default {
       this.$emit('showLoading');
       const cas = selectItem.detail_basic['CAS号'];
       const res = await axios.get(`http://10.102.20.251:8000/relaction?cas=${cas}`);
-      const result = GraphChart.loadingData(res.data.data, cas);
-      // console.log(result);
+      const result = execData(res.data.data, cas, this.news.slice());
       this.$emit('updateGraph', { graph: result, node: selectItem });
     },
     async seatchByKey() {
       if (this.searchkey) {
+        await this.searchNews();
         this.$refs.searchResult.search();
       }
     },
+    async searchNews() {
+      const res = await axios.get(`http://10.102.20.251:8000/search_new?kw=${this.searchkey}`);
+      this.news = res.data.data || [];
+    },
     handleCategoryChange(values) {
       this.$refs.searchResult.search();
-      // console.log(values);
-      // if (this.catchResult) {
-      // let { links, nodes } = _.cloneDeep(this.catchResult);
-      // links = links.filter(item => this.categorys.includes(item.value));
-      // this.$emit('updateGraph', { links, nodes });
-      // }
     },
   },
 };
