@@ -15,9 +15,9 @@
     </div>
     <div class="category-box">
       <el-checkbox-group v-model="checkedCate" @change="handleCateChange">
-          <el-checkbox label="element" disabled>化学品</el-checkbox>
-         <el-checkbox label="news">新闻</el-checkbox>
-         <el-checkbox label="article">论文</el-checkbox>
+        <el-checkbox label="element">化学品</el-checkbox>
+        <el-checkbox label="news">新闻</el-checkbox>
+        <el-checkbox label="article">论文</el-checkbox>
       </el-checkbox-group>
     </div>
   </div>
@@ -27,9 +27,11 @@ import axios from 'axios';
 import dotProp from 'dot-prop';
 import { initChart, execData, getOption, removeDuplicateNodes } from '../utils/chart';
 
+import { serverUrl } from '../config';
 import myAside from '../components/aside';
 import tooltip from '../components/tooltip';
 
+const first = true;
 export default {
   name: 'home',
   components: {
@@ -67,7 +69,7 @@ export default {
     async getNodeDetail(node) {
       if (node.type === 'element') {
         // cas
-        const res = await axios.get(`http://10.102.20.251:8000/cas/?cas=${node.id}`).catch(() => {
+        const res = await axios.get(`${serverUrl}/cas/?cas=${node.id}`).catch(() => {
           this.$message.error('当前数据库中无此CAS号数据');
         });
         if (res) {
@@ -88,12 +90,12 @@ export default {
     },
     async addNodes(cas, name) {
       this.loading = true;
-      const res = await axios.get(`http://10.102.20.251:8000/relaction?cas=${cas}`);
+      const res = await axios.get(`${serverUrl}/relaction?cas=${cas}`);
       // console.log(name);
       // get news
-      const newRes = await axios.get(`http://10.102.20.251:8000/search_new?kw=${name}`);
+      const newRes = await axios.get(`${serverUrl}/search_new?kw=${name}`);
       // get articles
-      const articleRes = await axios.get(`http://10.102.20.252:8000/searchDoc?cas=${cas}`);
+      const articleRes = await axios.get(`${serverUrl}/searchDoc?cas=${cas}`);
 
       const result = execData(res.data.data, cas, newRes.data.data, articleRes.data.docInfo);
 
@@ -111,20 +113,24 @@ export default {
     },
     renderGraph() {
       const graph = this.$store.state.graph;
-      const originNodes = graph.nodes;
-      const originLinks = graph.links;
-      const nodes = originNodes.filter(item => this.checkedCate.includes(item.type) || !item.type);
-      const options = getOption({ nodes, links: originLinks });
-      this.chartApp.clear();
-      this.chartApp.setOption(options, true);
+      if (graph) {
+        const originNodes = graph.nodes;
+        const originLinks = graph.links;
+        const nodes = originNodes.filter(item => this.checkedCate.includes(item.type) || !item.type || item.category === 0);
+        const options = getOption({ nodes, links: originLinks });
+        this.chartApp.clear();
+        this.chartApp.setOption(options, true);
+      }
     },
     handleUpdateRoute(data) {
-      this.chartApp.show(data);
+      const options = getOption(data);
+      this.chartApp.clear();
+      this.chartApp.setOption(options, true);
       this.loading = false;
       this.activeNode = null;
     },
     async fetchData() {
-      const res = await axios.get('http://10.102.20.251:8000/relaction?cas=39515-47-4');
+      const res = await axios.get(`${serverUrl}/relaction?cas=39515-47-4`);
       const result = execData(res.data.data);
       const chartOption = getOption(result);
       this.chartApp.setOption(chartOption);
@@ -146,6 +152,10 @@ export default {
 
       // zoom 隐藏节点 && 加载新节点
       //
+      // graphZoom
+      this.chartApp.on('graphRoam', (params) => {
+        graphZoom = params.zoom || graphZoom;
+      });
     },
   },
 };

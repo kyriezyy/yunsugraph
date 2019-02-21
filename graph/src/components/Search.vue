@@ -66,7 +66,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import SearchResult from './SearchResult';
 import { execData } from '../utils/chart';
-
+import { serverUrl } from '../config';
 
 export default {
   name: 'search',
@@ -110,21 +110,12 @@ export default {
       // this.entity.categorys = [];
     },
     async hanldeSelectEntity(selectItem) {
-      // this.$emit('showLoading');
-
-      // const res = await axios.get(`http://10.102.20.251:8000/relaction?cas=${cas}`);
-      // const result = execData(res.data.data, cas, this.news.slice());
       this.$emit('updateGraph', { node: selectItem });
     },
     async seatchByKey() {
       if (this.searchkey) {
-        await this.searchNews();
         this.$refs.searchResult.search();
       }
-    },
-    async searchNews() {
-      const res = await axios.get(`http://10.102.20.251:8000/search_new?kw=${this.searchkey}`);
-      this.news = res.data.data || [];
     },
     handleCategoryChange(values) {
       this.$refs.searchResult.search();
