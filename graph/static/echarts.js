@@ -55876,7 +55876,7 @@ var createView = function (ecModel, api) {
 
             // Update roam info
             viewCoordSys.setCenter(seriesModel.get('center'));
-            viewCoordSys.setZoom(seriesModel.get('zoom'));
+            viewCoordSys.setZoom(0.4);
 
             viewList.push(viewCoordSys);
         }

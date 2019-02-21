@@ -110,11 +110,11 @@ export default {
       // this.entity.categorys = [];
     },
     async hanldeSelectEntity(selectItem) {
-      this.$emit('showLoading');
-      const cas = selectItem.detail_basic['CAS号'];
-      const res = await axios.get(`http://10.102.20.251:8000/relaction?cas=${cas}`);
-      const result = execData(res.data.data, cas, this.news.slice());
-      this.$emit('updateGraph', { graph: result, node: selectItem });
+      // this.$emit('showLoading');
+
+      // const res = await axios.get(`http://10.102.20.251:8000/relaction?cas=${cas}`);
+      // const result = execData(res.data.data, cas, this.news.slice());
+      this.$emit('updateGraph', { node: selectItem });
     },
     async seatchByKey() {
       if (this.searchkey) {

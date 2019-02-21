@@ -87,6 +87,7 @@ class GraphChart {
         const mid = `${val.pre}:${Math.random().toString(36).substr(2)}`;
         // var cate = cass.push(`路线${index.toString()}`)
         nodes.push({
+          type: 'element',
           name: mid,
           id: mid,
           value: val.pre,

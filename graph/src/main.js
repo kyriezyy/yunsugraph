@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 
+
 import infiniteScroll from 'vue-infinite-scroll';
 
 import ElementUI from 'element-ui';
@@ -9,7 +10,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
 import router from './router';
-
+import store from './store';
 
 Vue.use(infiniteScroll);
 Vue.use(ElementUI);
@@ -20,6 +21,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
 });

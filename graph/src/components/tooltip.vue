@@ -67,6 +67,33 @@
 
       </div>
     </template>
+     <template v-if="show && node.type==='article'">
+       <div @click="show = false" class="show-btn">
+        最小化
+      </div>
+      <div class="type">文献</div>
+      <div class="content news-content">
+        <div class="content-item">
+          <div class="label">标题</div>
+          <div class="value">{{node.name}}</div>
+        </div>
+        <div class="content-item">
+          <div class="label">作者</div>
+          <div class="value">{{node.author}}</div>
+        </div>
+        <div class="content-item">
+          <div class="label">摘要</div>
+          <div class="value">{{node.abstract}}</div>
+        </div>
+        <div class="content-item">
+          <div class="label">链接</div>
+          <div class="value">
+            <a :href="node.url" target="_blank">{{node.url}}</a>
+          </div>
+        </div>
+
+      </div>
+    </template>
   </div>
 </template>
 <script>

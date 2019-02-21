@@ -1,9 +1,9 @@
 // import echarts from 'echarts';
 
-import { nodeIcon, huaxueIcon, newsIcon } from './icon';
+import { nodeIcon, huaxueIcon, newsIcon, articleIcon } from './icon';
 
 let chartApp = null;
-export const execData = (data, cas, news = []) => {
+export const execData = (data, cas, news = [], articles = []) => {
   const keys = [];
   const nodes = [];
   const links = [];
@@ -48,6 +48,27 @@ export const execData = (data, cas, news = []) => {
           },
         });
         links.push({ name: null, source: v.cas, target: `news${v.cas}`, value: '新闻', lineStyle: { color: 'red' } });
+      }
+
+      if (articles.length) {
+        const selectNews = articles.splice(0, 1);
+        nodes.push({
+          type: 'article',
+          url: selectNews[0].herf,
+          name: selectNews[0].title,
+          author: selectNews[0].author,
+          abstract: selectNews[0].abstract,
+          id: `article${v.cas}`,
+          symbol: articleIcon,
+          symbolSize: 40,
+          label: { show: false },
+          emphasis: {
+            itemStyle: {
+              borderColor: 'blue',
+            },
+          },
+        });
+        links.push({ name: null, source: v.cas, target: `article${v.cas}`, value: '论文', lineStyle: { color: 'red' } });
       }
     }
   }

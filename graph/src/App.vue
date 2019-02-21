@@ -52,7 +52,7 @@ html,body{
   height: 40px;
   }
 
-.el-checkbox .el-checkbox__input{
+.search-page .el-checkbox .el-checkbox__input{
   display: none
 }
 /* .el-radio-button__orig-radio:checked+.el-radio-button__inner{
