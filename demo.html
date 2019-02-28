@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  .node {
+    stroke-width: 1.5px;
+  }
+
+  .link {
+    fill: none;
+    stroke: #bbb;
+  }
+
+  .link {
+    stroke: #777;
+    stroke-opacity: 0.3;
+    stroke-width: 1.5px;
+  }
+
+  .node circle {
+    stroke-width: 1.5px;
+  }
+
+  .node text {
+    fill: #000;
+    font-size: 18;
+    display: none;
+    font: 10px sans-serif;
+  }
+
+  .node:hover circle {
+    /* fill: #000; */
+  }
+
+  .node:hover text {
+    display: inline;
+    /* fill: #ccc; */
+  }
+
+  .cell {
+    fill: none;
+    pointer-events: all;
+  }
+</style>
+<svg width="960" height="600"></svg>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+  var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+  var graphBox = svg.append("g");
+  var linksBox = graphBox.append('g');
+  var nodesBox = graphBox.append('g');
+
+  svg.call(d3.zoom()
+    .scaleExtent([1 / 2, 8])
+    .on("zoom", zoomed));
+
+  function zoomed() {
+    graphBox.attr("transform", d3.event.transform);
+  }
+
+  var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+  var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().distance(100).strength(0.1))  //决定线的长度已经节点之间的间距
+    .force("charge", d3.forceManyBody()) //节点是否所在一起 相互吸引 相互排斥相关
+    .force("center", d3.forceCenter(width / 2, height / 2)); // 设置节点中心
+
+    function loadNodes(cas) {
+      console.log('cas号', cas);
+      let curNode = null;
+
+      // 过滤节点
+      simulation.nodes().forEach((item) => {
+        if (item.id === cas) {
+          curNode = item;
+        }
+      });
+     
+      for(var i = 20;i;i--){
+        const tempId = `39515-475-${Math.round(Math.random() * 1000)}`;
+
+graphData.nodes.push({
+  id: tempId,
+  name: tempId,
+  symbol: 'huaxueIcon',
+  type: 'element',
+  x:curNode.x,
+  y:curNode.y,
+});
+graphData.links.push({
+  source: cas,
+  target: tempId,
+});
+      }
+      
+
+      renderGraph(graphData);
+    }
+
+  function renderGraph(graphData) {
+    const nodes = graphData.nodes;
+    const nodeById = d3.map(nodes, d => d.id);
+    let links = graphData.links;
+    const bilinks = [];
+
+    links = links.filter(item => item.source && item.target);
+
+    links.forEach((link) => {
+      if (typeof link.source === 'string') {
+        link.source = nodeById.get(link.source);
+      }
+      if (typeof link.target === 'string') {
+        link.target = nodeById.get(link.target);
+      }
+      // links.push({ source: link.source, target: link.target });
+      bilinks.push([link.source, link.target]);
+    });
+
+
+    // 所有的link选择器
+    // let link = linksBox
+    //   .selectAll('.link')
+    //   .data(bilinks)
+    //   .enter()
+    //   .append('path')
+    //   .attr('class', 'link');
+
+    let linksData = linksBox
+      .selectAll('.link')
+      .data(bilinks)
+    
+    let linksEnter =  linksData.enter()
+      .append('path')
+      .attr('class', 'link');
+
+    let linksExit = linksData.exit().remove()
+
+    linksData = linksEnter.merge(linksData)
+
+
+    let drag = d3.drag()
+      .on('start', dragstarted)
+          .on('drag', dragged)
+          .on('end', dragended);
+
+    let nodesData = nodesBox
+      .selectAll('.node')
+      // .remove()
+      .data(nodes.filter(d =>
+        d.id,
+      ))
+
+      let nodesEnter =  nodesData
+      .enter()
+      .append('g')
+      .attr('class', 'node')
+      .on('click', (d) => {
+        console.log(d,d.x, d.y);
+        loadNodes(d.id);
+      })
+      .call(drag); 
+
+      let nodesExit = nodesData.exit().remove()
+  
+
+
+    // let node = nodesBox
+    //   .selectAll('.node')
+    //   // .remove()
+    //   .data(nodes.filter(d =>
+    //     d.id,
+    //   ))
+    //   .enter()
+    //   .append('g')
+    //   .attr('class', 'node')
+    //   .on('click', (d) => {
+    //     console.log(d,d.x, d.y);
+    //     loadNodes(d.id);
+    //   })
+    //   .call(
+    //     d3
+    //       .drag()
+    //       .on('start', dragstarted)
+    //       .on('drag', dragged)
+    //       .on('end', dragended),
+    //   ); 
+      // 通过.call(d3.drag()) 设置节点可以拖拽
+
+    nodesEnter
+      .append('circle')
+      .attr('r', 15)
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y)
+      .attr('fill', d => (d.symbol === 'nodeIcon' ? 'red' : 'green'));
+
+    const label = nodesEnter
+      .append('text')
+      .attr('dy', '.35em')
+      .attr('dx', 12)
+      .text(d => d.id);
+
+      nodesEnter
+      .append('image')
+      .attr('xlink:href', 'https://github.com/favicon.ico')
+      .attr('x', -8)
+      .attr('y', -8)
+      .attr('width', 16)
+      .attr('height', 16);
+
+      nodesData = nodesEnter.merge(nodesData)
+    // node.exit().remove();
+    // node = node.enter().merge(node);
+
+    simulation.nodes(nodes).on('tick', ticked); // 把node画在画布上
+
+    simulation.force('link').links(links); // 把link画在画布上
+
+    function ticked() {
+      linksData.attr('d', positionLink); // 每个link上有三个点，每次tick 都要重新画一遍link
+      nodesData.attr('transform', positionNode);
+      label.attr('x', d => 8).attr('y', d => 0);
+    }
+  }
+
+  function positionLink(d) {
+    return "M" + d[0].x + "," + d[0].y
+      + " " + d[1].x + "," + d[1].y
+  }
+
+  function positionNode(d) {
+    return "translate(" + d.x + "," + d.y + ")";
+  }
+
+  function dragstarted(d) {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x, d.fy = d.y;
+  }
+
+  function dragged(d) {
+    d.fx = d3.event.x, d.fy = d3.event.y;
+  }
+
+  function dragended(d) {
+    // d.fx = d3.event.x, d.fy = d3.event.y;
+    if (!d3.event.active) simulation.alphaTarget(0);
+    d.fx = null, d.fy = null;
+  }
+
+  graphData = {
+    "nodes":
+      [
+        {
+          "type": "element", "name": "39515-47-4", "id": "39515-47-4", "symbol": "huaxueIcon", "category": 0
+        },
+        {
+          "name": "~89%:8ud6zmijl7", "id": "~89%:8ud6zmijl7", "value": "~89%", "category": 3, "symbol": "nodeIcon"
+        },
+        { "type": "element", "name": "143-33-9", "id": "143-33-9", "symbol": "huaxueIcon", "category": 3 },
+        { "type": "element", "name": "39515-51-0", "id": "39515-51-0", "symbol": "huaxueIcon", "category": 3 },
+        { "name": "~82%:4c33e4n3akf", "id": "~82%:4c33e4n3akf", "value": "~82%", "category": 3, "symbol": "nodeIcon" },
+        { "type": "element", "name": "75-86-5", "id": "75-86-5", "symbol": "huaxueIcon", "category": 3 },
+        { "name": "~76%:zododyf4lj", "id": "~76%:zododyf4lj", "value": "~76%", "category": 3, "symbol": "nodeIcon" },
+        { "type": "element", "name": "74-90-8", "id": "74-90-8", "symbol": "huaxueIcon", "category": 3 },
+        { "name": "~55%:ymf0xupc85m", "id": "~55%:ymf0xupc85m", "value": "~55%", "category": 3, "symbol": "nodeIcon" },
+        { "type": "element", "name": "7677-24-9", "id": "7677-24-9", "symbol": "huaxueIcon", "category": 3 },
+        { "type": "element", "name": "39515-41-8", "id": "39515-41-8", "symbol": "huaxueIcon", "category": 2 },
+        { "type": "element", "name": "51630-58-1", "id": "51630-58-1", "symbol": "huaxueIcon", "category": 2 },
+        { "type": "element", "name": "75-18-3", "id": "75-18-3", "symbol": "huaxueIcon", "category": 2 },
+        { "type": "element", "name": "82224-37-1", "id": "82224-37-1", "symbol": "huaxueIcon", "category": 2 }],
+    "links": [
+      { "name": null, "source": "143-33-9", "target": "~89%:8ud6zmijl7", "value": "构成" },
+      { "name": null, "source": "39515-51-0", "target": "~89%:8ud6zmijl7", "value": "构成" },
+      { "name": null, "source": "~89%:8ud6zmijl7", "target": "39515-47-4", "value": "转化" },
+      { "name": null, "source": "39515-51-0", "target": "~82%:4c33e4n3akf", "value": "构成" },
+      { "name": null, "source": "75-86-5", "target": "~82%:4c33e4n3akf", "value": "构成" },
+      { "name": null, "source": "~82%:4c33e4n3akf", "target": "39515-47-4", "value": "转化" },
+      { "name": null, "source": "74-90-8", "target": "~76%:zododyf4lj", "value": "构成" },
+      { "name": null, "source": "39515-51-0", "target": "~76%:zododyf4lj", "value": "构成" },
+      { "name": null, "source": "~76%:zododyf4lj", "target": "39515-47-4", "value": "转化" },
+      { "name": null, "source": "7677-24-9", "target": "~55%:ymf0xupc85m", "value": "构成" },
+      { "name": null, "source": "39515-51-0", "target": "~55%:ymf0xupc85m", "value": "构成" },
+      { "name": null, "source": "~55%:ymf0xupc85m", "target": "39515-47-4", "value": "转化" },
+      { "name": null, "target": "39515-51-0", "value": "上游" },
+      { "name": null, "target": "75-86-5", "value": "上游" },
+      { "name": null, "target": "7677-24-9", "value": "上游" },
+      { "name": null, "target": "143-33-9", "value": "上游" },
+      { "name": null, "target": "74-90-8", "value": "上游" },
+      { "name": null, "target": "39515-51-0", "value": "下游" },
+      { "name": null, "target": "39515-41-8", "value": "下游" },
+      { "name": null, "target": "51630-58-1", "value": "下游" },
+      { "name": null, "target": "75-18-3", "value": "下游" },
+      { "name": null, "target": "82224-37-1", "value": "下游" }]
+  }
+
+  renderGraph(graphData)
+
+</script>

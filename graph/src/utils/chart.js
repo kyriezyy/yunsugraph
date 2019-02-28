@@ -3,6 +3,68 @@
 import { nodeIcon, huaxueIcon, newsIcon, articleIcon } from './icon';
 
 let chartApp = null;
+
+export const execDataNew = (data, cas) => {
+  const keys = [];
+  const nodes = [];
+  const links = [];
+
+  function genEleNode(v, cate) {
+    if (keys.indexOf(v.cas) < 0) {
+      nodes.push({
+        type: 'element',
+        name: v.cas,
+        id: v.cas,
+        symbol: 'huaxueIcon',
+        category: cate,
+      });
+      // nodes.push({name: v.cas, id: v.cas, category: cate, symbolSize: 30, label: {normal: {show: true}}})
+      keys.push(v.cas);
+    }
+  }
+
+
+  genEleNode(data.info, 0);
+
+  function loadingNodes() {
+    data.synts.forEach((val, index) => {
+      const mid = `${val.pre}:${Math.random().toString(36).substr(2)}`;
+      // var cate = cass.push(`路线${index.toString()}`)
+      nodes.push({
+        name: mid,
+        id: mid,
+        value: val.pre,
+        category: 3,
+        symbol: 'nodeIcon',
+      });
+      val.front.forEach((v) => {
+        genEleNode(v, 3);
+        links.push({ name: null, source: v.cas, target: mid, value: '构成' });
+      });
+      val.back.forEach((v) => {
+        genEleNode(v, 3);
+        links.push({ name: null, source: mid, target: v.cas, value: '转化' });
+      });
+    });
+  }
+
+  function loadingupdown(data, cas) {
+    data.updown.ups.forEach((val) => {
+      genEleNode(val, 1);
+      links.push({ name: null, source: cas, target: val.cas, value: '上游' });
+    });
+    data.updown.downs.forEach((val) => {
+      genEleNode(val, 2);
+      links.push({ name: null, source: cas, target: val.cas, value: '下游' });
+    });
+  }
+
+  loadingNodes();
+  loadingupdown(data, cas);
+
+  return { nodes, links };
+};
+
 export const execData = (data, cas, news = [], articles = []) => {
   const keys = [];
   const nodes = [];
@@ -17,7 +79,7 @@ export const execData = (data, cas, news = [], articles = []) => {
         img: v.url,
         name: v.cas,
         id: v.cas,
-        symbol: huaxueIcon,
+        symbol: 'huaxueIcon',
         category: cate,
         symbolSize: 40,
         label: { normal: { show: true } },
@@ -38,7 +100,7 @@ export const execData = (data, cas, news = [], articles = []) => {
           name: selectNews[0].title,
           source_web: selectNews[0].source_web,
           id: `news${v.cas}`,
-          symbol: newsIcon,
+          symbol: 'newsIcon',
           symbolSize: 40,
           // label: { normal: { show: true } },
           emphasis: {
@@ -59,7 +121,7 @@ export const execData = (data, cas, news = [], articles = []) => {
           author: selectNews[0].author,
           abstract: selectNews[0].abstract,
           id: `article${v.cas}`,
-          symbol: articleIcon,
+          symbol: 'articleIcon',
           symbolSize: 40,
           label: { show: false },
           emphasis: {
@@ -86,7 +148,7 @@ export const execData = (data, cas, news = [], articles = []) => {
         value: val.pre,
         category: 3,
         symbolSize: 40,
-        symbol: nodeIcon,
+        symbol: 'nodeIcon',
         label: { normal: { show: false } },
       });
       val.front.forEach((v) => {
@@ -103,12 +165,10 @@ export const execData = (data, cas, news = [], articles = []) => {
   function loadingupdown(data, cas) {
     data.updown.ups.forEach((val) => {
       genEleNode(val, 1);
-      // console.log(val);
       links.push({ name: null, source: cas, target: val.cas, value: '上游', lineStyle: { color: '#888' } });
     });
     data.updown.downs.forEach((val) => {
       genEleNode(val, 2);
-      // console.log(val);
       links.push({ name: null, source: cas, target: val.cas, value: '下游', lineStyle: { color: 'darkred' } });
     });
   }

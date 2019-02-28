@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Network | DataSet</title>
+
+    <script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
+   <style>
+#network{
+    width: 1000px;
+    height: 600px;;
+}
+
+</style>
+    
+    <script type="text/javascript">
+        var nodes, edges, network;
+
+
+        function addNode(cas) {
+
+            for(var i = 20;i;i--){
+                let newId = 10+Math.round(Math.random()*10000)
+                nodes.add({
+                    id: newId,
+                    label: newId+'label',
+                });
+                edges.add({
+                    id: newId+'link',
+                    from: cas,
+                    to: newId
+                });
+            }
+            
+        }
+
+      
+     
+        function draw() {
+            // create an array with nodes
+            nodes = new vis.DataSet();
+            nodes.add([
+                { id: '1', label: 'Node 1' },
+                { id: '2', label: 'Node 2' },
+                { id: '3', label: 'Node 3' },
+                { id: '4', label: 'Node 4' },
+                { id: '5', label: 'Node 5' }
+            ]);
+
+            // nodes.on('click',(d)=>{
+            //     console.log(d)
+            // })
+          
+
+            // create an array with edges
+            edges = new vis.DataSet();
+
+            edges.add([
+                { id: '1', from: '1', to: '2' },
+                { id: '2', from: '1', to: '3' },
+                { id: '3', from: '2', to: '4' },
+                { id: '4', from: '2', to: '5' }
+            ]);
+
+            // create a network
+            var container = document.getElementById('network');
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+            var options = {
+                nodes: {
+                    borderWidth: 1,
+                    borderWidthSelected: 2,
+                    // brokenImage: undefined,
+                    chosen: true,
+                    color: {
+                        border: '#2B7CE9',
+                        background: 'red',
+                        highlight: {
+                            border: '#2B7CE9',
+                            background: 'blue'
+                        },
+                        hover: {
+                            border: '#2B7CE9',
+                            background: '#D2E5FF'
+                        }
+                    },
+                    // fixed: {
+                    //     x: true,
+                    //     y: true
+                    // },
+                    // font: {
+                    //     color: '#343434',
+                    //     size: 14, // px
+                    //     face: 'arial',
+                    //     background: 'none',
+                    //     strokeWidth: 0, // px
+                    //     strokeColor: '#ffffff',
+                    //     align: 'center',
+                    //     multi: false,
+                    //     vadjust: 0,
+                    //     bold: {
+                    //         color: '#343434',
+                    //         size: 14, // px
+                    //         face: 'arial',
+                    //         vadjust: 0,
+                    //         mod: 'bold'
+                    //     },
+                    //     ital: {
+                    //         color: '#343434',
+                    //         size: 14, // px
+                    //         face: 'arial',
+                    //         vadjust: 0,
+                    //         mod: 'italic',
+                    //     },
+                    //     boldital: {
+                    //         color: '#343434',
+                    //         size: 14, // px
+                    //         face: 'arial',
+                    //         vadjust: 0,
+                    //         mod: 'bold italic'
+                    //     },
+                    //     mono: {
+                    //         color: '#343434',
+                    //         size: 15, // px
+                    //         face: 'courier new',
+                    //         vadjust: 2,
+                    //         mod: ''
+                    //     }
+                    // },
+                    // group: undefined,
+                    heightConstraint: false,
+                    // hidden: false,
+                    // icon: {
+                    //     face: 'FontAwesome',
+                    //     // code: undefined,
+                    //     size: 50,  //50,
+                    //     color: '#2B7CE9'
+                    // },
+                    // image: undefined,
+                    label: "11",
+                    labelHighlightBold: true,
+                    // level: undefined,
+                    // mass: 1,
+                    // physics: true,
+                    scaling: {
+                        min: 10,
+                        max: 30,
+                        label: {
+                            enabled: true,
+                            //         min: 14,
+                            //         max: 30,
+                            //         maxVisible: 30,
+                            drawThreshold: 5
+                        },
+                        //     customScalingFunction: function (min, max, total, value) {
+                        //         if (max === min) {
+                        //             return 0.5;
+                        //         }
+                        //         else {
+                        //             let scale = 1 / (max - min);
+                        //             return Math.max(0, (value - min) * scale);
+                        //         }
+                        //     }
+                    },
+                    // shadow: {
+                    //     enabled: false,
+                    //     color: 'rgba(0,0,0,0.5)',
+                    //     size: 10,
+                    //     x: 5,
+                    //     y: 5
+                    // },
+                    shape: 'circle',
+                    // shapeProperties: {
+                    //     borderDashes: false, // only for borders
+                    //     borderRadius: 6,     // only for box shape
+                    //     interpolation: false,  // only for image and circularImage shapes
+                    //     useImageSize: false,  // only for image and circularImage shapes
+                    //     useBorderWithImage: false  // only for image shape
+                    // },
+                    size: 5,
+                    title: "AAA",
+                    // value: undefined,
+                    // widthConstraint: false,
+                    // x: undefined,
+                    // y: undefined
+                },
+                layout: {
+                    randomSeed: 200,
+                    improvedLayout: true,
+                    hierarchical: {
+                        enabled: false,
+                        levelSeparation: 150,
+                        nodeSpacing: 100,
+                        treeSpacing: 200,
+                        blockShifting: false,
+                        edgeMinimization: false,
+                        parentCentralization: false,
+                        // direction: 'UD',        // UD, DU, LR, RL
+                        // sortMethod: 'directed'   // hubsize, directed
+                    }
+                },
+                physics: {
+                    enabled: true,
+                    barnesHut: {
+                        gravitationalConstant: -5000,
+                        // centralGravity: 1,
+                        springLength: 150,
+                        springConstant: 0.001,
+                        damping: 1,
+                        // avoidOverlap: 1
+                    },
+                    forceAtlas2Based: {
+                        // gravitationalConstant: -5000,
+                        // centralGravity: 0.01,
+                        // springConstant: 0.08,
+                        // springLength: 100,
+                        // damping: 0.4,
+                        // avoidOverlap: 0
+                    },
+                    repulsion: {
+                        // centralGravity: 2,
+                        // springLength: 2000,
+                        // springConstant:1,
+                        // nodeDistance: 100,
+                        // damping: 1
+                    },
+                    hierarchicalRepulsion: {
+                        //  centralGravity: 2,
+                        // springLength: 2000,
+                        // springConstant:1,
+                        // nodeDistance: 100,
+                        // damping: 1
+                    },
+                    // maxVelocity: 1,
+                    // minVelocity: 0.1,
+                    // solver: 'barnesHut',
+                    // stabilization: {
+                    //     enabled: false,
+                    //     iterations: 1000,
+                    //     updateInterval: 100,
+                    //     onlyDynamicEdges: false,
+                    //     fit: true
+                    // },
+                    // timestep: 5,
+                    // adaptiveTimestep: false
+                }
+            };
+
+            network = new vis.Network(container, data, options);
+
+            network.on('click', function (a) {
+                if(a.nodes.length){
+                    addNode(a.nodes[0])
+                }
+                // document.getElementById('nodes').innerHTML = JSON.stringify(nodes.get(), null, 4);
+            });
+            network.on('hover', function (a) {
+              console.log(d)
+                // document.getElementById('nodes').innerHTML = JSON.stringify(nodes.get(), null, 4);
+            });
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+    <div id="network"></div>
+
+</body>
+
+<script>
+    draw()
+</script>
+
+</html>
