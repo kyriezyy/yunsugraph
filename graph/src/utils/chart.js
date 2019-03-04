@@ -81,13 +81,6 @@ export const execData = (data, cas, news = [], articles = []) => {
         id: v.cas,
         symbol: 'huaxueIcon',
         category: cate,
-        symbolSize: 40,
-        label: { normal: { show: true } },
-        emphasis: {
-          itemStyle: {
-            borderColor: 'blue',
-          },
-        },
       });
       // nodes.push({name: v.cas, id: v.cas, category: cate, symbolSize: 30, label: {normal: {show: true}}})
       keys.push(v.cas);
@@ -109,7 +102,7 @@ export const execData = (data, cas, news = [], articles = []) => {
             },
           },
         });
-        links.push({ name: null, source: v.cas, target: `news${v.cas}`, value: '新闻', lineStyle: { color: 'red' } });
+        links.push({ name: null, source: v.cas, target: `news${v.cas}`, value: '新闻' });
       }
 
       if (articles.length) {
@@ -130,7 +123,7 @@ export const execData = (data, cas, news = [], articles = []) => {
             },
           },
         });
-        links.push({ name: null, source: v.cas, target: `article${v.cas}`, value: '论文', lineStyle: { color: 'red' } });
+        links.push({ name: null, source: v.cas, target: `article${v.cas}`, value: '论文' });
       }
     }
   }
@@ -147,17 +140,15 @@ export const execData = (data, cas, news = [], articles = []) => {
         id: mid,
         value: val.pre,
         category: 3,
-        symbolSize: 40,
         symbol: 'nodeIcon',
-        label: { normal: { show: false } },
       });
       val.front.forEach((v) => {
         genEleNode(v, 3);
-        links.push({ name: null, source: v.cas, target: mid, value: '构成', lineStyle: { color: 'darkgreen' } });
+        links.push({ name: null, source: v.cas, target: mid, value: '构成' });
       });
       val.back.forEach((v) => {
         genEleNode(v, 3);
-        links.push({ name: null, source: mid, target: v.cas, value: '转化', lineStyle: { color: 'darkblue' } });
+        links.push({ name: null, source: mid, target: v.cas, value: '转化' });
       });
     });
   }
@@ -165,11 +156,11 @@ export const execData = (data, cas, news = [], articles = []) => {
   function loadingupdown(data, cas) {
     data.updown.ups.forEach((val) => {
       genEleNode(val, 1);
-      links.push({ name: null, source: cas, target: val.cas, value: '上游', lineStyle: { color: '#888' } });
+      links.push({ name: null, source: cas, target: val.cas, value: '上游' });
     });
     data.updown.downs.forEach((val) => {
       genEleNode(val, 2);
-      links.push({ name: null, source: cas, target: val.cas, value: '下游', lineStyle: { color: 'darkred' } });
+      links.push({ name: null, source: cas, target: val.cas, value: '下游' });
     });
   }
 

@@ -28,12 +28,10 @@
   }
 
   .node:hover circle {
-    /* fill: #000; */
   }
 
   .node:hover text {
     display: inline;
-    /* fill: #ccc; */
   }
 
   .cell {
@@ -80,7 +78,7 @@
         }
       });
      
-      for(var i = 20;i;i--){
+      for(var i = 50;i;i--){
         const tempId = `39515-475-${Math.round(Math.random() * 1000)}`;
 
 graphData.nodes.push({
@@ -120,15 +118,6 @@ graphData.links.push({
       bilinks.push([link.source, link.target]);
     });
 
-
-    // 所有的link选择器
-    // let link = linksBox
-    //   .selectAll('.link')
-    //   .data(bilinks)
-    //   .enter()
-    //   .append('path')
-    //   .attr('class', 'link');
-
     let linksData = linksBox
       .selectAll('.link')
       .data(bilinks)
@@ -149,7 +138,6 @@ graphData.links.push({
 
     let nodesData = nodesBox
       .selectAll('.node')
-      // .remove()
       .data(nodes.filter(d =>
         d.id,
       ))
@@ -159,42 +147,15 @@ graphData.links.push({
       .append('g')
       .attr('class', 'node')
       .on('click', (d) => {
-        console.log(d,d.x, d.y);
         loadNodes(d.id);
       })
       .call(drag); 
 
       let nodesExit = nodesData.exit().remove()
-  
-
-
-    // let node = nodesBox
-    //   .selectAll('.node')
-    //   // .remove()
-    //   .data(nodes.filter(d =>
-    //     d.id,
-    //   ))
-    //   .enter()
-    //   .append('g')
-    //   .attr('class', 'node')
-    //   .on('click', (d) => {
-    //     console.log(d,d.x, d.y);
-    //     loadNodes(d.id);
-    //   })
-    //   .call(
-    //     d3
-    //       .drag()
-    //       .on('start', dragstarted)
-    //       .on('drag', dragged)
-    //       .on('end', dragended),
-    //   ); 
-      // 通过.call(d3.drag()) 设置节点可以拖拽
 
     nodesEnter
       .append('circle')
       .attr('r', 15)
-      .attr('cx', d => d.x)
-      .attr('cy', d => d.y)
       .attr('fill', d => (d.symbol === 'nodeIcon' ? 'red' : 'green'));
 
     const label = nodesEnter
@@ -297,5 +258,6 @@ graphData.links.push({
   }
 
   renderGraph(graphData)
+  // renderGraph({nodes:[],links:[]})
 
 </script>

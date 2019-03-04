@@ -96,24 +96,24 @@ export default {
         const list = dotProp.get(res, 'data.data');
         list.forEach((item) => {
           item.links.forEach((it) => {
-            it.label = {
-              show: true,
-              formatter: '{c}',
-            };
+            // it.label = {
+            //   show: true,
+            //   formatter: '{c}',
+            // };
           });
           item.nodes.forEach((it) => {
-            it.symbolSize = 30;
+            // it.symbolSize = 30;
             it.type = 'element';
             if (it.symbol === 'diamond') {
-              it.symbol = nodeIcon;
+              it.symbol = 'nodeIcon';
             } else {
-              it.symbol = huaxueIcon;
+              it.symbol = 'huaxueIcon';
             }
             // "diamond"
-            it.label = {
-              show: true,
-              formatter: '{c}',
-            };
+            // it.label = {
+            //   show: true,
+            //   formatter: '{c}',
+            // };
           });
         });
         this.showList = this.list = list;
