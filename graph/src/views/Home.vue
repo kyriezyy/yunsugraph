@@ -73,13 +73,13 @@ export default {
       this.activeNode.type = 'element';
     },
     async getNodeDetail(node) {
-      console.log(node);
       if (node.type === 'element') {
         // cas
         const res = await axios.get(`${serverUrl}/cas/?cas=${node.id}`).catch(() => {
           this.$message.error('当前数据库中无此CAS号数据');
         });
-        if (res) {
+
+        if (res && res.data.code !== -1) {
           const name = dotProp.get(res, 'data.data.product_info.名称') || node.id;
           this.addNodes(node.id, name);
           this.activeNode = res.data.data;
@@ -210,7 +210,9 @@ export default {
     stroke-opacity: 0.3;
     stroke-width: 1.5px;
   }
-
+.link:hover{
+  stroke-width: 3px;
+}
   .node circle {
     /* fill: #ccc; */
     /* stroke: #000; */
@@ -225,7 +227,7 @@ export default {
   }
 
   .node:hover circle {
-    /* fill: #000; */
+    fill: #888;
   }
 
   .node:hover text {

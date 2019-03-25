@@ -1,59 +1,152 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-  .node {
-    stroke-width: 1.5px;
-  }
+<header>
+    <meta charset="utf-8">
+    <style>
+      html{
+        /* #120796 */
+        background: linear-gradient(to bottom,#0a0a6b,#05053e);
+        height:100%;
+      }
+      .node {
+        stroke-width: 1.5px;
+      }
+    
+      .link {
+        fill: none;
+        stroke: #bbb;
+      }
+    
+      .link {
+        stroke: #f0f5e3;
+        stroke-opacity: 0.8;
+        stroke-width: 3px;
+      }
+      .link:hover{
+        stroke: red;
+        stroke-width: 5px;
+      }
+    
+      .node circle {
+        stroke-width: 1.5px;
+      }
+    
+      .node text {
+        fill: red;
+        font-size: 18;
+        display: none;
+        font: 10px sans-serif;
+      }
+    
+      .node:hover circle {
+        fill: red
+      }
+    
+      .node:hover text {
+        display: inline;
+      }
+    
+      .cell {
+        fill: none;
+        pointer-events: all;
+      }
+      body{
+        height: 100%;
+      }
+      svg{
+        height: 100%;
+        width:100%;
+      }
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</header>
 
-  .link {
-    fill: none;
-    stroke: #bbb;
-  }
 
-  .link {
-    stroke: #777;
-    stroke-opacity: 0.3;
-    stroke-width: 1.5px;
-  }
+<body>
+    <svg ></svg>
+</body>
 
-  .node circle {
-    stroke-width: 1.5px;
-  }
-
-  .node text {
-    fill: #000;
-    font-size: 18;
-    display: none;
-    font: 10px sans-serif;
-  }
-
-  .node:hover circle {
-  }
-
-  .node:hover text {
-    display: inline;
-  }
-
-  .cell {
-    fill: none;
-    pointer-events: all;
-  }
-</style>
-<svg width="960" height="600"></svg>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
-<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
+  var nodes = [{
+    id: "node" + '0-1',
+    level: 0
+  }]
+  var showNodes = []
+  var showLinks = []
+  var links = []
+  let count = 0
+  let level = 1
+  // for (let i = 1; i <= 7; i++) {
+  //   let firstId = "node" + i + '-1'
+  //   nodes.push({ id: firstId, level: 1 })
+  //   links.push({ source: "node" + '0-1', target: firstId })
+  // }
+
+  function generateNodes(level) {
+    let preLevel = level - 1
+    nodes.forEach(node=>{
+      node.fx = node.x
+      node.fy = node.y
+    })
+    let preNodes = nodes.filter(node => node.level === preLevel)
+    preNodes.forEach(node => {
+      for (let i = 1; i <= 3; i++) {
+        let id = node.id +'-'+ i 
+        nodes.push({ id,  level,x:node.x,y:node.y })
+        links.push({ source: node.id, target: id })
+      }
+    })
+    // renderGraph()
+  }
+  level = 6
+  generateNodes(1)
+  generateNodes(2)
+  generateNodes(3)
+  generateNodes(4)
+  generateNodes(5)
+  showNodes = nodes.slice()
+  showLinks = links.slice()
+  // generateNodes(4)
+
+  function reduceNodes(level) {
+    console.log(level)
+    showNodes = showNodes.filter(node => node.level !== level)
+    showLinks = showLinks.filter(link => link.target.level !== level)
+    console.log(showNodes.length)
+    // let preLevel = level - 1
+    // nodes.forEach(node=>{
+    //   node.fx = node.x
+    //   node.fy = node.y
+    // })
+    // let preNodes = nodes.filter(node => node.level === preLevel)
+    // preNodes.forEach(node => {
+    //   for (let i = 1; i <= 3; i++) {
+    //     let id = node.id +'-'+ i 
+    //     nodes.push({ id,  level,x:node.x,y:node.y })
+    //     links.push({ source: node.id, target: id })
+    //   }
+    // })
+    renderGraph()
+  }
+
+  // console.log(nodes)
+  // var nodes = [].concat(
+  //   d3.range(200).map(function (d) { return { id: "node" + d }; })
+  // );
+
+  
 
   var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
+    width = window.innerWidth,
+    height = window.innerHeight;
 
   var graphBox = svg.append("g");
   var linksBox = graphBox.append('g');
   var nodesBox = graphBox.append('g');
 
   svg.call(d3.zoom()
-    .scaleExtent([1 / 2, 8])
+    .scaleExtent([1 / 10, 8])
     .on("zoom", zoomed));
 
   function zoomed() {
@@ -63,51 +156,55 @@
   var color = d3.scaleOrdinal(d3.schemeCategory20);
 
   var simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().distance(100).strength(0.1))  //决定线的长度已经节点之间的间距
+    .force('collision', d3.forceCollide().radius(10))
+    .force("link", d3.forceLink().distance(50).strength(0.1))  //决定线的长度已经节点之间的间距
     .force("charge", d3.forceManyBody()) //节点是否所在一起 相互吸引 相互排斥相关
-    .force("center", d3.forceCenter(width / 2, height / 2)); // 设置节点中心
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    // .force("x", d3.forceX())
+    // .force("y", d3.forceY())
+    // .stop();; // 设置节点中心
+    // simulation.alphaMin(0.2)
 
-    function loadNodes(cas) {
-      console.log('cas号', cas);
-      let curNode = null;
+  function loadNodes(cas) {
+    let curNode = null;
 
-      // 过滤节点
-      simulation.nodes().forEach((item) => {
-        if (item.id === cas) {
-          curNode = item;
-        }
-      });
-     
-      for(var i = 50;i;i--){
-        const tempId = `39515-475-${Math.round(Math.random() * 1000)}`;
-
-graphData.nodes.push({
-  id: tempId,
-  name: tempId,
-  symbol: 'huaxueIcon',
-  type: 'element',
-  x:curNode.x,
-  y:curNode.y,
-});
-graphData.links.push({
-  source: cas,
-  target: tempId,
-});
+    // 过滤节点
+    simulation.nodes().forEach((item) => {
+      if (item.id === cas) {
+        curNode = item;
       }
-      
+    });
 
-      renderGraph(graphData);
+    for (var i = 50; i; i--) {
+      const tempId = `39515-475-${Math.round(Math.random() * 1000)}`;
+
+      graphData.nodes.push({
+        id: tempId,
+        name: tempId,
+        symbol: 'huaxueIcon',
+        type: 'element',
+        x: curNode.x,
+        y: curNode.y,
+      });
+      graphData.links.push({
+        source: cas,
+        target: tempId,
+      });
     }
 
-  function renderGraph(graphData) {
-    const nodes = graphData.nodes;
-    const nodeById = d3.map(nodes, d => d.id);
-    let links = graphData.links;
+
+    renderGraph(graphData);
+  }
+
+  function renderGraph() {
+    const nodeById = d3.map(showNodes, d => d.id);
     const bilinks = [];
 
-    links = links.filter(item => item.source && item.target);
+    var newNodes = showNodes
 
-    links.forEach((link) => {
+    showLinks = showLinks.filter(item => item.source && item.target);
+
+    showLinks.forEach((link) => {
       if (typeof link.source === 'string') {
         link.source = nodeById.get(link.source);
       }
@@ -121,8 +218,8 @@ graphData.links.push({
     let linksData = linksBox
       .selectAll('.link')
       .data(bilinks)
-    
-    let linksEnter =  linksData.enter()
+
+    let linksEnter = linksData.enter()
       .append('path')
       .attr('class', 'link');
 
@@ -130,33 +227,33 @@ graphData.links.push({
 
     linksData = linksEnter.merge(linksData)
 
-
     let drag = d3.drag()
       .on('start', dragstarted)
-          .on('drag', dragged)
-          .on('end', dragended);
+      .on('drag', dragged)
+      .on('end', dragended);
 
     let nodesData = nodesBox
       .selectAll('.node')
-      .data(nodes.filter(d =>
+      .data(newNodes.filter(d =>
         d.id,
       ))
 
-      let nodesEnter =  nodesData
+    let nodesEnter = nodesData
       .enter()
       .append('g')
       .attr('class', 'node')
       .on('click', (d) => {
-        loadNodes(d.id);
+        console.log('click:' + d.id)
+        // loadNodes(d.id);
       })
-      .call(drag); 
+      .call(drag);
 
-      let nodesExit = nodesData.exit().remove()
+    let nodesExit = nodesData.exit().remove()
 
     nodesEnter
       .append('circle')
-      .attr('r', 15)
-      .attr('fill', d => (d.symbol === 'nodeIcon' ? 'red' : 'green'));
+      .attr('r', d=>d.id==="node0-1"? 25:15)
+      .attr('fill', d => (d.symbol === 'nodeIcon' ? 'red' : '#f5a60c'));
 
     const label = nodesEnter
       .append('text')
@@ -164,7 +261,7 @@ graphData.links.push({
       .attr('dx', 12)
       .text(d => d.id);
 
-      nodesEnter
+    nodesEnter
       .append('image')
       .attr('xlink:href', 'https://github.com/favicon.ico')
       .attr('x', -8)
@@ -172,15 +269,35 @@ graphData.links.push({
       .attr('width', 16)
       .attr('height', 16);
 
-      nodesData = nodesEnter.merge(nodesData)
-    // node.exit().remove();
-    // node = node.enter().merge(node);
+    nodesData = nodesEnter.merge(nodesData)
 
     simulation.nodes(nodes).on('tick', ticked); // 把node画在画布上
 
     simulation.force('link').links(links); // 把link画在画布上
 
+// let timer
     function ticked() {
+      // console.log(count)
+      if (count === 150) {
+        count = 0
+        if(level>2){
+          level = level - 1
+          // simulation.stop()
+          // generateNodes(level)
+          reduceNodes(level)
+          simulation.alphaTarget(0.1);
+          // simulation.restart()
+        }else{
+          // simulation.alphaTarget(0);
+          simulation.stop()
+        }
+      } else{
+        for(let i = 5;i;i--){
+          count++
+          simulation.tick()
+        }
+      }
+      
       linksData.attr('d', positionLink); // 每个link上有三个点，每次tick 都要重新画一遍link
       nodesData.attr('transform', positionNode);
       label.attr('x', d => 8).attr('y', d => 0);
@@ -193,6 +310,8 @@ graphData.links.push({
   }
 
   function positionNode(d) {
+    d.fx = null
+    d.fy = null
     return "translate(" + d.x + "," + d.y + ")";
   }
 
@@ -211,53 +330,8 @@ graphData.links.push({
     d.fx = null, d.fy = null;
   }
 
-  graphData = {
-    "nodes":
-      [
-        {
-          "type": "element", "name": "39515-47-4", "id": "39515-47-4", "symbol": "huaxueIcon", "category": 0
-        },
-        {
-          "name": "~89%:8ud6zmijl7", "id": "~89%:8ud6zmijl7", "value": "~89%", "category": 3, "symbol": "nodeIcon"
-        },
-        { "type": "element", "name": "143-33-9", "id": "143-33-9", "symbol": "huaxueIcon", "category": 3 },
-        { "type": "element", "name": "39515-51-0", "id": "39515-51-0", "symbol": "huaxueIcon", "category": 3 },
-        { "name": "~82%:4c33e4n3akf", "id": "~82%:4c33e4n3akf", "value": "~82%", "category": 3, "symbol": "nodeIcon" },
-        { "type": "element", "name": "75-86-5", "id": "75-86-5", "symbol": "huaxueIcon", "category": 3 },
-        { "name": "~76%:zododyf4lj", "id": "~76%:zododyf4lj", "value": "~76%", "category": 3, "symbol": "nodeIcon" },
-        { "type": "element", "name": "74-90-8", "id": "74-90-8", "symbol": "huaxueIcon", "category": 3 },
-        { "name": "~55%:ymf0xupc85m", "id": "~55%:ymf0xupc85m", "value": "~55%", "category": 3, "symbol": "nodeIcon" },
-        { "type": "element", "name": "7677-24-9", "id": "7677-24-9", "symbol": "huaxueIcon", "category": 3 },
-        { "type": "element", "name": "39515-41-8", "id": "39515-41-8", "symbol": "huaxueIcon", "category": 2 },
-        { "type": "element", "name": "51630-58-1", "id": "51630-58-1", "symbol": "huaxueIcon", "category": 2 },
-        { "type": "element", "name": "75-18-3", "id": "75-18-3", "symbol": "huaxueIcon", "category": 2 },
-        { "type": "element", "name": "82224-37-1", "id": "82224-37-1", "symbol": "huaxueIcon", "category": 2 }],
-    "links": [
-      { "name": null, "source": "143-33-9", "target": "~89%:8ud6zmijl7", "value": "构成" },
-      { "name": null, "source": "39515-51-0", "target": "~89%:8ud6zmijl7", "value": "构成" },
-      { "name": null, "source": "~89%:8ud6zmijl7", "target": "39515-47-4", "value": "转化" },
-      { "name": null, "source": "39515-51-0", "target": "~82%:4c33e4n3akf", "value": "构成" },
-      { "name": null, "source": "75-86-5", "target": "~82%:4c33e4n3akf", "value": "构成" },
-      { "name": null, "source": "~82%:4c33e4n3akf", "target": "39515-47-4", "value": "转化" },
-      { "name": null, "source": "74-90-8", "target": "~76%:zododyf4lj", "value": "构成" },
-      { "name": null, "source": "39515-51-0", "target": "~76%:zododyf4lj", "value": "构成" },
-      { "name": null, "source": "~76%:zododyf4lj", "target": "39515-47-4", "value": "转化" },
-      { "name": null, "source": "7677-24-9", "target": "~55%:ymf0xupc85m", "value": "构成" },
-      { "name": null, "source": "39515-51-0", "target": "~55%:ymf0xupc85m", "value": "构成" },
-      { "name": null, "source": "~55%:ymf0xupc85m", "target": "39515-47-4", "value": "转化" },
-      { "name": null, "target": "39515-51-0", "value": "上游" },
-      { "name": null, "target": "75-86-5", "value": "上游" },
-      { "name": null, "target": "7677-24-9", "value": "上游" },
-      { "name": null, "target": "143-33-9", "value": "上游" },
-      { "name": null, "target": "74-90-8", "value": "上游" },
-      { "name": null, "target": "39515-51-0", "value": "下游" },
-      { "name": null, "target": "39515-41-8", "value": "下游" },
-      { "name": null, "target": "51630-58-1", "value": "下游" },
-      { "name": null, "target": "75-18-3", "value": "下游" },
-      { "name": null, "target": "82224-37-1", "value": "下游" }]
-  }
 
-  renderGraph(graphData)
-  // renderGraph({nodes:[],links:[]})
+  renderGraph()
+  // generateNodes(1)
 
 </script>
