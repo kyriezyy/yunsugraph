@@ -11,3 +11,6 @@ html,body,#app{
   margin: 0;
   box-sizing: border-box
 }
+i{
+  font-style: normal
+}

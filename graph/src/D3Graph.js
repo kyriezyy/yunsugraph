@@ -206,8 +206,7 @@ class D3Graph {
     // this.label.attr('x', d => 8).attr('y', d => 0);
   }
 
-  positionLink = d => `M${d[0].x},${d[0].y
-  } ${d[1].x},${d[1].y}`
+  positionLink = d => `M${d[0].x},${d[0].y} ${d[1].x},${d[1].y}`
 
   positionNode = d => `translate(${d.x},${d.y})`
 

@@ -1,0 +1,133 @@
+{
+  "data": {
+    "synts": [
+      {
+        "front": [
+          {
+            "cas": "80-10-4",
+            "url": "http://data.huaxuejia.cn/casimg/80/80-10-4.gif"
+          }
+        ],
+        "back": [
+          {
+            "cas": "947-42-2",
+            "url": "http://data.huaxuejia.cn/casimg/947/947-42-2.png"
+          }
+        ],
+        "pre": "~94%"
+      },
+      {
+        "front": [
+          {
+            "cas": "2553-19-7",
+            "url": "http://data.huaxuejia.cn/casimg/553/2553-19-7.png"
+          }
+        ],
+        "back": [
+          {
+            "cas": "947-42-2",
+            "url": "http://data.huaxuejia.cn/casimg/947/947-42-2.png"
+          }
+        ],
+        "pre": "~88%"
+      },
+      {
+        "front": [
+          {
+            "cas": "18676-80-7",
+            "url": "http://data.huaxuejia.cn/casimg/676/18676-80-7.png"
+          }
+        ],
+        "back": [
+          {
+            "cas": "947-42-2",
+            "url": "http://data.huaxuejia.cn/casimg/947/947-42-2.png"
+          }
+        ],
+        "pre": "~87%"
+      },
+      {
+        "front": [
+          {
+            "cas": "50870-65-0",
+            "url": "http://data.huaxuejia.cn/casimg/870/50870-65-0.png"
+          }
+        ],
+        "back": [
+          {
+            "cas": "947-42-2",
+            "url": "http://data.huaxuejia.cn/casimg/947/947-42-2.png"
+          },
+          {
+            "cas": "108-88-3",
+            "url": "http://data.huaxuejia.cn/casimg/108/108-88-3.png"
+          }
+        ],
+        "pre": "~86%"
+      }
+    ],
+    "updown": {
+      "ups": [
+        {
+          "cas": "775-12-2",
+          "url": "http://data.huaxuejia.cn/casimg/775/775-12-2.png"
+        },
+        {
+          "cas": "80-10-4",
+          "url": "http://data.huaxuejia.cn/casimg/80/80-10-4.gif"
+        },
+        {
+          "cas": "50870-65-0",
+          "url": "http://data.huaxuejia.cn/casimg/870/50870-65-0.png"
+        },
+        {
+          "cas": "18676-80-7",
+          "url": "http://data.huaxuejia.cn/casimg/676/18676-80-7.png"
+        },
+        {
+          "cas": "5906-79-6",
+          "url": "http://data.huaxuejia.cn/casimg/906/5906-79-6.png"
+        }
+      ],
+      "downs": [
+        {
+          "cas": "512-63-0",
+          "url": "http://data.huaxuejia.cn/casimg/512/512-63-0.png"
+        },
+        {
+          "cas": "546-56-5",
+          "url": "http://data.huaxuejia.cn/casimg/546/546-56-5.png"
+        },
+        {
+          "cas": "2553-19-7",
+          "url": "http://data.huaxuejia.cn/casimg/553/2553-19-7.png"
+        },
+        {
+          "cas": "262360-58-7",
+          "url": "http://data.huaxuejia.cn/casimg/360/262360-58-7.png"
+        },
+        {
+          "cas": "1110-85-6",
+          "url": "http://data.huaxuejia.cn/casimg/110/1110-85-6.png"
+        }
+      ]
+    },
+    "items": [
+      "\r\n\t\t\t  CAS\u53f7\uff1a947-42-2\r\n\u5206\u5b50\u5f0f\uff1aC12H12O2Si\r\n\u5206\u5b50\u91cf\uff1a216.30800\r\n\u4e2d\u6587\u540d\u79f0\uff1a\u4e8c\u82ef\u57fa\u7845\u4e8c\u9187\r\n\u82f1\u6587\u540d\u79f0\uff1aDiphenylsilanediol\r\n\u4e2d\u6587\u522b\u540d\uff1a\u4e8c\u82ef\u57fa\u7845\u4e8c\u9187;\u4e8c\u7f9f\u57fa\u4e8c\u82ef\u57fa\u7845\u70f7;\u4e8c\u82ef\u57fa\u4e8c\u7f9f\u57fa\u7845\u70f7;\u4e8c\u82ef\u57fa\u7845\u70f7\u4e8c\u9187;\u4e8c\u82ef\u781c,\u78fa\u57fa\u4e8c\u82ef\r\n\u82f1\u6587\u522b\u540d\uff1aDiphenylsilanediol;Difenyl-dihydroxysilan;dihydroxydiphenylsilane;diphenylsilane;Silanediol,diphenyl;diphenyl-silanedio;Diphenylsilandiol\r\n\u7cbe\u786e\u5206\u5b50\u91cf/\u7cbe\u786e\u8d28\u91cf\uff1a216.06100\r\n\u6781\u6027\u5206\u5b50\u8868\u9762\u79ef/PSA\uff1a40.46000\r\n\u6cb9\u6c34\u5206\u914d\u7cfb\u6570/LogP\uff1a LogP\u503c\u6307\u7684\u662f\u67d0\u7269\u8d28\u5728\u6b63\u8f9b\u9187/\u6c34\u4e24\u76f8\u4f53\u7cfb\u4e2d\u7684\u5206\u914d\u7cfb\u6570\u7684\u5bf9\u6570\u503c\uff0c\u53cd\u6620\u4e86\u7269\u8d28\u5728\u6cb9\u6c34\u4e24\u76f8\u4e2d\u7684\u5206\u914d\u60c5\u51b5\u3002\u5176\u4e2d\u3001LogP\u503c\u8d8a\u5927\uff0c\u8bf4\u660e\u8be5\u7269\u8d28\u8d8a\u4eb2\u6cb9\uff1b\u53cd\u4e4b\uff0cLogP\u503c\u8d8a\u5c0f\uff0c\u5219\u8bf4\u660e\u8be5\u7269\u8d28\u8d8a\u4eb2\u6c34\u3002\r\n\u8d1d\u5c14\u65af\u5766\u53f7/MDL\uff1aMFCD00002101\r\nEINECS\uff1a213-427-4\r\nPubChem\uff1a24867114\r\nBRN\uff1a2523445\r\nInChI\uff1aInChI=1/C12H12O2Si/c13-15(14,11-7-3-1-4-8-11)12-9-5-2-6-10-12/h1-10,13-14H\r\n \r\n              ",
+      "\r\n\u7531\u4e8c\u82ef\u57fa\u4e8c\u6c2f\u7845\u70f7\u6c34\u89e3\u800c\u5f97\u3002",
+      "\r\n\r\n\t\t\t\t        \t\u7531\u4e8c\u82ef\u57fa\u4e8c\u6c2f\u7845\u70f7\u6c34\u89e3\u800c\u5f97\u3002\t\t\t\t        ",
+      "\r\n\u7528\u4e8e\u5236\u5907\u73af\u72b6\u4e8c\u82ef\u57fa\u7845\u919a\u5355\u4f53\u3002",
+      "\r\n\r\n\t\t\t\t        \t\u7528\u4f5c\u7845\u6a61\u80f6\u7ed3\u6784\u63a7\u5236\u5242\uff0c\u82ef\u7532\u57fa\u7845\u6cb9\u7684\u539f\u6599\u548c\u5176\u4ed6\u7845\u4ea7\u54c1\u7684\u4e2d\u95f4\u4f53\u7528\u4f5c\u5b9e\u9a8c\u8bd5\u5242\u7b49\u7528\u4f5c\u7845\u6a61\u80f6\u52a0\u5de5\u7ed3\u6784\u63a7\u5236\u5242\t\t\t\t        ",
+      "\r\n\u5916\u89c2\u4e0e\u6027\u72b6\uff1a\u767d\u8272\u7c89\u672b\r\n\u5bc6\u5ea6\uff1a0.87\r\n\u7194\u70b9\uff1a144-147\u00a0\u00b0C\r\n\u6cb8\u70b9\uff1a353\u00b0C [760mmHg]\r\n\u95ea\u70b9\uff1a129\u00a0\u00b0F\r\n\u6c34\u6eb6\u89e3\u6027\uff1areacts\r\n\u6298\u5c04\u7387\uff1a1.615\r\n\u84b8\u6c7d\u5bc6\u5ea6\uff1a>1 (vs air)\r\n\u5b58\u50a8\u6761\u4ef6/\u5b58\u50a8\u65b9\u6cd5\uff1a\r\n\t\t\t\t        \t\u50a8\u5b58\u5728\u5e72\u723d\u7684\u60f0\u6027\u6c14\u4f53\u4e0b\uff0c\u4fdd\u6301\u5bb9\u5668\u5bc6\u5c01\uff0c\u50a8\u5b58\u5728\u9634\u51c9\uff0c\u5e72\u71e5\u7684\u5730\u65b9 \t\t\t\t        \r\n\u7a33\u5b9a\u6027\u76f8\u5173\uff1a\r\n\t\t\t\t        \t\u5e38\u6e29\u5e38\u538b\u4e0b\u7a33\u5b9a\uff0c\u907f\u514d\u6c27\u5316\u7269 \u6c34\u5206\u63a5\u89e6\t\t\t\t        \r\n\u5176\u5b83\u4fe1\u606f\uff1a\r\n\t\t\t\t        \t\r\n1.\u00a0\u00a0\u00a0\u00a0\u00a0 \u6027\u72b6\uff1a\u767d\u8272\u9488\u72b6\u7ed3\u6676\r\n2.\u00a0\u00a0\u00a0\u00a0\u00a0 \u5bc6\u5ea6\uff08g/mL,25/4\u2103\uff09\uff1a0.87\r\n3.\u00a0\u00a0\u00a0\u00a0\u00a0 \u76f8\u5bf9\u84b8\u6c7d\u5bc6\u5ea6\uff08g/mL,\u7a7a\u6c14=1\uff09\uff1a>1\r\n4.\u00a0\u00a0\u00a0\u00a0\u00a0 \u7194\u70b9\uff08\u00baC\uff09\uff1a140-141\u2103\uff08\u5931\u6c34\u5206\u89e3\uff09\u3002\r\n5.\u00a0\u00a0\u00a0\u00a0\u00a0 \u6cb8\u70b9\uff08\u00baC,\u5e38\u538b\uff09\uff1a353\u00b0C\r\n6.\u00a0\u00a0\u00a0\u00a0\u00a0 \u6cb8\u70b9\uff08\u00baC,5.2kPa\uff09\uff1a\u672a\u786e\u5b9a\r\n7.\u00a0\u00a0\u00a0\u00a0\u00a0 \u6298\u5c04\u7387\uff1a\u672a\u786e\u5b9a\r\n8.\u00a0\u00a0\u00a0\u00a0\u00a0 \u95ea\u70b9\uff08\u00baC\uff09\uff1a53\u00b0C\r\n9.\u00a0\u00a0\u00a0\u00a0\u00a0 \u6bd4\u65cb\u5149\u5ea6\uff08\u00ba\uff09\uff1a\u672a\u786e\u5b9a\r\n10.\u00a0\u00a0 \u81ea\u71c3\u70b9\u6216\u5f15\u71c3\u6e29\u5ea6\uff08\u00baC\uff09\uff1a\u672a\u786e\u5b9a\r\n11.\u00a0\u00a0 \u84b8\u6c14\u538b\uff08kPa,25\u00baC\uff09\uff1a\u672a\u786e\u5b9a\r\n12.\u00a0\u00a0 \u9971\u548c\u84b8\u6c14\u538b\uff08kPa,60\u00baC\uff09\uff1a\u672a\u786e\u5b9a\r\n13.\u00a0\u00a0 \u71c3\u70e7\u70ed\uff08KJ/mol\uff09\uff1a\u672a\u786e\u5b9a\r\n14.\u00a0\u00a0 \u4e34\u754c\u6e29\u5ea6\uff08\u00baC\uff09\uff1a\u672a\u786e\u5b9a\r\n15.\u00a0\u00a0 \u4e34\u754c\u538b\u529b\uff08KPa\uff09\uff1a\u672a\u786e\u5b9a\r\n16.\u00a0\u00a0 \u6cb9\u6c34\uff08\u8f9b\u9187/\u6c34\uff09\u5206\u914d\u7cfb\u6570\u7684\u5bf9\u6570\u503c\uff1a\u672a\u786e\u5b9a\r\n17.\u00a0\u00a0 \u7206\u70b8\u4e0a\u9650\uff08%,V/V\uff09\uff1a\u672a\u786e\u5b9a\r\n18.\u00a0\u00a0 \u7206\u70b8\u4e0b\u9650\uff08%,V/V\uff09\uff1a\u672a\u786e\u5b9a\r\n19.\u00a0\u00a0 \u6eb6\u89e3\u6027\uff1a\u6c34\u6eb6\u6027reacts\u3002\r\n\u00a0\t\t\t\t        \r\n\t ",
+      "\r\n\u5305\u88c5\u7b49\u7ea7\uff1aIII\r\n\u98ce\u9669\u7c7b\u522b\uff1a4.1\r\n\u6d77\u5173\u4ee3\u7801\uff1a2931900090\r\nWGK_Germany\uff1a1\u5fb7\u56fd\u6709\u5173\u6c34\u6c61\u67d3\u7269\u8d28\u7684\u5206\u7c7b\u6e05\u5355\r\n\u5371\u9669\u7c7b\u522b\u7801\uff1aR11\r\n\u5b89\u5168\u8bf4\u660e\uff1aS16-S22-S24/25\r\nRTECS\u53f7\uff1aVV3640000\r\n\u5b89\u5168\u6807\u5fd7\uff1aS16:\u8fdc\u79bb\u706b\u6e90\u3002S22:\u4e0d\u8981\u5438\u5165\u7c89\u5c18\u3002S24/25:\u9632\u6b62\u76ae\u80a4\u548c\u773c\u775b\u63a5\u89e6\u3002\r\n\u5371\u9669\u6807\u5fd7\uff1aF:Flammable;\r\n\t  ",
+      "\r\n\u6982\u8ff0\uff1a\r\n2931900090. \u5176\u4ed6\u6709\u673a-\u65e0\u673a\u5316\u5408\u7269. \u589e\u503c\u7a0e\u7387:17.0%. \u9000\u7a0e\u7387:13.0%. \u76d1\u7ba1\u6761\u4ef6:AB(\u5165\u5883\u8d27\u7269\u901a\u5173\u5355,\u51fa\u5883\u8d27\u7269\u901a\u5173\u5355). \u6700\u60e0\u56fd\u5173\u7a0e:6.5%. \u666e\u901a\u5173\u7a0e:30.0%\r\n\u6458\u8981/Summary\uff1a\r\n2931900090. other organo-inorganic compounds. VAT:17.0%. Tax rebate rate:13.0%. Supervision conditions:AB(certificate of inspection for goods inward,certificate of inspection for goods outward). MFN tariff:6.5%. General tariff:30.0%\r\n",
+      "\r\n\r\n\t\t\t\t        \t1\u3001\u00a0\u00a0 \u6469\u5c14\u6298\u5c04\u7387\uff1a63.28\r\n2\u3001\u00a0\u00a0 \u6469\u5c14\u4f53\u79ef\uff08m3/mol\uff09\uff1a181.2\r\n3\u3001\u00a0\u00a0 \u7b49\u5f20\u6bd4\u5bb9\uff0890.2K\uff09\uff1a471.5\r\n4\u3001\u00a0\u00a0 \u8868\u9762\u5f20\u529b\uff08dyne/cm\uff09\uff1a45.7\r\n5\u3001\u00a0\u00a0 \u6781\u5316\u7387\uff0810-24cm3\uff09\uff1a25.08\t\t\t\t        ",
+      "\r\n\r\n\t\t\t\t        \t1.\u758f\u6c34\u53c2\u6570\u8ba1\u7b97\u53c2\u8003\u503c\uff08XlogP\uff09:\u65e02.\u6c22\u952e\u4f9b\u4f53\u6570\u91cf:23.\u6c22\u952e\u53d7\u4f53\u6570\u91cf:24.\u53ef\u65cb\u8f6c\u5316\u5b66\u952e\u6570\u91cf:25.\u4e92\u53d8\u5f02\u6784\u4f53\u6570\u91cf:\u65e06.\u62d3\u6251\u5206\u5b50\u6781\u6027\u8868\u9762\u79ef40.57.\u91cd\u539f\u5b50\u6570\u91cf:158.\u8868\u9762\u7535\u8377:09.\u590d\u6742\u5ea6:17410.\u540c\u4f4d\u7d20\u539f\u5b50\u6570\u91cf:011.\u786e\u5b9a\u539f\u5b50\u7acb\u6784\u4e2d\u5fc3\u6570\u91cf:012.\u4e0d\u786e\u5b9a\u539f\u5b50\u7acb\u6784\u4e2d\u5fc3\u6570\u91cf:013.\u786e\u5b9a\u5316\u5b66\u952e\u7acb\u6784\u4e2d\u5fc3\u6570\u91cf:014.\u4e0d\u786e\u5b9a\u5316\u5b66\u952e\u7acb\u6784\u4e2d\u5fc3\u6570\u91cf:015.\u5171\u4ef7\u952e\u5355\u5143\u6570\u91cf:1\t\t\t\t        "
+    ],
+    "info": {
+      "cas": "947-42-2",
+      "url": "http://data.huaxuejia.cn/casimg/947/947-42-2.png"
+    }
+  },
+  "code": 0
+}

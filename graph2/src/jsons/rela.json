@@ -1,0 +1,239 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "nodes": [
+        {
+          "id": "1631-83-0",
+          "name": "1631-83-0",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/631/1631-83-0.png",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "1631-83-0"
+        },
+        {
+          "id": "947-42-2",
+          "name": "947-42-2",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/947/947-42-2.png",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "947-42-2"
+        },
+        {
+          "id": ":`1631-83-0pre80-10-4`",
+          "name": ":`1631-83-0pre80-10-4`",
+          "symbol": "diamond",
+          "symbolSize": 15,
+          "label": {
+            "normal": {
+              "show": false
+            }
+          },
+          "value": "~91%"
+        },
+        {
+          "id": "80-10-4",
+          "name": "80-10-4",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/80/80-10-4.gif",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "80-10-4"
+        },
+        {
+          "id": ":`80-10-4pre947-42-2`",
+          "name": ":`80-10-4pre947-42-2`",
+          "symbol": "diamond",
+          "symbolSize": 15,
+          "label": {
+            "normal": {
+              "show": false
+            }
+          },
+          "value": "~94%"
+        }
+      ],
+      "links": [
+        {
+          "source": "1631-83-0",
+          "target": ":`1631-83-0pre80-10-4`",
+          "value": "\u5408\u6210\u8def\u7ebf",
+          "name": "\u5408\u6210\u8def\u7ebf",
+          "lineStyle": {
+            "normal": {}
+          }
+        },
+        {
+          "source": ":`1631-83-0pre80-10-4`",
+          "target": "80-10-4",
+          "value": "\u5408\u6210\u8def\u7ebf",
+          "name": "\u5408\u6210\u8def\u7ebf",
+          "lineStyle": {
+            "normal": {}
+          }
+        },
+        {
+          "source": "80-10-4",
+          "target": ":`80-10-4pre947-42-2`",
+          "value": "\u5408\u6210\u8def\u7ebf",
+          "name": "\u5408\u6210\u8def\u7ebf",
+          "lineStyle": {
+            "normal": {}
+          }
+        },
+        {
+          "source": ":`80-10-4pre947-42-2`",
+          "target": "947-42-2",
+          "value": "\u5408\u6210\u8def\u7ebf",
+          "name": "\u5408\u6210\u8def\u7ebf",
+          "lineStyle": {
+            "normal": {}
+          }
+        }
+      ],
+      "type": "\u5408\u6210\u8def\u7ebf"
+    },
+    {
+      "nodes": [
+        {
+          "id": "1631-83-0",
+          "name": "1631-83-0",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/631/1631-83-0.png",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "1631-83-0"
+        },
+        {
+          "id": "947-42-2",
+          "name": "947-42-2",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/947/947-42-2.png",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "947-42-2"
+        },
+        {
+          "id": "80-10-4",
+          "name": "80-10-4",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/80/80-10-4.gif",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "80-10-4"
+        }
+      ],
+      "links": [
+        {
+          "source": "1631-83-0",
+          "target": "80-10-4",
+          "value": "\u4e0a\u6e38",
+          "name": "\u4e0a\u6e38",
+          "lineStyle": {
+            "normal": {}
+          }
+        },
+        {
+          "source": "80-10-4",
+          "target": "947-42-2",
+          "value": "\u4e0a\u6e38",
+          "name": "\u4e0a\u6e38",
+          "lineStyle": {
+            "normal": {}
+          }
+        }
+      ],
+      "type": "\u4e0a\u6e38"
+    },
+    {
+      "nodes": [
+        {
+          "id": "1631-83-0",
+          "name": "1631-83-0",
+          "symbol": "image://http//p2.molbase.net/molpic/27/a3/33372.png?169x104",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "1631-83-0"
+        },
+        {
+          "id": "947-42-2",
+          "name": "947-42-2",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/947/947-42-2.png",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "947-42-2"
+        },
+        {
+          "id": "80-10-4",
+          "name": "80-10-4",
+          "symbol": "image://http://data.huaxuejia.cn/casimg/80/80-10-4.gif",
+          "symbolSize": 30,
+          "label": {
+            "normal": {
+              "show": true
+            }
+          },
+          "value": "80-10-4"
+        }
+      ],
+      "links": [
+        {
+          "source": "1631-83-0",
+          "target": "1631-83-0",
+          "value": "\u4e0a\u6e38",
+          "name": "\u4e0a\u6e38",
+          "lineStyle": {
+            "normal": {}
+          }
+        },
+        {
+          "source": "1631-83-0",
+          "target": "80-10-4",
+          "value": "\u4e0a\u6e38",
+          "name": "\u4e0a\u6e38",
+          "lineStyle": {
+            "normal": {}
+          }
+        },
+        {
+          "source": "80-10-4",
+          "target": "947-42-2",
+          "value": "\u4e0a\u6e38",
+          "name": "\u4e0a\u6e38",
+          "lineStyle": {
+            "normal": {}
+          }
+        }
+      ],
+      "type": "\u4e0a\u6e38"
+    }
+  ]
+}
