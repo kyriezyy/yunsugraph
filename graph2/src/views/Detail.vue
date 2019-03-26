@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <div class="main">
-      <div class="graph-box" id="graph">graph-box</div>
+      <div class="graph-box">
+        <graph />
+      </div>
+
       <div class="info-box">
         <div class="section" id="jibenxinxi">
           <div class="section-title">基本信息</div>
@@ -14,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="section" id="wuhuaxingzhi">
+        <div class="section" id="wuguanxingzhi">
           <div class="section-title">物化性质</div>
           <div class="content">
             <div class="params-box">
@@ -52,24 +55,33 @@
     </div>
 
     <div class="nav-box">
-      <a class="nav-item" href="#graph">图谱</a>
-      <a class="nav-item" href="#jibenxinxi">基本信息</a>
-      <a class="nav-item" href="#wuguanxingzhi">物化性质</a>
-      <a class="nav-item" href="#anquanxinxi">安全信息</a>
-      <a class="nav-item" href="#sds">SDS</a>
-      <a class="nav-item" href="#msds">MSDS</a>
+      <a class="nav-item" @click="navTo('graph')" >图谱</a>
+      <a class="nav-item" @click="navTo('jibenxinxi')" >基本信息</a>
+      <a class="nav-item" @click="navTo('wuguanxingzhi')">物化性质</a>
+      <a class="nav-item" @click="navTo('anquanxinxi')">安全信息</a>
+      <a class="nav-item" @click="navTo('sds')">SDS</a>
+      <a class="nav-item" @click="navTo('msds')">MSDS</a>
     </div>
   </div>
 </template>
 <script>
 import detail from '../jsons/detail.json'
 
-console.log(detail)
+import Graph from './Graph'
+// console.log(detail)
 export default {
   name: 'detail',
+  components: {
+    Graph
+  },
   data () {
     return {
       detail: detail
+    }
+  },
+  methods: {
+    navTo (anchor) {
+      document.querySelector('#' + anchor).scrollIntoView()
     }
   }
 }

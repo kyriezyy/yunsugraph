@@ -47,8 +47,11 @@ export default {
   },
   methods: {
     handleSearch () {
-      console.log(this.isGraph)
-      this.$router.push('/list')
+      if (this.isGraph) {
+        this.$router.push('/relation')
+      } else {
+        this.$router.push('/list')
+      }
     }
   }
 }

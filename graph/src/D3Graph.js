@@ -165,7 +165,7 @@ class D3Graph {
         let title = '';
         switch (d.type) {
           case 'element':
-            title = d.id;
+            title = d.name;
             break;
           case 'news':
             title = d.name;

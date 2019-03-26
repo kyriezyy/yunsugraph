@@ -59,7 +59,7 @@ export default {
     this.d3Graph.onClickNode = this.getNodeDetail;
     // this.fetchData();
     // console.log(this.chartApp);
-    // this.fetchData();
+    this.fetchData();
   },
   methods: {
     handleUpdateGraph(data) {
@@ -140,8 +140,8 @@ export default {
       this.activeNode = null;
     },
     async fetchData() {
-      const res = await axios.get(`${serverUrl}/relaction?cas=39515-47-4`);
-      const result = execData(res.data.data);
+      const res = await axios.get(`${serverUrl}/relaction?cas=947-42-2`);
+      const result = execData(res.data.data, '947-42-2');
       this.d3Graph.addNodes(result.nodes, result.links);
     },
     handleChartClick() {

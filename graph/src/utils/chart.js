@@ -77,13 +77,14 @@ export const execData = (data, cas, news = [], articles = []) => {
       nodes.push({
         type: 'element',
         img: v.url,
-        name: v.cas,
+        name: v.name || v.cas,
         id: v.cas,
         symbol: 'huaxueIcon',
         category: cate,
       });
       // nodes.push({name: v.cas, id: v.cas, category: cate, symbolSize: 30, label: {normal: {show: true}}})
       keys.push(v.cas);
+
 
       if (news.length) {
         const selectNews = news.splice(0, 1);
@@ -167,6 +168,8 @@ export const execData = (data, cas, news = [], articles = []) => {
   loadingNodes();
   loadingupdown(data, cas);
 
+
+  console.log(JSON.stringify(nodes), JSON.stringify(links));
   return { nodes, links };
 };
 
