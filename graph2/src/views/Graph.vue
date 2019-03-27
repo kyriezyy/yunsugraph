@@ -1,5 +1,5 @@
 <template>
-  <div class="graph">
+  <div class="graph graph-detail">
      <svg class="chart" width="800" height="600"></svg>
   </div>
 </template>
@@ -28,8 +28,10 @@ export default {
 .graph{
   display: flex;
   justify-content: center;
+
 }
 .chart{
-  border:1px solid red
+  border:1px solid red;
+   background: #f0f0f0;
 }
 </style>

@@ -136,7 +136,7 @@ class D3Graph {
     nodesEnter
       .append('circle')
       .attr('r', 15)
-      .attr('fill', '#fff')
+      .attr('fill', '#f0f0f0')
 
     nodesEnter
       .append('text')

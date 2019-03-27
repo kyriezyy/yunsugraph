@@ -45,8 +45,10 @@ stroke-width: 3px;
 .node text {
   fill: #000;
   font-size: 18;
-  display: none;
   font: 10px sans-serif;
+}
+.graph-detail .node text{
+  display: none;
 }
 
 .node:hover circle {

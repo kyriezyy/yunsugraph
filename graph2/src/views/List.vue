@@ -15,6 +15,14 @@
         <label for="checkbox" class="label-text">关系图谱</label>
       </div>
     </div>
+    <div class="filter-box">
+      <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div>
+      <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">化学品</div>
+      <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">文献</div>
+      <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
+      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
+
+    </div>
     <div class="result-box">
       <result-item v-for="item in list" :key="item.title" :item="item" />
     </div>
@@ -31,12 +39,16 @@ export default {
   data () {
     return {
       isGraph: false,
-      list: listData.maindata
+      list: listData.maindata,
+      activeIndex: 0
     }
   },
   methods: {
     handleSearch () {
 
+    },
+    switchIndex (index) {
+      this.activeIndex = index
     }
   }
 }
@@ -47,7 +59,6 @@ export default {
 }
 .search-box {
   padding: 10px 20px;
-  box-shadow: 0 3px 3px 3px #eee;
   display: flex;
   align-items: center;
   position: relative;
@@ -107,5 +118,25 @@ export default {
   height: calc(100% - 60px);
   overflow: auto;
   padding: 15px 25px;
+  padding-bottom: 50px;
+}
+.filter-box{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  box-shadow: 0 3px 3px 3px #eee;
+
+}
+.filter-item{
+  margin-right:  30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.filter-item.active{
+  color:#023d6f;
+  border-bottom: 2px solid #023d6f
 }
 </style>
