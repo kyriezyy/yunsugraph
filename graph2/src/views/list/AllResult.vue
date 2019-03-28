@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="result-box">
-      <all-list :list="list"  @changetab="handleChangeTab"/>
+      <all-list :list="list" ref="resultBox" @changetab="handleChangeTab"/>
     </div>
     <div class="slide-box">
       <el-tabs tab-position="right"  v-model="activeTab" @tab-click="handleClick">
@@ -32,7 +32,7 @@ export default {
       this.activeTab = (index + 1) + ''
     },
     handleClick (item) {
-      console.log(item.name)
+      this.$refs.resultBox.scrollToElemnt(item.name)
     }
   }
 }

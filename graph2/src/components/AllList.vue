@@ -80,6 +80,10 @@ export default {
         }
       ]
     },
+    scrollToElemnt (index) {
+      let element = document.querySelector('#section' + index)
+      element.scrollIntoView()
+    },
     hanldeScroll () {
       let scrollTop = this.$refs.listBox.scrollTop
       let activeIndex
