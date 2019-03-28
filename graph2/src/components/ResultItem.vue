@@ -5,8 +5,8 @@
       <div class="info" @click="handleClick">
         <div class="title">{{item.title}}</div>
         <div class="params">
-          <span class="param">CAS号：{{item.CAS}}</span>
-          <span class="param">分子式：{{item['分子式']}}</span>
+          <span class="param">CAS号：{{item.cas}}</span>
+          <span class="param">分子式：{{item.formula}}</span>
         </div>
       </div>
     </template>
@@ -22,6 +22,14 @@
     <template v-if="item.type==='paper'">
       <p class="paper-title">{{item.title}}</p>
       <p class="paper-author">{{item.author}}</p>
+      <p class="paper-abstract">{{item.abstract}}</p>
+    </template>
+     <template v-if="item.type==='patent'">
+      <p class="paper-title">{{item.title}}</p>
+      <p class="paper-author">{{item.inventor}}</p>
+      <p class="news-time">专利号： {{item.applicationumber}}</p>
+      <p class="news-time">申请日期：{{item.applicationdate}}</p>
+      <p class="news-time">分类号：{{item.class}}</p>
       <p class="paper-abstract">{{item.abstract}}</p>
     </template>
   </div>
@@ -47,11 +55,15 @@ export default {
   align-items: center;
   cursor: pointer;
   padding: 10px 0;
+  padding-left: 25px
 }
 .img {
   height: 100px;
   width: 100px;
   flex-shrink: 0;
+}
+p{
+  line-height: 1.8
 }
 .title {
   font-size: 18px;
@@ -63,7 +75,7 @@ export default {
 .param {
   margin-right: 40px;
 }
-.news-item,.paper-item{
+.news-item,.paper-item,.patent-item{
   flex-direction: column;
   align-items: flex-start
 }

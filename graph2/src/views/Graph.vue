@@ -1,6 +1,6 @@
 <template>
   <div class="graph graph-detail">
-     <svg class="chart" width="800" height="600"></svg>
+     <svg class="chart"></svg>
   </div>
 </template>
 <script>
@@ -31,7 +31,9 @@ export default {
 
 }
 .chart{
-  border:1px solid red;
-   background: #f0f0f0;
+  /* border:1px solid red; */
+   /* background: #f0f0f0; */
+   height: 600px;
+   width: 900px;
 }
 </style>

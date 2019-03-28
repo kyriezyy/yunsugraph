@@ -21,10 +21,12 @@
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">文献</div>
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
-
     </div>
     <div class="result-box">
-      <result-item v-for="item in showList" :key="item.title" :item="item" />
+      <div v-if="activeIndex">
+          <result-item v-for="item in showList" :key="item.title" :item="item"  />
+      </div>
+      <all-list :list="showList"  v-else />
     </div>
   </div>
 </template>
@@ -32,10 +34,13 @@
 // import listData from '../jsons/chemical_list.json'
 import listData from '../jsons/list_data.json'
 import ResultItem from '../components/ResultItem'
+import AllList from '../components/AllList'
+
 export default {
   name: 'list',
   components: {
-    ResultItem
+    ResultItem,
+    AllList
   },
   data () {
     return {
@@ -58,6 +63,9 @@ export default {
           case 2:
             filterType = 'paper'
             break
+          case 3:
+            filterType = 'patent'
+            break
           default:
             filterType = ''
         }
@@ -70,7 +78,9 @@ export default {
   },
   methods: {
     handleSearch () {
-
+      if (this.isGraph) {
+        this.$router.push('/relation')
+      }
     },
     switchIndex (index) {
       this.activeIndex = index
@@ -83,7 +93,7 @@ export default {
   height: calc(100% - 60px);
 }
 .search-box {
-  padding: 10px 20px;
+  padding: 10px 20px 10px 30px;
   display: flex;
   align-items: center;
   position: relative;
@@ -97,6 +107,8 @@ export default {
   display: flex;
   border: 1px solid #e0e0e0;
   align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .splide-line {
   margin: 0 10px;
@@ -125,6 +137,7 @@ export default {
   color: #fff;
   font-size: 16px;
   margin-left: 10px;
+  border-radius: 5px
 }
 .label-text {
   font-size: 14px;
