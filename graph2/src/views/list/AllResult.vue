@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="result-box">
-      <all-list :list="list"/>
+      <all-list :list="list"  @changetab="handleChangeTab"/>
     </div>
     <div class="slide-box">
-      <el-tabs tab-position="right"  v-model="activeTab">
-        <el-tab-pane label="AA" name="AA"></el-tab-pane>
-        <el-tab-pane label="BB" name="BB"></el-tab-pane>
-        <el-tab-pane label="CC" name="CC"></el-tab-pane>
-        <el-tab-pane label="DD" name="DD"></el-tab-pane>
+      <el-tabs tab-position="right"  v-model="activeTab" @tab-click="handleClick">
+        <el-tab-pane label="AA" name="1"></el-tab-pane>
+        <el-tab-pane label="BB" name="2"></el-tab-pane>
+        <el-tab-pane label="CC" name="3"></el-tab-pane>
+        <el-tab-pane label="DD" name="4"></el-tab-pane>
       </el-tabs>
     </div>
   </div>
@@ -24,7 +24,15 @@ export default {
   },
   data () {
     return {
-      activeTab: 'AA'
+      activeTab: '1'
+    }
+  },
+  methods: {
+    handleChangeTab (index) {
+      this.activeTab = (index + 1) + ''
+    },
+    handleClick (item) {
+      console.log(item.name)
     }
   }
 }
@@ -36,7 +44,6 @@ export default {
 .result-box {
   padding: 15px 25px;
   flex-grow: 2;
-  overflow: auto;
 }
 .slide-box {
   width: 300px;
