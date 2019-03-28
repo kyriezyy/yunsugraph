@@ -24,12 +24,13 @@
 
     </div>
     <div class="result-box">
-      <result-item v-for="item in list" :key="item.title" :item="item" />
+      <result-item v-for="item in showList" :key="item.title" :item="item" />
     </div>
   </div>
 </template>
 <script>
-import listData from '../jsons/chemical_list.json'
+// import listData from '../jsons/chemical_list.json'
+import listData from '../jsons/list_data.json'
 import ResultItem from '../components/ResultItem'
 export default {
   name: 'list',
@@ -39,8 +40,32 @@ export default {
   data () {
     return {
       isGraph: false,
-      list: listData.maindata,
+      list: [],
       activeIndex: 0
+    }
+  },
+  computed: {
+    showList () {
+      if (this.activeIndex) {
+        let filterType
+        switch (this.activeIndex) {
+          case 1:
+            filterType = 'chemical'
+            break
+          case 4:
+            filterType = 'news'
+            break
+          case 2:
+            filterType = 'paper'
+            break
+          default:
+            filterType = ''
+        }
+
+        return listData.data.filter(item => item.type === filterType)
+      } else {
+        return listData.data
+      }
     }
   },
   methods: {
