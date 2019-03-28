@@ -163,7 +163,7 @@ export default {
   margin-right: 5px;
 }
 .main{
-  height: calc(100% - 60px);
+  height: 100%;
   overflow: auto;
 }
 
