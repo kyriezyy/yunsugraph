@@ -9,7 +9,7 @@
           <input type="text" placeholder="请输入关键词" v-if="!isGraph">
           <template v-else>
             <input type="text" placeholder="路径起点">
-            <span class="splide-line">---</span>
+            <span class="splide-line">——</span>
             <input type="text" placeholder="路径终点">
           </template>
         </div>
@@ -57,10 +57,10 @@ export default {
 }
 .logo-text{
   color:rgb(0, 34, 97);
-  font-size: 35px;
+  font-size: 38px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .search-box {
   width: 800px;
@@ -81,6 +81,7 @@ export default {
 .splide-line {
   margin: 0 10px;
   white-space: nowrap;
+  color:#e0e0e0
 }
 
 .search-input input {

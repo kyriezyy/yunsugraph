@@ -52,7 +52,7 @@ stroke-width: 3px;
 }
 
 .node:hover circle {
-  fill: #888;
+  fill: #023d6f;
 }
 
 .node:hover text {

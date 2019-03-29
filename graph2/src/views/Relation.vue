@@ -1,38 +1,41 @@
 <template>
   <div class="container">
-     <div class="result-box">
-       <div class="search-box">
-         <div class="search-item">
-           <label for="">A</label>
-           <input type="text" placeholder="请输入一个起点">
-         </div>
+    <header-search/>
+    <div class="main">
+      <div class="result-box">
+        <div class="search-key-box">
           <div class="search-item">
-           <label for="">B</label>
-           <input type="text" placeholder="请输入一个终点">
-         </div>
-       </div>
-      <div
-        class="result-item"
-        v-for="(item,index) in graphRelation"
-        @click="selectItem(index)"
-        :class="{active:index===activeIndex}"
-        :key="index"
-      >{{index+1}}.  A __ B</div>
-    </div>
-    <div class="graph-box">
-      <svg class="chart" width="800" height="600"></svg>
-    </div>
+            <label for>A</label>
+            <input type="text" placeholder="请输入一个起点">
+          </div>
+          <div class="search-item">
+            <label for>B</label>
+            <input type="text" placeholder="请输入一个终点">
+          </div>
+        </div>
+        <div
+          class="result-item"
+          v-for="(item,index) in graphRelation"
+          @click="selectItem(index)"
+          :class="{active:index===activeIndex}"
+          :key="index"
+        >· A — B</div>
+      </div>
+      <div class="graph-box">
+        <svg class="chart" width="800" height="600"></svg>
+      </div>
 
-    <div class="float-box" v-if="activeLine">
-      <div class="title">{{activeLine.relation}}</div>
-      <div class="content">
-        <template v-if="activeLine.relation==='合成'">
-          <p>相似度：{{activeLine.factor}}</p>
-          <p>参考文献：{{activeLine.paper}}</p>
-        </template>
-        <template v-if="activeLine.relation==='相似关系' ">
-          <p v-for="item in activeLine.content" :key="item">{{item}}</p>
-        </template>
+      <div class="float-box" v-if="activeLine">
+        <div class="title">{{activeLine.relation}}</div>
+        <div class="content">
+          <template v-if="activeLine.relation==='合成'">
+            <p> <span class="label">相似度：</span>{{activeLine.factor}}</p>
+            <p> <span class="label">参考文献：</span>{{activeLine.paper}}</p>
+          </template>
+          <template v-if="activeLine.relation==='相似关系' ">
+            <p v-for="item in activeLine.content" :key="item">· {{item}}</p>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -40,9 +43,13 @@
 <script>
 import D3Graph from '../D3Graph2'
 import graphRelation from '../jsons/graphRelation.json'
+import HeaderSearch from '../components/HeaderSearch'
 
 export default {
   name: 'relation',
+  components: {
+    HeaderSearch
+  },
   data () {
     return {
       d3Graph: null,
@@ -74,7 +81,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container{
+   height:100%;
+}
+.main {
   height: calc(100% - 60px);
   position: relative;
   display: flex;
@@ -87,13 +97,13 @@ export default {
   flex-shrink: 0;
 }
 .graph-box {
-    flex-grow: 2;
+  flex-grow: 2;
   display: flex;
   justify-content: center;
 }
 .chart {
   width: 100%;
-  Height: 100%;
+  height: 100%;
   /* background: #f0f0f0; */
 }
 .float-box {
@@ -102,43 +112,60 @@ export default {
   top: 40px;
   background: #fff;
   border: 1px solid #e0e0e0;
-  padding: 20px 15px;
-  width: 250px;
+  /* padding: 20px 15px; */
+  width: 350px;
 }
 .float-box .title {
   font-size: 18px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e0e0;
 }
-.result-item{
+.float-box .content{
+  padding: 15px 20px;
+}
+.result-item {
   border-bottom: 1px solid #e0e0e0;
   height: 30px;
   align-items: center;
   display: flex;
   padding-left: 5px;
 }
-.result-item.active{
-  color:#023d6f
+.result-item.active {
+  color: #023d6f;
 }
-.search-box{
+.search-key-box {
   margin-bottom: 30px;
 }
-.search-item{
-  border:1px solid #eaeaea;
+.search-item {
+  border: 1px solid #eaeaea;
   height: 30px;
   display: flex;
-  margin: 5px 0 ;
+  margin: 5px 0;
 }
-.search-item label{
+.search-item label {
   background: #eaeaea;
   width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color:#102e34
+  color: #102e34;
 }
-.search-item input{
+.search-item input {
   width: 10px;
   flex-grow: 2;
-  border:none;
+  border: none;
   padding-left: 10px;
+}
+.content p{
+  display: flex;
+  font-size: 13px;
+  margin: 10px 0;
+}
+.label{
+  width: 80px;
+  flex-shrink: 0;
 }
 </style>
