@@ -9,11 +9,12 @@
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
     </div>
     <div class="main">
-      <AllResult :list="showList" />
-      <!-- <div class="result-box">
-        <div v-if="activeIndex">
+      <div v-if="activeIndex">
           <result-item v-for="item in showList" :key="item.title" :item="item"/>
         </div>
+      <AllResult :list="showList" v-else />
+      <!-- <div class="result-box">
+
         <all-list :list="showList" v-else/>
       </div>
       <div class="slide-box">
@@ -95,6 +96,7 @@ export default {
   align-items: center;
   padding-left: 40px;
   box-shadow: 0 3px 3px 3px #eee;
+  justify-content: center
 }
 .filter-item {
   margin-right: 30px;
