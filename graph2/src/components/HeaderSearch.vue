@@ -1,6 +1,6 @@
 <template>
   <div class="search-box">
-    <div class="logo-text">CloudTree赟数</div>
+    <div class="logo-text" @click="$router.push('/')">CloudTree赟数</div>
     <div class="search">
       <div class="search-input">
         <input type="text" placeholder="请输入关键词" v-if="!isGraph">
@@ -101,5 +101,8 @@ export default {
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
+}
+.logo-text:hover {
+  cursor: pointer;
 }
 </style>
