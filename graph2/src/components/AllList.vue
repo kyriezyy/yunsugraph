@@ -1,25 +1,33 @@
 <template>
   <div class="all-list" ref="listBox" @scroll="hanldeScroll">
     <div class="section" id="section1">
-      <div class="section-title">化学品</div>
+      <div class="section-title">化学品
+        <span class="more">更多信息</span>
+      </div>
       <div class="content">
          <result-item v-for="item in chemicalList" :key="item.title" :item="item"  />
       </div>
     </div>
     <div class="section" id="section2">
-      <div class="section-title">文献</div>
+      <div class="section-title">文献
+         <span class="more">更多信息</span>
+      </div>
       <div class="content">
          <result-item v-for="item in paperList" :key="item.title" :item="item"  />
       </div>
     </div>
     <div class="section" id="section3">
-      <div class="section-title">新闻</div>
+      <div class="section-title">新闻
+         <span class="more">更多信息</span>
+      </div>
       <div class="content">
          <result-item v-for="item in newsList" :key="item.title" :item="item"  />
       </div>
     </div>
     <div class="section" id="section4">
-      <div class="section-title">专利</div>
+      <div class="section-title">专利
+         <span class="more">更多信息</span>
+      </div>
       <div class="content">
          <result-item v-for="item in patentList" :key="item.title" :item="item"  />
       </div>
@@ -81,8 +89,11 @@ export default {
       ]
     },
     scrollToElemnt (index) {
-      let element = document.querySelector('#section' + index)
-      element.scrollIntoView()
+      let item = this.catchTop[index - 1]
+      console.log(item)
+      this.$refs.listBox.scrollTop = item.top - 127
+      // let element = document.querySelector('#section' + index)
+      // element.scrollIntoView()
     },
     hanldeScroll () {
       let scrollTop = this.$refs.listBox.scrollTop
@@ -112,11 +123,19 @@ export default {
   border:1px solid #e0e0e0;
 }
 .section-title{
-  background: #e0e0e0;
-  height: 40px;
+  background: #F6F8FD;
+  border-bottom: 1px solid #e0e0e0;
+  height: 70px;
   display: flex;
   align-items: center;
-  padding-left: 15px
+  padding:0 15px;
+  font-size: 20px;
+  justify-content: space-between;
+}
+.more{
+  font-size: 14px;
+  color:#002261;
+  cursor: pointer;
 }
 .content{
 
