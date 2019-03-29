@@ -21,7 +21,7 @@
           :key="index"
         >· A — B</div>
       </div>
-      <div class="graph-box">
+      <div class="graph-box" >
         <svg class="chart" width="800" height="600"></svg>
       </div>
 
@@ -64,6 +64,8 @@ export default {
     this.render()
   },
   methods: {
+    handleClose () {
+    },
     render () {
       let graph = graphRelation.data[this.activeIndex]
       this.d3Graph.addNodes(graph.nodes, graph.links)
@@ -73,7 +75,6 @@ export default {
       this.render()
     },
     hanldeClickLine (d) {
-      console.log(d)
       this.activeLine = d.raw
     }
   }
