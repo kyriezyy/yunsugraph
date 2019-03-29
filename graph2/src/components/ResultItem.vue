@@ -12,11 +12,11 @@
     </template>
     <template v-if="item.type==='news'">
       <a :href="item.link" class="news-title">{{item.title}} </a>
-       <p class="news-time">
-        {{item.time}}
-      </p>
       <p class="news-des">
         {{item.desc}}
+      </p>
+       <p class="news-time">
+        {{item.time}}
       </p>
     </template>
     <template v-if="item.type==='paper'">
@@ -93,6 +93,7 @@ p{
 }
 .news-time,.paper-author{
   font-size: 13px;
+  color: #666;
 }
 .news-des,.paper-abstract{
   font-size: 14px;

@@ -9,7 +9,7 @@
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
     </div>
     <div class="main">
-      <div v-if="activeIndex">
+      <div v-if="activeIndex" class="sigle-result-box">
           <result-item v-for="item in showList" :key="item.title" :item="item"/>
         </div>
       <AllResult :list="showList" v-else />
@@ -88,6 +88,7 @@ export default {
 .main{
   height: 100%;
   overflow: auto;
+  /* display: flex; */
 }
 
 .filter-box {
@@ -108,6 +109,10 @@ export default {
 .filter-item.active {
   color: #023d6f;
   border-bottom: 2px solid #023d6f;
+}
+.sigle-result-box{
+  padding: 15px 25px;
+  width: calc(100% - 300px);
 }
 
 </style>
