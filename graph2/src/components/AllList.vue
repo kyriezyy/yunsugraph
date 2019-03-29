@@ -50,16 +50,16 @@ export default {
   },
   computed: {
     chemicalList () {
-      return this.list.filter(item => item.type === 'chemical')
+      return this.list.filter(item => item.type === 'chemical').slice(0, 3)
     },
     newsList () {
-      return this.list.filter(item => item.type === 'news')
+      return this.list.filter(item => item.type === 'news').slice(0, 3)
     },
     paperList () {
-      return this.list.filter(item => item.type === 'paper')
+      return this.list.filter(item => item.type === 'paper').slice(0, 3)
     },
     patentList () {
-      return this.list.filter(item => item.type === 'patent')
+      return this.list.filter(item => item.type === 'patent').slice(0, 3)
     }
 
   },

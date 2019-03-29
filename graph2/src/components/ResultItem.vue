@@ -25,7 +25,7 @@
       <p class="paper-abstract">{{item.abstract}}</p>
     </template>
      <template v-if="item.type==='patent'">
-      <p class="paper-title">{{item.title}} <span class="pdf-icon"></span> </p>
+      <p class="paper-title" @click="downLoad(item)">{{item.title}} <span class="pdf-icon"></span> </p>
       <p class="paper-author">{{item.inventor}}</p>
       <p class="news-time">专利号： {{item.applicationumber}}</p>
       <p class="news-time">申请日期：{{item.applicationdate}}</p>
@@ -44,6 +44,10 @@ export default {
   methods: {
     handleClick () {
       this.$router.push('/detail')
+    },
+    downLoad (item) {
+      location.href = item.filepath
+      // window.open(item.filepath)
     }
   }
 }
