@@ -2,9 +2,9 @@
   <div class="container">
     <div class="main">
       <div class="box-content">
-        <div class="graph-box" id="graph">
-          <graph />
-        </div>
+        <!--<div class="graph-box" id="graph">-->
+          <!--<graph/>-->
+        <!--</div>-->
         <div class="info-box">
           <div class="section" id="jibenxinxi">
             <div class="section-title">基本信息</div>
@@ -25,6 +25,14 @@
                   <span class="key">{{key}}</span>
                   <span class="value">{{value}}</span>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="section" id="graph">
+            <div class="section-title">图谱</div>
+            <div class="content">
+              <div class="graph-box">
+                <graph/>
               </div>
             </div>
           </div>
@@ -120,9 +128,9 @@
     </div>
 
     <div class="nav-box">
-      <a class="nav-item add-color" @click="navTo('graph', 0)">图谱</a>
-      <a class="nav-item" @click="navTo('jibenxinxi',1)">基本信息</a>
-      <a class="nav-item" @click="navTo('wuguanxingzhi',2)">物化性质</a>
+      <a class="nav-item add-color" @click="navTo('jibenxinxi',0)">基本信息</a>
+      <a class="nav-item" @click="navTo('wuguanxingzhi',1)">物化性质</a>
+      <a class="nav-item" @click="navTo('graph', 2)">图谱</a>
       <a class="nav-item" @click="navTo('anquanxinxi', 3)">安全信息</a>
       <a class="nav-item" @click="navTo('hechengluxian', 4)">合成路线</a>
       <a class="nav-item" @click="navTo('shangxiayouchanpin', 5)">上下游产品</a>
@@ -161,149 +169,168 @@ export default {
 }
 </script>
 <style scoped>
-.container {
-  height: calc(100% - 1px);
+  .container {
+    height: calc(100% - 1px);
 
-  display: flex;
-  width: 100%;
-}
-.main {
-  width: 80%;
-  padding: 20px;
-  overflow: auto;
-  margin-right: 5%;
-}
-.section {
-  margin: 20px 0;
-  border: 1px solid #eaeaea;
-}
+    display: flex;
+    width: 100%;
+  }
 
-.graph-box{
-  height: 540px;
-}
+  .main {
+    width: 80%;
+    padding: 20px;
+    overflow: auto;
+    margin-right: 5%;
+  }
 
-.section-title {
-  font-size: 16px;
-  background: #eaeaea;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-}
+  .section {
+    margin: 20px 0;
+    border: 1px solid #eaeaea;
+  }
 
-.add-color{
-  color: #023d6f;
-  position: relative;
-}
+  .graph-box {
+    height: 540px;
+    overflow: hidden;
+  }
 
-.add-color:before{
-  content: '';
-  background-color: #023d6f;
-  position: absolute;
-  width: 5px;
-  height: 40px;
-  left: -5px;
-}
+  .section-title {
+    font-size: 16px;
+    background: #eaeaea;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
 
-.content {
-  padding: 20px;
-}
-.param-item {
-  display: flex;
-  margin: 5px 0;
-}
-.key {
-  width: 130px;
-  flex-shrink: 0;
-  color: #888;
-}
-.value {
-  font-size: 14px;
-}
-.nav-box {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  border-left: #dddddd 5px solid;
-  color: #9b9b9b;
-}
-.nav-box a {
+  .add-color {
+    color: #023d6f;
+    position: relative;
+  }
 
-}
+  .add-color:before {
+    content: '';
+    background-color: #023d6f;
+    position: absolute;
+    width: 5px;
+    height: 40px;
+    left: -5px;
+  }
 
-.nav-item{
-  line-height: 40px;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  padding-left: 20px;
-}
+  .content {
+    padding: 20px;
+  }
 
-.nav-item:hover{
-  cursor: pointer;
-  color: #023d6f;
-}
+  .param-item {
+    display: flex;
+    margin: 5px 0;
+  }
 
-.info-box {
-  width: 900px;
-  margin: 0 auto;
-}
-.huaxuepin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 200px;
-}
-.huaxuepin .img {
-  width: 100px;
-  height: 100px;
-  flex-shrink: 0;
-  border: 1px solid #e0e0e0;
-}
-#hechengluxian .param-item {
-  padding: 15px 0;
-  border-bottom: 1px solid #e0e0e0;
-  align-items: center;
-}
-.jiantou {
-  width: 40px;
-  height: 15px;
-  background: #888;
-  position: relative;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-.jiantou:after {
-  content: "";
-  position: absolute;
-  border-top: 15px solid transparent;
-  border-left: 15px solid #888;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  right: -30px;
-  top: -7.1px;
-}
-.huaxuepin-cas {
-  margin-top: 10px;
-}
-.huaxuepin-name {
-  font-size: 13px;
-}
-.percent {
-  color: red;
-}
-#shangxiayouchanpin .params-content{
-  display: flex;
-  padding: 15px 0;
-}
-#shangxiayouchanpin .params-title{
-  background: #e0e0e0;
-  padding: 0 20px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between
-}
-.more{
-  font-size: 13px;
-  color: #023d6f;
-}
+  .key {
+    width: 130px;
+    flex-shrink: 0;
+    color: #888;
+  }
+
+  .value {
+    font-size: 14px;
+  }
+
+  .nav-box {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-left: #dddddd 5px solid;
+    color: #9b9b9b;
+  }
+
+  .nav-box a {
+
+  }
+
+  .nav-item {
+    line-height: 40px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    padding-left: 20px;
+  }
+
+  .nav-item:hover {
+    cursor: pointer;
+    color: #023d6f;
+  }
+
+  .info-box {
+    width: 900px;
+    margin: 0 auto;
+  }
+
+  .huaxuepin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+  }
+
+  .huaxuepin .img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border: 1px solid #e0e0e0;
+  }
+
+  #hechengluxian .param-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+  }
+
+  .jiantou {
+    width: 40px;
+    height: 15px;
+    background: #888;
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  .jiantou:after {
+    content: "";
+    position: absolute;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #888;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    right: -30px;
+    top: -7.1px;
+  }
+
+  .huaxuepin-cas {
+    margin-top: 10px;
+  }
+
+  .huaxuepin-name {
+    font-size: 13px;
+  }
+
+  .percent {
+    color: red;
+  }
+
+  #shangxiayouchanpin .params-content {
+    display: flex;
+    padding: 15px 0;
+  }
+
+  #shangxiayouchanpin .params-title {
+    background: #e0e0e0;
+    padding: 0 20px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  .more {
+    font-size: 13px;
+    color: #023d6f;
+  }
 </style>
