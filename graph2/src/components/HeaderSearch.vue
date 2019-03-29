@@ -43,6 +43,7 @@ export default {
   align-items: center;
   position: relative;
   z-index: 99;
+  justify-content: center;
 }
 .search {
   border: 1px solid #e0e0e0;
