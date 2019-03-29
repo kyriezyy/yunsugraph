@@ -67,3 +67,9 @@ stroke-width: 3px;
 .search-icon{
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoBAMAAAB+0KVeAAAALVBMVEUAAAAAZv8AbP8AZ/8AZv8AZ/8AZv8Aaf8AZ/8AZv8AZv8AZv8AZv8AZ/8AZv8+C/vWAAAADnRSTlMAvhA83FnKJlDzq6KQfoDSshoAAAEHSURBVCjPY4AA1Y2eU6SDGFBA4zswkEAWM3sHBckIMZ53cHAAJsYk9+7ds8tF6rZ57949VIAKqrx796oAxGBf9+6dE1RQ7t0TAwiL2e/dQ7iJQjCTFGGm2oFl4boeg+k8sDlw85+BKI537wwQgszv3jUAKcZ3r5D9se6dAJDUe/ccWbDu3SMgGfcuAVmQ7d1TILnv3QVkQd53r8GOMEAWZAY70O9dAbIg+7snQHLeOwVkQaZ3L3EJYmrHZRGmk3A5HtObuAIEM+hwBDJmdGCPOMwofheAJTG8e4qRbEAgACOBHQUqxUyKcUClGImWFaEUkbwRShEArPQFAwaIA4Y9plJsggwtHgCWScTIN/I35QAAAABJRU5ErkJggg==)
 }
+
+
+/* reset element-ui */
+.slide-box .el-tabs--right .el-tabs__header.is-right{
+  float: left;
+}
