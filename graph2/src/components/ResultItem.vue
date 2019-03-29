@@ -1,5 +1,7 @@
 <template>
   <div class="item" :class="[item.type+'-item']" >
+     <!-- <i class="iconfont icon-news1"></i> -->
+
     <template v-if="item.type==='chemical'">
       <div class="img" :style="{background:`url(${item.img}) no-repeat center center /contain`}" @click="handleClick"></div>
       <div class="info" @click="handleClick">

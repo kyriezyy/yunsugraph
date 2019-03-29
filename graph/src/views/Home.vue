@@ -59,7 +59,7 @@ export default {
     this.d3Graph.onClickNode = this.getNodeDetail;
     // this.fetchData();
     // console.log(this.chartApp);
-    this.fetchData();
+    // this.fetchData();
   },
   methods: {
     handleUpdateGraph(data) {

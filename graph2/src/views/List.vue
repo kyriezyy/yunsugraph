@@ -2,17 +2,18 @@
   <div class="container">
     <header-search />
     <div class="filter-box">
-      <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div>
+      <!-- <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div> -->
       <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">化学品</div>
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">文献</div>
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
     </div>
     <div class="main">
-      <div v-if="activeIndex" class="sigle-result-box">
+      <div class="sigle-result-box">
           <result-item v-for="item in showList" :key="item.title" :item="item"/>
-        </div>
-      <AllResult :list="showList" v-else />
+      </div>
+         <!--
+      <AllResult :list="showList" v-else /> -->
       <!-- <div class="result-box">
 
         <all-list :list="showList" v-else/>
@@ -43,7 +44,7 @@ export default {
     return {
       isGraph: false,
       list: [],
-      activeIndex: 0
+      activeIndex: 1
     }
   },
   computed: {
