@@ -169,7 +169,7 @@ export const execData = (data, cas, news = [], articles = []) => {
   loadingupdown(data, cas);
 
 
-  console.log(JSON.stringify(nodes), JSON.stringify(links));
+  // console.log(JSON.stringify(nodes), JSON.stringify(links));
   return { nodes, links };
 };
 

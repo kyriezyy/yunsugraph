@@ -40,7 +40,7 @@ class D3Graph {
       .alpha(0.5)
       .velocityDecay(0.7)
       .force('collision', d3.forceCollide().radius(30)) // 决定线的长度已经节点之间的间距
-      .force('link', d3.forceLink().distance(100).strength(0.5)) // 决定线的长度已经节点之间的间距
+      .force('link', d3.forceLink().distance(300).strength(0.4)) // 决定线的长度已经节点之间的间距
       .force('charge', d3.forceManyBody()) // 节点是否所在一起 相互吸引 相互排斥相关
       .force('center', d3.forceCenter(this.width / 2, this.height / 2)); // 设置节点中心
   }

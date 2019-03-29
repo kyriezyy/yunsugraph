@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header">
-      <span> ChemistryGraph</span>
+      <span> CloudTree 赟数</span>
     </div>
 
     <router-view/>

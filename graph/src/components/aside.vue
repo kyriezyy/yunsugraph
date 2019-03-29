@@ -3,7 +3,7 @@
     <div class="slide-tab-box">
       <el-radio-group v-model="activeTab" size="mini" class="slide-tab">
         <el-radio-button class="slide-tab-item" label="搜索">
-          <i class="el-icon-search"></i>搜索
+          <i class="el-icon-search"></i> 搜索
         </el-radio-button>
         <el-radio-button class="slide-tab-item" label="路径">
           <i class="el-icon-share"></i>
