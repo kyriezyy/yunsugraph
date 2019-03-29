@@ -44,6 +44,7 @@ export default {
   position: relative;
   z-index: 99;
   justify-content: center;
+  box-shadow: 0 2px 3px 1px #dddddda8;
 }
 .search {
   border: 1px solid #e0e0e0;
