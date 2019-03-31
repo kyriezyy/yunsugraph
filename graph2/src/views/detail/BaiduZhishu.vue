@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="titile">过去30天“化学元素名字”百度搜索趋势</div>
+    <div class="titile">过去30天“二苯基硅二醇”百度搜索趋势</div>
     <div class="charts" ref="chart"></div>
   </div>
 </template>
