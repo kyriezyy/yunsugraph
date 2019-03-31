@@ -1,6 +1,6 @@
 <template>
   <div class="graph graph-detail">
-     <svg class="chart"></svg>
+     <svg class="chart" width="900" height="600"></svg>
   </div>
 </template>
 <script>
