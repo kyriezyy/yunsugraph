@@ -48,7 +48,7 @@ stroke-width: 3px;
   font: 10px sans-serif;
 }
 .graph-detail .node text{
-  display: none;
+  /* display: none; */
 }
 
 .node:hover circle {

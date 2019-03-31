@@ -36,7 +36,8 @@ const icons = {
   huaxueIcon: '/static/element.png',
   newsIcon: '/static/news.png',
   nodeIcon: '/static/node.png',
-  articleIcon: '/static/articles.png'
+  articleIcon: '/static/articles.png',
+  patentIcon: '/static/patent.png'
 }
 
 class D3Graph {
@@ -50,7 +51,7 @@ class D3Graph {
       .attr('id', 'resolved')
       .attr('markerUnits', 'userSpaceOnUse')
       .attr('viewBox', '0 -5 10 10')// 坐标系的区域
-      .attr('refX', 18)// 箭头坐标
+      .attr('refX', 26)// 箭头坐标
       .attr('refY', 0)
       .attr('markerWidth', 12)// 标识的大小
       .attr('markerHeight', 12)
@@ -71,7 +72,7 @@ class D3Graph {
       // .alpha(0.5)
       // .velocityDecay(0.7)
       .force('collision', d3.forceCollide().radius(30)) // 决定线的长度已经节点之间的间距
-      .force('link', d3.forceLink().distance(150).strength(0.1)) // 决定线的长度已经节点之间的间距
+      .force('link', d3.forceLink().distance(120).strength(0.01)) // 决定线的长度已经节点之间的间距
       .force('charge', d3.forceManyBody()) // 节点是否所在一起 相互吸引 相互排斥相关
       .force('center', d3.forceCenter(this.width / 2, this.height / 2)) // 设置节点中心
 
@@ -191,8 +192,8 @@ class D3Graph {
 
     nodesEnter
       .append('circle')
-      .attr('r', 15)
-      .attr('fill', '#fff')
+      .attr('r', 25)
+      .attr('fill', '#f0f0f0')
 
     nodesEnter
       .append('text')
@@ -210,10 +211,13 @@ class D3Graph {
             title = d.name
             break
           case 'article':
-            title = d.name
+            title = d.name.slice(0, 20)
+            break
+          case 'patent':
+            title = d.name.slice(0, 20)
             break
           default:
-            title = d.name
+            title = ''
             break
         }
 
@@ -223,10 +227,10 @@ class D3Graph {
     nodesEnter
       .append('image')
       .attr('xlink:href', d => icons[d.symbol])
-      .attr('x', -8)
-      .attr('y', -8)
-      .attr('width', 16)
-      .attr('height', 16)
+      .attr('x', -20)
+      .attr('y', -20)
+      .attr('width', 40)
+      .attr('height', 40)
 
     this.nodesData = nodesEnter.merge(nodesData)
 
@@ -236,9 +240,9 @@ class D3Graph {
   }
   ticked = () => {
     // 缩短重新布局时间
-    // for (let i = 0; i < 5; i++) {
-    //   this.simulation.tick();
-    // }
+    for (let i = 0; i < 30; i++) {
+      this.simulation.tick()
+    }
 
     this.linksData.attr('d', this.positionLink) // 每个link上有三个点，每次tick 都要重新画一遍link
     this.nodesData.attr('transform', this.positionNode)
