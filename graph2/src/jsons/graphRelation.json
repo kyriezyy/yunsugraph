@@ -26,14 +26,11 @@
 					"relation": "合成",
 					"factor": "94%",
 					"paper": "Burkhard Journal of the American Chemical Society, 1945 , vol. 67, p. 2173 Anm.6"
-				},
-				{
-					"source": "1631-83-0",
-					"target": "947-42-2",
-					"relation": "相似关系",
-					"content": ["共价键单元数量相同", "可旋转化学键数量相同", " 摩尔折射率近似", "分子量近似"]
 				}
-			]
+			],
+			"similar":{
+				"content": ["共价键单元数量相同", "可旋转化学键数量相同", " 摩尔折射率近似", "分子量近似"]
+			}
 		},
 		{
 			"nodes": [{
@@ -73,14 +70,11 @@
 					"relation": "合成",
 					"factor": "68%",
 					"paper": "US2012/46488 A1, ; Page/Page column 2"
-				},
-				{
-					"source": "1631-83-0",
-					"target": "947-42-2",
-					"relation": "相似关系",
-					"content": ["共价键单元数量相同", "可旋转化学键数量相同", " 摩尔折射率近似", "分子量近似"]
 				}
-			]
+			],
+			"similar":{
+				"content": ["共价键单元数量相同", "可旋转化学键数量相同", " 摩尔折射率近似", "分子量近似"]
+			}
 		},
 		{
 			"nodes": [{
@@ -109,14 +103,11 @@
 					"relation": "合成",
 					"factor": "92%",
 					"paper": "Gmelin Handbook: Si: MVol.C, 76, page 212 - 214"
-				},
-				{
-					"source": "1631-83-0",
-					"target": "947-42-2",
-					"relation": "相似关系",
-					"content": ["共价键单元数量相同", "可旋转化学键数量相同", " 摩尔折射率近似", "分子量近似"]
 				}
-			]
+			],
+			"similar":{
+				"content": ["共价键单元数量相同", "可旋转化学键数量相同", " 摩尔折射率近似", "分子量近似"]
+			}
 		}
 	]
 }
