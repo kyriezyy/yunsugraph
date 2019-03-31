@@ -5,6 +5,7 @@ import Index from '../views/Index'
 import List from '../views/List'
 import Detail from '../views/Detail'
 import Relation from '../views/Relation'
+import Analysis from '../views/Analysis'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/relation',
       name: 'Relation',
       component: Relation
+    },
+    {
+      path: '/analysis',
+      name: 'Analysis',
+      component: Analysis
     }
   ]
 })
