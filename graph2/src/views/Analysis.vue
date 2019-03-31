@@ -608,8 +608,8 @@ export default {
   }
 
   .analysis-content{
-    width: 100%;
-    /*margin: 20px auto;*/
+    width: 98%;
+    margin: 0 auto;
   }
 
   .analysis-table{
