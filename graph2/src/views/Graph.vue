@@ -9,6 +9,7 @@
       </el-checkbox-group>
     </div>
      <svg class="chart" width="900" height="600"></svg>
+<tooltip :node="activeNode" />
   </div>
 </template>
 <script>
@@ -16,21 +17,25 @@ import dotProp from 'dot-prop'
 import axios from 'axios'
 import D3Graph from '../D3Graph'
 import graphData from '../jsons/graph.json'
-import { execData, getOption, removeDuplicateNodes } from '../chart'
+import { execData } from '../chart'
 import listData from '../jsons/list_data.json'
-
+import tooltip from '../components/tooltip'
 const articleList = listData.data.filter(item => item.type === 'paper')
 const patentList = listData.data.filter(item => item.type === 'patent')
 const newsList = listData.data.filter(item => item.type === 'news')
 const serverUrl = 'http://10.102.20.251:8000'
 export default {
   name: 'graph',
+  components: {
+    tooltip
+  },
   data () {
     return {
       d3Graph: null,
       loading: false,
       checkedCate: ['element', 'news', 'article', 'patent'],
-      graph: {}
+      graph: {},
+      activeNode: null
     }
   },
   mounted () {
@@ -47,8 +52,8 @@ export default {
         })
 
         if (res && res.data.code !== -1) {
-          const name = dotProp.get(res, 'data.data.product_info.名称') || node.id
-          this.addNodes(node.id, name)
+          // const name = dotProp.get(res, 'data.data.product_info.名称') || node.id
+          // this.addNodes(node.id, name)
           this.activeNode = res.data.data
           this.activeNode.type = 'element'
         }
@@ -61,6 +66,11 @@ export default {
         // 新闻节点
         this.activeNode = node
       }
+      if (node.type === 'patent') {
+        // 新闻节点
+        this.activeNode = node
+      }
+      console.log(node)
     },
     async addNodes (cas, name) {
       this.loading = true
