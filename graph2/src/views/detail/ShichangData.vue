@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="titile">"某某化学品"市场价格图</div>
+    <div class="titile">"二苯基硅二醇"市场价格图</div>
     <div class="charts" ref="chart"></div>
-    <div class="titile">"某某化学品" 供应商列表</div>
+    <div class="titile">"二苯基硅二醇" 供应商列表</div>
     <ul class="company-list">
       <li class="company-item" v-for="(item,index) in list" :key="index">
         <span class="index">{{index+1}}.</span>
@@ -30,9 +30,9 @@ export default {
       xAxis: {
         type: 'category',
         nameLocation: 'end',
-        name: '价格',
+        name: '价格(元/20kg)',
         boundaryGap: false,
-        data: ['300', '350', '400', '450', '500', '550', '600', '650', '700']
+        data: ['100', '120', '140', '160', '180', '200', '220', '240', '260']
       },
       yAxis: {
         type: 'value',
