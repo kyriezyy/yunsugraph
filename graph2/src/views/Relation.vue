@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container" v-loading="loading">
     <header-search/>
-    <div class="main">
+    <div class="main" v-if="!loading">
       <div class="result-box">
         <!-- <div class="search-key-box">
           <div class="search-item">
@@ -33,7 +33,7 @@
         <div class="title" v-if="activeLine">{{activeLine.relation}}</div>
         <div class="content" v-if="activeLine">
           <template v-if="activeLine.relation==='合成'">
-            <p> <span class="label">相似度：</span>{{activeLine.factor}}</p>
+            <p> <span class="label">转化率：</span>{{activeLine.factor}}</p>
             <p> <span class="label">参考文献：</span>{{activeLine.paper}}</p>
           </template>
           <template v-if="activeLine.relation==='相似关系' ">
@@ -61,13 +61,19 @@ export default {
       activeLine: null,
       activeIndex: 0,
       activeData: 0,
-      timer: null
+      timer: null,
+      loading: true
     }
   },
   mounted () {
-    this.d3Graph = new D3Graph('.chart')
-    this.d3Graph.onClickLink = this.hanldeClickLine
-    this.render()
+    setTimeout(() => {
+      this.loading = false
+    }, 1000)
+    setTimeout(() => {
+      this.d3Graph = new D3Graph('.chart')
+      this.d3Graph.onClickLink = this.hanldeClickLine
+      this.render()
+    }, 1500)
   },
   methods: {
     handleClose () {
