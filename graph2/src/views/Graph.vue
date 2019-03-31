@@ -162,7 +162,8 @@ export default {
   justify-content: center;
   background: url('../assets/noise.png');
   margin-top: -20px;
-  position: relative
+  position: relative;
+  padding: 30px 20px;
 }
 .chart{
   /* border:1px solid red; */

@@ -15,7 +15,7 @@
 
     <div class="search-checkbox">
       <input id="checkbox" type="checkbox" v-model="isGraph">
-      <label for="checkbox" class="label-text">关系图谱</label>
+      <label for="checkbox" class="label-text">关系分析</label>
     </div>
   </div>
 </template>

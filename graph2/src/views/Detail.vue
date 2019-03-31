@@ -83,6 +83,7 @@ export default {
   height: 100%;
   overflow: auto;
   padding-bottom: 50px;
+  flex-grow: 2
 }
 
 .nav-box {

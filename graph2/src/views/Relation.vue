@@ -26,7 +26,7 @@
       </div>
 
       <div class="float-box" v-if="activeData">
-        <div class="title">相似关系</div>
+        <div class="title">相似属性</div>
         <div class="content">
             <p v-for="item in activeData.similar.content" :key="item">· {{item}}</p>
         </div>
