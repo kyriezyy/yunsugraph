@@ -9,6 +9,7 @@
           <baidu-zhishu v-if="current===2"/>
           <shichang-data v-if="current===3"/>
           <xiangsi-huahewu v-if="current===4"/>
+          <analysis v-if="current===5" />
         </div>
         <div class="nav-box">
           <div class="nav-item" :class="{active:current===0}" @click="current=0">图谱</div>
@@ -16,7 +17,7 @@
           <div class="nav-item" :class="{active:current===2}" @click="current=2">搜索指数</div>
           <div class="nav-item" :class="{active:current===3}" @click="current=3">市场数据</div>
           <div class="nav-item" :class="{active:current===4}" @click="current=4">相似化学品</div>
-          <div class="nav-item">方案分析</div>
+          <div class="nav-item" :class="{active:current===5}" @click="current=5">方案分析</div>
         </div>
       </div>
     </div>
@@ -29,6 +30,7 @@ import BasicInfo from './detail/BasicInfo'
 import BaiduZhishu from './detail/BaiduZhishu'
 import ShichangData from './detail/ShichangData'
 import XiangsiHuahewu from './detail/XiangsiHuahewu'
+import Analysis from './Analysis'
 
 export default {
   name: 'detail',
@@ -38,7 +40,8 @@ export default {
     BasicInfo,
     BaiduZhishu,
     ShichangData,
-    XiangsiHuahewu
+    XiangsiHuahewu,
+    Analysis
   },
   data () {
     return {
@@ -84,7 +87,7 @@ export default {
 
 .nav-box {
   padding-top: 20px;
-  width: 20%;
+  width: 200px;
   display: flex;
   flex-direction: column;
   border-left: #dddddd 5px solid;
