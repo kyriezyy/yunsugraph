@@ -587,7 +587,9 @@ export default {
 
   .analysis{
     overflow: auto;
+    width: 900px;
     height: calc(100% - 1px);
+    margin: 0 auto;
   }
 
   .filter{
