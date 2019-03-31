@@ -634,7 +634,6 @@ export default {
 
   .images{
     width: 460px;
-    height: 300px;
   }
 
   .list{

@@ -10,9 +10,14 @@ import echarts from 'echarts'
 
 export default {
   name: 'baiduzhishu',
+  data () {
+    return {
+      chart: null
+    }
+  },
   mounted () {
-    let chart = echarts.init(this.$refs.chart)
-    chart.setOption({
+    this.chart = echarts.init(this.$refs.chart)
+    this.chart.setOption({
       xAxis: {
         type: 'category',
         boundaryGap: false
@@ -73,6 +78,9 @@ export default {
         }
       ]
     })
+  },
+  beforeDestroy () {
+    this.chart.dispose()
   }
 }
 </script>

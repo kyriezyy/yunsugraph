@@ -21,12 +21,13 @@ export default {
   name: 'shichang-data',
   data () {
     return {
+      chart: null,
       list: ['上海联硕生物科技有限公司', '山东小野化学股份有限公司', '上海澄绍生物科技有限公司', '北京百灵威科技有限公司', '金锦乐化学有限公司', '上海金锦乐实业有限公司', '上海皓鸿生物医药科技有限公司']
     }
   },
   mounted () {
-    let chart = echarts.init(this.$refs.chart)
-    chart.setOption({
+    this.chart = echarts.init(this.$refs.chart)
+    this.chart.setOption({
       xAxis: {
         type: 'category',
         nameLocation: 'end',
@@ -61,6 +62,9 @@ export default {
         }
       ]
     })
+  },
+  beforeDestroy () {
+    this.chart.dispose()
   }
 }
 </script>
