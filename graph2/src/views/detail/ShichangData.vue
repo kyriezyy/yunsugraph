@@ -1,7 +1,17 @@
 <template>
   <div>
-    <div class="titile">"某某化学品"价格曲线图</div>
-      <div class="charts" ref="chart"></div>
+    <div class="titile">"某某化学品"市场价格图</div>
+    <div class="charts" ref="chart"></div>
+    <div class="titile">"某某化学品" 供应商列表</div>
+    <ul class="company-list">
+      <li class="company-item" v-for="(item,index) in list" :key="index">
+        <span class="index">{{index+1}}.</span>
+        <span class="name">{{item}}</span>
+        <span class="detail">详情</span>
+      </li>
+      <li class="company-item more">更多</li>
+
+    </ul>
   </div>
 </template>
 <script>
@@ -9,65 +19,51 @@ import echarts from 'echarts'
 
 export default {
   name: 'shichang-data',
+  data () {
+    return {
+      list: [
+        '某某公司',
+        '某某公司',
+        '某某公司',
+        '某某公司',
+        '某某公司',
+        '某某公司'
+      ]
+    }
+  },
   mounted () {
     let chart = echarts.init(this.$refs.chart)
     chart.setOption({
       xAxis: {
         type: 'category',
-        boundaryGap: false
-        // data: ['2019-', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        nameLocation: 'end',
+        name: '价格',
+        boundaryGap: false,
+        data: ['300', '350', '400', '450', '500', '550', '600', '650', '700']
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        name: '占比%'
       },
       series: [
         {
-          data: [
-            ['2019-3-1', 122],
-            ['2019-3-2', 133],
-            ['2019-3-3', 100],
-            ['2019-3-4', 90],
-            ['2019-3-5', 232],
-            ['2019-3-6', 333],
-            ['2019-3-7', 151],
-            ['2019-3-8', 173],
-            ['2019-3-9', 184],
-            ['2019-3-10', 154],
-            ['2019-3-11', 200],
-            ['2019-3-12', 250],
-            ['2019-3-13', 204],
-            ['2019-3-14', 188],
-            ['2019-3-15', 144],
-            ['2019-3-16', 139],
-            ['2019-3-17', 102],
-            ['2019-3-18', 90],
-            ['2019-3-19', 80],
-            ['2019-3-20', 93],
-            ['2019-3-21', 88],
-            ['2019-3-22', 130],
-            ['2019-3-23', 128],
-            ['2019-3-24', 120],
-            ['2019-3-25', 150],
-            ['2019-3-26', 140],
-            ['2019-3-27', 130],
-            ['2019-3-28', 122],
-            ['2019-3-29', 135],
-            ['2019-3-30', 129],
-            ['2019-3-31', 110]
-          ],
+          data: [0, 5, 12, 30, 33, 18, 6, 5, 0],
           type: 'line',
           smooth: true,
           lineStyle: {
             color: 'rgb(2, 62, 111)'
           },
           areaStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-              offset: 0,
-              color: 'rgb(2, 62, 111)'
-            }, {
-              offset: 1,
-              color: 'rgb(142, 170, 231)'
-            }])
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: 'rgb(2, 62, 111)'
+              },
+              {
+                offset: 1,
+                color: 'rgb(142, 170, 231)'
+              }
+            ])
           }
         }
       ]
@@ -80,7 +76,32 @@ export default {
   width: 900px;
   height: 400px;
 }
-.titile{
+.titile {
   text-align: center;
+}
+.company-list{
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.company-item{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dashed #e0e0e0;
+  cursor: pointer;
+}
+.name{
+  flex-grow: 2;
+}
+.detail{
+  font-size: 14px;
+  color: #023d6f
+}
+.company-item.more{
+  justify-content: flex-end;
+  border-bottom: none;
+   font-size: 14px;
+  color: #023d6f
 }
 </style>
