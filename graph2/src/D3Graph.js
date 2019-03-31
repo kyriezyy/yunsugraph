@@ -64,9 +64,12 @@ class D3Graph {
     this.graphBox = this.svg.append('g')
     this.linksBox = this.graphBox.append('g')
     this.nodesBox = this.graphBox.append('g')
-    this.svg.call(d3.zoom()
-      .scaleExtent([1 / 8, 8])
-      .on('zoom', this.zoomed))
+    let zoom = d3.zoom().scaleExtent([1 / 8, 8])
+    this.svg.call(zoom.on('zoom', this.zoomed))
+    zoom.scaleTo(this.svg, 0.7)
+
+    // d3.zoom().scaleTo(this.graphBox, 0.6)
+    // this.graphBox.attr('transform', 'translate(80,60) scale(0.6)')
 
     this.simulation = d3.forceSimulation()
       // .alpha(0.5)
