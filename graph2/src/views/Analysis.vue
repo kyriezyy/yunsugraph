@@ -633,7 +633,7 @@ export default {
   }
 
   .images{
-    width: 50%;
+    width: 460px;
     height: 300px;
   }
 
