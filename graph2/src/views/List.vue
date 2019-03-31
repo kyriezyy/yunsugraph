@@ -87,7 +87,7 @@ export default {
 }
 
 .main{
-  height: 100%;
+  height: calc(100% - 80px);
   overflow: auto;
   /* display: flex; */
 }

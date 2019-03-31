@@ -8,9 +8,9 @@
         <div class="search-input">
           <input type="text" placeholder="请输入关键词" v-if="!isGraph">
           <template v-else>
-            <input type="text" placeholder="路径起点">
+            <input type="text" placeholder="实体A">
             <span class="splide-line">——</span>
-            <input type="text" placeholder="路径终点">
+            <input type="text" placeholder="实体B">
           </template>
         </div>
         <div class="search-btn search-icon" @click="handleSearch"></div>
