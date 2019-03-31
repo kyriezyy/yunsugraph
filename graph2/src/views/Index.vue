@@ -21,8 +21,6 @@
       </div>
     </div>
     <div class="recommend">
-      <tuijianwenti />
-      <remenshijian />
     </div>
   </div>
 </template>
