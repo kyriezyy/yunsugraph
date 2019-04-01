@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo-text">
-      CloudTree 赟数
+      CloudTree 化工图谱情报库
     </div>
     <div class="search-box">
       <div class="search">

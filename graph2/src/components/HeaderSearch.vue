@@ -1,6 +1,6 @@
 <template>
   <div class="search-box">
-    <div class="logo-text" @click="$router.push('/')">CloudTree赟数</div>
+    <div class="logo-text" @click="$router.push('/')">CloudTree 化工图谱情报库</div>
     <div class="search">
       <div class="search-input">
         <input type="text" placeholder="请输入关键词" v-if="!isGraph">
