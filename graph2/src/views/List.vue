@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-loading="loading">
     <header-search />
     <div class="filter-box">
       <!-- <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div> -->
@@ -8,7 +8,7 @@
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
     </div>
-    <div class="main">
+    <div class="main" v-if="!loading">
       <div class="sigle-result-box">
           <result-item v-for="item in showList" :key="item.title" :item="item"/>
       </div>
@@ -44,7 +44,8 @@ export default {
     return {
       isGraph: false,
       list: [],
-      activeIndex: 1
+      activeIndex: 1,
+      loading: true
     }
   },
   computed: {
@@ -73,6 +74,11 @@ export default {
         return listData.data
       }
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.loading = false
+    }, 1000)
   },
   methods: {
     switchIndex (index) {

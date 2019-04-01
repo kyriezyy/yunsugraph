@@ -1,7 +1,7 @@
 <template>
-  <div class="detail">
+  <div class="detail" v-loading="loading">
     <header-search/>
-    <div class="container">
+    <div class="container" v-if="!loading">
       <div class="main">
         <div class="box-content">
           <graph v-if="current===0"/>
@@ -17,7 +17,7 @@
           <div class="nav-item" :class="{active:current===2}" @click="current=2">搜索指数</div>
           <div class="nav-item" :class="{active:current===3}" @click="current=3">市场数据</div>
           <div class="nav-item" :class="{active:current===4}" @click="current=4">相似化学品</div>
-          <div class="nav-item" :class="{active:current===5}" @click="current=5">方案分析</div>
+          <div class="nav-item" :class="{active:current===5}" @click="current=5">合成方案分析</div>
         </div>
       </div>
     </div>
@@ -45,8 +45,14 @@ export default {
   },
   data () {
     return {
-      current: 0
+      current: 0,
+      loading: true
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.loading = false
+    }, 1000)
   },
   methods: {
     navTo (anchor, index) {

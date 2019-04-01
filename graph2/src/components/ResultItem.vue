@@ -10,6 +10,11 @@
           <span class="param">CAS号：{{item.cas}}</span>
           <span class="param">分子式：{{item.formula}}</span>
         </div>
+         <p class="zh-name">中文别名：{{item.anothernamer}}</p>
+        <p class="en-name">英文名称：{{item.englishname}}</p>
+        <div class="tags">
+          <span class="tag" v-for="tag in item.tag" :key="tag">{{tag}}</span>
+        </div>
       </div>
     </template>
     <template v-if="item.type==='news'">
@@ -73,11 +78,12 @@ p{
 }
 .title {
   font-size: 18px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color:#023d6f;
 }
 .params {
   font-size: 13px;
+  color: #666;
 }
 .param {
   margin-right: 40px;
@@ -109,5 +115,24 @@ p{
   background-size: 15px auto;
   background-repeat: no-repeat;
   background-position: center center;
+}
+.tags{
+  display: flex;
+  flex-flow: row wrap;
+}
+.tag{
+  display: flex;
+  padding: 2px 3px;
+  color:#023d6f;
+  font-size: 12px;
+  border:1px solid #023d6f;
+  margin-right: 8px;
+  margin-top: 5px;
+  border-radius: 3px;
+
+}
+.zh-name,.en-name{
+  font-size: 13px;
+  color: #666;
 }
 </style>

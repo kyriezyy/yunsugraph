@@ -5,7 +5,10 @@
 			"cas": "947-42-2",
 			"formula": "C12H12O2Si",
 			"img": "http://p1.molbase.net/molpic/35/3b/25242.png?165x104",
-			"englishname": "Difenyl-dihydroxysilan"
+			"englishname": "Difenyl-dihydroxysilan",
+			"anothernamer":"二羟基二苯基硅烷; 二苯基二羟基硅烷； 二苯基硅烷二醇",
+			"tag":["结构控制剂","苯甲基硅油的原料","硅产品的中间体"]
+
 		},
 		{
 			"title": "二苯基硅二(醇)二乙酸酯",
@@ -13,7 +16,9 @@
 			"cas": "2565-07-3",
 			"formula": "C16H16O4Si",
 			"img": "http://p3.molbase.net/molpic/53/b5/77358.png?182x170",
-			"englishname": "Diacetoxy-diphenyl-silan"
+			"englishname": "[acetyloxy(diphenyl)silyl]acetate",
+			"anothernamer":"二羟基二苯基硅烷; 二苯基二羟基硅烷；二苯基硅烷二醇",
+			"tag":["玻璃防霉剂","化学药物"]
 		},
 		{
 			"title": "5-(叔丁基二苯基硅氧基)-1,3-苯二甲醇",
@@ -21,7 +26,9 @@
 			"cas": "482627-84-9",
 			"formula": "C24H28O3Si",
 			"img": "http://p3.molbase.net/molpic/37/2d/1297702.png?178x187",
-			"englishname": "5-(tert-Butyldiphenylsilyloxy)-1,3-benzenediMethanol"
+			"englishname": "5-(tert-Butyldiphenylsilyloxy)-1,3-benzenediMethanol ",
+			"anothernamer":"[3,5-双(羟甲基)苯氧]叔丁基二苯基硅烷;5-(叔丁基二苯基硅氧基)-1,3-苯二醇;",
+			"tag":["调节剂", "硅产品的中间体"]
 		},
 
 		{
@@ -30,7 +37,9 @@
 			"cas": "5272-18-4",
 			"formula": "C8H12OSi",
 			"img": "http://p2.molbase.net/molpic/9c/d4/696629.png?124x85",
-			"englishname": "AMTSi002"
+			"englishname": "Dimethylphenylsilanol",
+			"anothernamer":"二甲基苯硅烷醇",
+			"tag":["表面活性剂"]
 		},
 		{
 			"title": "二甲基苯基硅醇钠盐",
@@ -38,7 +47,9 @@
 			"cas": "7646-75-5",
 			"formula": "C8H11NaOSi",
 			"img": "http://p1.molbase.net/molpic/8d/b7/1117890.png?124x110",
-			"englishname": "sodium,dimethyl-oxido-phenylsilane"
+			"englishname": "Dimethylphenylsilanol Sodium Salt",
+			"anothernamer":"",
+			"tag":["苯甲基硅油的原料","硅产品的中间体"]
 		},
 		{
 			"title": "三苯基硅醇",
@@ -46,7 +57,9 @@
 			"cas": "791-31-1",
 			"formula": "C18H16OSi",
 			"img": "http://p2.molbase.net/molpic/51/22/25261.png?186x138",
-			"englishname": "Triphenylsilanol"
+			"englishname": "Triphenylsilanol",
+			"anothernamer":"三苯基硅烷醇； 三苯基羟基硅烷； 羟基三苯基硅烷； 三苯硅醇;",
+			"tag":["医药中间体","高分子产品的原料"]
 		},
 		{
 			"title": "3,5-二(叔丁基二苯基硅氧基)苯甲醇",
@@ -54,7 +67,9 @@
 			"cas": "182250-70-0",
 			"formula": "C39H44O3Si2",
 			"img": "http://p1.molbase.net/molpic/f7/44/1292131.png?265x236",
-			"englishname": "B2052"
+			"englishname": " [3,5-bis[[tert-butyl(diphenyl)silyl]oxy]phenyl]methanol ",
+			"anothernamer":"3,5-双(叔丁基二苯基硅氧基)苯甲醇； 3,5-双(叔丁基二苯氧基硅)苯甲醇；",
+			"tag":["合成材料助剂"]
 		},
 		{
 			"title": "二(二甲氨基)二苯基硅",
@@ -62,7 +77,9 @@
 			"cas": "1027-62-9",
 			"formula": "C16H22N2Si",
 			"img": "http://p2.molbase.net/molpic/3c/87/77253.png?140x145",
-			"englishname": " n,n,n',n'-tetramethyl-1,1-diphenylsilanediamine"
+			"englishname": " N-[dimethylamino(diphenyl)silyl]-N-methylmethanamine",
+			"anothernamer":"二羟基二苯基硅烷; 二苯基二羟基硅烷； 二苯基硅烷二醇",
+			"tag":["工业催化剂","硅产品的中间体"]
 		},
 		{
 			"title": "有机硅LED封装材料已成为中外企业新战场",
