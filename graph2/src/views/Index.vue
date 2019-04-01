@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo-text">
-      CloudTree 化工图谱情报库
+      <div class="logo"></div> 化工图谱情报库
     </div>
     <div class="search-box">
       <div class="search">
@@ -53,12 +53,20 @@ export default {
 .container {
   padding-top: 100px;
 }
+.logo{
+  width: 200px;
+  height: 75px;
+  background: url('/static/logo.png') no-repeat center center / 100% auto ;
+}
 .logo-text{
-  color:rgb(0, 34, 97);
+  color:#003d72;
   font-size: 38px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center
 }
 .search-box {
   width: 800px;

@@ -1,6 +1,7 @@
 <template>
   <div class="search-box">
-    <div class="logo-text" @click="$router.push('/')">CloudTree 化工图谱情报库</div>
+    <div class="logo-text" @click="$router.push('/')">
+    <div class="logo"></div> 化工图谱情报库</div>
     <div class="search">
       <div class="search-input">
         <input type="text" placeholder="请输入关键词" v-if="!isGraph">
@@ -99,11 +100,18 @@ export default {
   border-color: #023d6f;
   margin-right: 5px;
 }
+.logo{
+  width: 100px;
+  height: 35px;
+  background: url('/static/logo.png') no-repeat center center / 100% auto ;
+}
 .logo-text {
-  color: rgb(0, 34, 97);
+  color: #003d72;
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
+   display: flex;
+  align-items: flex-end;
 }
 .logo-text:hover {
   cursor: pointer;
