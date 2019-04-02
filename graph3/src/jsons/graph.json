@@ -1,0 +1,1376 @@
+{
+  "nodes": [
+    {
+      "type": "element",
+      "img": "http://data.huaxuejia.cn/casimg/947/947-42-2.png",
+      "name": "947-42-2",
+      "id": "947-42-2",
+      "symbol": "huaxueIcon",
+      "category": 0
+    },
+    {
+      "name": "A:94%:j2t17qmb54i",
+      "id": "A:94%:j2t17qmb54i",
+      "value": "A:94%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/23/0f/77284.png?165x104",
+      "name": "二苯二氯硅烷",
+      "id": "80-10-4",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "A:88.1%:vkc3vh6tey",
+      "id": "A:88.1%:vkc3vh6tey",
+      "value": "A:88.1%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/7e/1b/77062.png?154x152",
+      "name": "二苯基二乙氧基硅烷",
+      "id": "2553-19-7",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "A:87%:g8sa7oz7uin",
+      "id": "A:87%:g8sa7oz7uin",
+      "value": "A:87%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/fa/5b/1508904.png?166x178",
+      "name": "18676-80-7",
+      "id": "18676-80-7",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "A:86%:nnb78d82ei9",
+      "id": "A:86%:nnb78d82ei9",
+      "value": "A:86%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/02/90/2907389.png?216x191",
+      "name": "50870-65-0",
+      "id": "50870-65-0",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "A:75%:476hxu3o2bw",
+      "id": "A:75%:476hxu3o2bw",
+      "value": "A:75%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/02/39/2393155.png?177x104",
+      "name": "二苯基硅烷醇",
+      "id": "5906-79-6",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "A:30% B:54%:futl527uy8",
+      "id": "A:30% B:54%:futl527uy8",
+      "value": "A:30% B:54%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/02/11/02112773.png?218x178",
+      "name": "70096-32-1",
+      "id": "70096-32-1",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "A:10%:r2f92tdg3bi",
+      "id": "A:10%:r2f92tdg3bi",
+      "value": "A:10%",
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/c0/00/77176.png?170x69",
+      "name": "二苯基硅烷",
+      "id": "775-12-2",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:2xkrnii15m4",
+      "id": "null:2xkrnii15m4",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/00/00/6548.png?102x105",
+      "name": "六氢吡啶",
+      "id": "110-89-4",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/25/02/25026901.png?329x362",
+      "name": "18827-40-2",
+      "id": "18827-40-2",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:uxmaf59fb3",
+      "id": "null:uxmaf59fb3",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/01/78/01788455.png?188x169",
+      "name": "18557-45-4",
+      "id": "18557-45-4",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:fco8zgxavne",
+      "id": "null:fco8zgxavne",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/82/51/819747.png?191x174",
+      "name": "1,1,3,3-四苯基-1,3-二硅氧烷二醇",
+      "id": "1104-93-4",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/ca/de/27361.png?103x81",
+      "name": "醋酸",
+      "id": "64-19-7",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:yo00acrfznk",
+      "id": "null:yo00acrfznk",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/17/13/4431.png?124x86",
+      "name": "苯甲醇",
+      "id": "100-51-6",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:ulfxntlz1r",
+      "id": "null:ulfxntlz1r",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/02/39/2391738.png?154x146",
+      "name": "13190-50-6",
+      "id": "13190-50-6",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:qe180a4ec3",
+      "id": "null:qe180a4ec3",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/63/9e/70173.png?211x214",
+      "name": "512-63-0",
+      "id": "512-63-0",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:c0vt79lld6",
+      "id": "null:c0vt79lld6",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/02/53/2533805.png?250x204",
+      "name": "1,5-二羟基六苯基三硅氧烷",
+      "id": "1110-85-6",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:du78cdrpt9i",
+      "id": "null:du78cdrpt9i",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "name": "null:hwbrvysi82",
+      "id": "null:hwbrvysi82",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "name": "null:bxdqaon9e1b",
+      "id": "null:bxdqaon9e1b",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/08/70/8703473.png?416x326",
+      "name": "118398-34-8",
+      "id": "118398-34-8",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:84ciqwgksch",
+      "id": "null:84ciqwgksch",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/26/e4/54492.png?186x138",
+      "name": "三苯基氯硅烷",
+      "id": "76-86-8",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:8r84u89h674",
+      "id": "null:8r84u89h674",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/02/87/2877989.png?169x118",
+      "name": "4072-00-8",
+      "id": "4072-00-8",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:41rl3b5phaz",
+      "id": "null:41rl3b5phaz",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "name": "null:o4rasndemy",
+      "id": "null:o4rasndemy",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/02/60/2602409.png?220x101",
+      "name": "二氯二苯氧基硅烷",
+      "id": "3410-97-7",
+      "symbol": "huaxueIcon",
+      "category": 3
+    },
+    {
+      "name": "null:dt24j5mum4h",
+      "id": "null:dt24j5mum4h",
+      "value": null,
+      "category": 3,
+      "symbol": "nodeIcon"
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/bb/59/22355.png?178x122",
+      "name": "三乙氧基硅烷",
+      "id": "998-30-1",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/e6/58/1487606.png?170x155",
+      "name": "三苯基锑",
+      "id": "603-36-1",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/dd/a0/2567.png?124x76",
+      "name": "乙酸酐",
+      "id": "108-24-7",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/11/71/25260.png?99x72",
+      "name": "甲基乙烯基二氯硅烷",
+      "id": "124-70-9",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/7b/e5/49990.png?127x71",
+      "name": "1,1,3,3-四甲基二硅氧烷",
+      "id": "3277-26-7",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/94/ae/2678.png?134x74",
+      "name": "六甲基二硅氧烷",
+      "id": "107-46-0",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/c8/cd/3073.png?79x80",
+      "name": "丙酮",
+      "id": "67-64-1",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/4c/5b/37884.png?85x68",
+      "name": "二氯二甲基硅烷",
+      "id": "75-78-5",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/4b/b9/37218.png?109x77",
+      "name": "叔丁基过氧化氢",
+      "id": "75-91-2",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/00/02/25700.png?134x58",
+      "name": "六甲基二硅氮烷",
+      "id": "999-97-3",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/02/50/2504595.png?104x39",
+      "name": "重氮甲烷",
+      "id": "186581-53-3",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/7b/04/72042.png?161x73",
+      "name": "1,1,3,3,5,5-六甲基三硅氧烷",
+      "id": "1189-93-1",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/5e/75/2728.png?82x68",
+      "name": "三甲基氯硅烷",
+      "id": "75-77-4",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/88/1c/2852.png?138x81",
+      "name": "1825-62-3",
+      "id": "1825-62-3",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/81/eb/34940.png?138x73",
+      "name": "二乙基甲基硅烷",
+      "id": "760-32-7",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/2a/53/77026.png?214x88",
+      "name": "1,3-二乙氧基-1,1,3,3-四甲基二硅氧烷",
+      "id": "18420-09-2",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/ef/2f/320578.png?178x113",
+      "name": "二(二甲氨基)二甲基硅",
+      "id": "4669-59-4",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/62/74/25244.png?126x71",
+      "name": "1185-55-3",
+      "id": "1185-55-3",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/a5/6f/22395.png?91x81",
+      "name": "乙酰氯",
+      "id": "75-36-5",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/32/23/32230613.png?242x280",
+      "name": "18816-58-5",
+      "id": "18816-58-5",
+      "symbol": "huaxueIcon",
+      "category": 1
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/00/00/6842.png?122x82",
+      "name": "甲苯",
+      "id": "108-88-3",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/00/03/37908.png?114x80",
+      "name": "苯酚",
+      "id": "108-95-2",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/03/06/3061885.png?177x121",
+      "name": "476161-46-3",
+      "id": "476161-46-3",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/36/6d/25698.png?164x126",
+      "name": "二苯基二甲氧基硅烷",
+      "id": "6843-66-9",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/01/77/01777978.png?205x148",
+      "name": "2,2,4,4,6,6-六甲基-8,8-二苯基环四硅氧烷",
+      "id": "1693-44-3",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/3b/74/1286429.png?152x150",
+      "name": "3,3-二苯基己基甲基三硅氧烷",
+      "id": "797-77-3",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/cf/02/103400.png?87x72",
+      "name": "叔丁醇",
+      "id": "75-65-0",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/02/54/2545270.png?378x257",
+      "name": "118398-37-1",
+      "id": "118398-37-1",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/26/d2/1466356.png?148x137",
+      "name": "1,1,3,3-四乙基-1,3-二甲基二硅氧烷",
+      "id": "1000-00-6",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/ff/8f/77256.png?234x224",
+      "name": "八苯基环四硅氧烷",
+      "id": "546-56-5",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/01/76/01760246.png?239x172",
+      "name": "1457-02-9",
+      "id": "1457-02-9",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/51/22/25261.png?186x138",
+      "name": "三苯基硅醇",
+      "id": "791-31-1",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/02/30/02309293.png?204x175",
+      "name": "56764-60-4",
+      "id": "56764-60-4",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p1.molbase.net/molpic/02/57/2576506.png?291x245",
+      "name": "16925-29-4",
+      "id": "16925-29-4",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/02/58/2585551.png?183x148",
+      "name": "262360-58-7",
+      "id": "262360-58-7",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/22/41/22413081.png?225x142",
+      "name": "1516-77-4",
+      "id": "1516-77-4",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/01/77/01777980.png?186x143",
+      "name": "1693-51-2",
+      "id": "1693-51-2",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p3.molbase.net/molpic/02/09/02090638.png?195x178",
+      "name": "65197-32-2",
+      "id": "65197-32-2",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/97/34/37036.png?36x38",
+      "name": "水",
+      "id": "7732-18-5",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p0.molbase.net/molpic/04/26/4269081.png?193x173",
+      "name": "10175-48-1",
+      "id": "10175-48-1",
+      "symbol": "huaxueIcon",
+      "category": 2
+    },
+    {
+      "type": "element",
+      "img": "http//p2.molbase.net/molpic/32/23/32233669.png?201x181",
+      "name": "18817-04-4",
+      "id": "18817-04-4",
+      "symbol": "huaxueIcon",
+      "category": 2
+    }
+  ],
+  "links": [
+    {
+      "name": null,
+      "source": "80-10-4",
+      "target": "A:94%:j2t17qmb54i",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:94%:j2t17qmb54i",
+      "target": "80-10-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "2553-19-7",
+      "target": "A:88.1%:vkc3vh6tey",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:88.1%:vkc3vh6tey",
+      "target": "2553-19-7",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "18676-80-7",
+      "target": "A:87%:g8sa7oz7uin",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:87%:g8sa7oz7uin",
+      "target": "18676-80-7",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "50870-65-0",
+      "target": "A:86%:nnb78d82ei9",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:86%:nnb78d82ei9",
+      "target": "50870-65-0",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "5906-79-6",
+      "target": "A:75%:476hxu3o2bw",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:75%:476hxu3o2bw",
+      "target": "5906-79-6",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "70096-32-1",
+      "target": "A:30% B:54%:futl527uy8",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:30% B:54%:futl527uy8",
+      "target": "70096-32-1",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "775-12-2",
+      "target": "A:10%:r2f92tdg3bi",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "A:10%:r2f92tdg3bi",
+      "target": "775-12-2",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "110-89-4",
+      "target": "null:2xkrnii15m4",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "18827-40-2",
+      "target": "null:2xkrnii15m4",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:2xkrnii15m4",
+      "target": "110-89-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "null:2xkrnii15m4",
+      "target": "18827-40-2",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "18557-45-4",
+      "target": "null:uxmaf59fb3",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:uxmaf59fb3",
+      "target": "18557-45-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "1104-93-4",
+      "target": "null:fco8zgxavne",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "64-19-7",
+      "target": "null:fco8zgxavne",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:fco8zgxavne",
+      "target": "1104-93-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "null:fco8zgxavne",
+      "target": "64-19-7",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "80-10-4",
+      "target": "null:yo00acrfznk",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "100-51-6",
+      "target": "null:yo00acrfznk",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:yo00acrfznk",
+      "target": "80-10-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "null:yo00acrfznk",
+      "target": "100-51-6",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "13190-50-6",
+      "target": "null:ulfxntlz1r",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "80-10-4",
+      "target": "null:ulfxntlz1r",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:ulfxntlz1r",
+      "target": "13190-50-6",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "null:ulfxntlz1r",
+      "target": "80-10-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "512-63-0",
+      "target": "null:qe180a4ec3",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:qe180a4ec3",
+      "target": "512-63-0",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "1110-85-6",
+      "target": "null:c0vt79lld6",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:c0vt79lld6",
+      "target": "1110-85-6",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "80-10-4",
+      "target": "null:du78cdrpt9i",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:du78cdrpt9i",
+      "target": "80-10-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "80-10-4",
+      "target": "null:hwbrvysi82",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:hwbrvysi82",
+      "target": "80-10-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "118398-34-8",
+      "target": "null:bxdqaon9e1b",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:bxdqaon9e1b",
+      "target": "118398-34-8",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "76-86-8",
+      "target": "null:84ciqwgksch",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:84ciqwgksch",
+      "target": "76-86-8",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "4072-00-8",
+      "target": "null:8r84u89h674",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:8r84u89h674",
+      "target": "4072-00-8",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "1104-93-4",
+      "target": "null:41rl3b5phaz",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:41rl3b5phaz",
+      "target": "1104-93-4",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "3410-97-7",
+      "target": "null:o4rasndemy",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:o4rasndemy",
+      "target": "3410-97-7",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "775-12-2",
+      "target": "null:dt24j5mum4h",
+      "value": "构成"
+    },
+    {
+      "name": null,
+      "source": "null:dt24j5mum4h",
+      "target": "775-12-2",
+      "value": "转化"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "998-30-1",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "100-51-6",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1104-93-4",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "18557-45-4",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "5906-79-6",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "603-36-1",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "108-24-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "775-12-2",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "80-10-4",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1110-85-6",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "50870-65-0",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "3410-97-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "13190-50-6",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "124-70-9",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "3277-26-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "2553-19-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "107-46-0",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "67-64-1",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "75-78-5",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "75-91-2",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "999-97-3",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "186581-53-3",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "4072-00-8",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "118398-34-8",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "70096-32-1",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1189-93-1",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "512-63-0",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "110-89-4",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "75-77-4",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1825-62-3",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "18676-80-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "76-86-8",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "760-32-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "18420-09-2",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "4669-59-4",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "947-42-2",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1185-55-3",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "64-19-7",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "75-36-5",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "18816-58-5",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "18827-40-2",
+      "value": "上游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "108-88-3",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "947-42-2",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "108-95-2",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "476161-46-3",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "6843-66-9",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1104-93-4",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1693-44-3",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "797-77-3",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "75-65-0",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "118398-37-1",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1000-00-6",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "5906-79-6",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1110-85-6",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "546-56-5",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1457-02-9",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "791-31-1",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "2553-19-7",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "56764-60-4",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "16925-29-4",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "262360-58-7",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1516-77-4",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "1693-51-2",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "65197-32-2",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "512-63-0",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "7732-18-5",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "10175-48-1",
+      "value": "下游"
+    },
+    {
+      "name": null,
+      "source": "947-42-2",
+      "target": "18817-04-4",
+      "value": "下游"
+    }
+  ]
+}
