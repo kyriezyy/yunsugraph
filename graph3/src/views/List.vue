@@ -3,10 +3,11 @@
     <header-search />
     <div class="filter-box">
       <!-- <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div> -->
-      <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">化学品</div>
-      <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">文献</div>
-      <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
-      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
+      <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">产品</div>
+      <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">企业</div>
+      <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">股票</div>
+      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">新闻</div>
+      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">研报</div>
     </div>
     <div class="main" v-if="!loading">
       <div class="sigle-result-box">

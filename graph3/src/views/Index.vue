@@ -20,22 +20,21 @@
         <label for="checkbox" class="label-text">关系分析</label>
       </div>
     </div>
-    <div class="recommend">
-    </div>
+    <chat-box v-show="showChatBox" @close="showChatBox=false" />
+    <div class="robot-icon" @click="showChatBox = true"></div>
   </div>
 </template>
 <script>
-import tuijianwenti from './index/tuijianwenti'
-import remenshijian from './index/remenshijian'
+import ChatBox from './index/ChatBox'
 export default {
   name: 'index',
   components: {
-    tuijianwenti,
-    remenshijian
+    ChatBox
   },
   data () {
     return {
-      isGraph: false
+      isGraph: false,
+      showChatBox: false
     }
   },
   methods: {
@@ -122,13 +121,43 @@ export default {
   padding-left: 20px;
 }
 .search-checkbox input {
-  border-color: #023d6f;
+  border-color: #003d72;
   margin-right: 3px;
 }
 .recommend{
-  width:800px;
-  margin: 0 auto;
+  position: absolute;
+  width: 290px;
+  height: 350px;
+  border:1px solid #003d72;
+  z-index: 99;
+  bottom: 50px;
+  right: 30px;
+  background: #fff;
   display: flex;
-  margin-top: 30px;
+  flex-direction: column;
+}
+.recommend-title{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: #003d72;
+  color: #fff;
+  padding: 0 15px;
+}
+.robot-icon{
+  position: absolute;
+  bottom: 50px;
+  right:30px;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  background: url('../assets/robot.gif') no-repeat center center / 100% auto;
+}
+.content{
+  flex-grow: 2;
+}
+.send-box{
+  height: 60px;
+  border-top: 1px solid #003d72;
 }
 </style>
