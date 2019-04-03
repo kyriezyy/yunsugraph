@@ -48,7 +48,7 @@ export default {
       if (node.type === 'element') {
         // cas
         const res = await axios.get(`${serverUrl}/cas/?cas=${node.id}`).catch(() => {
-          this.$message.error('当前数据库中无此CAS号数据')
+          // this.$message.error('当前数据库中无此CAS号数据')
         })
 
         if (res && res.data.code !== -1) {
