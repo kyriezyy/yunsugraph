@@ -17,7 +17,10 @@
       <div v-if="activeIndex === 6 ">
         图谱
       </div>
-      <div class="stock-box" v-if="activeIndex === 3 ">
+      <div v-else-if="activeIndex === 2 ">
+        <product-detail />
+      </div>
+      <div class="stock-box" v-else-if="activeIndex === 3 ">
         <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89%E9%93%B6%E8%A1%8C#/stock" frameborder="0"></iframe>
       </div>
       <div v-else class="sigle-result-box" :style="{height:(activeIndex==4 || activeIndex==5)?'calc(100% - 50px)':'100%'}" >
@@ -39,6 +42,7 @@ import ResultItem from './list/ResultItem'
 import NewsListHeader from './list/NewsListHeader'
 import YanbaoListHeader from './list/YanbaoListHeader'
 import HeaderSearch from '../components/HeaderSearch'
+import ProductDetail from './detail/ProductDetail'
 
 export default {
   name: 'list',
@@ -46,7 +50,8 @@ export default {
     ResultItem,
     HeaderSearch,
     NewsListHeader,
-    YanbaoListHeader
+    YanbaoListHeader,
+    ProductDetail
   },
   data () {
     return {
