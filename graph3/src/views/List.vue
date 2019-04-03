@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-loading="loading">
-    <header-search />
+    <header-search/>
     <div class="filter-box">
       <!-- <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div> -->
       <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">产品</div>
@@ -8,12 +8,26 @@
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">股票</div>
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==5}" @click="switchIndex(5)">研报</div>
+      <div class="filter-item" :class="{active:activeIndex==6}" @click="switchIndex(6)">图谱</div>
     </div>
     <div class="main" v-if="!loading">
-      <div class="sigle-result-box">
-        <result-item v-for="item in showList" :key="item.title" :activeIndex="activeIndex" :item="item"/>
-      </div>
+      <news-list-header v-if="activeIndex==4" />
+      <yanbao-list-header v-if="activeIndex==5" />
 
+      <div v-if="activeIndex === 6 ">
+        图谱
+      </div>
+      <div class="stock-box" v-if="activeIndex === 3 ">
+        <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89%E9%93%B6%E8%A1%8C#/stock" frameborder="0"></iframe>
+      </div>
+      <div v-else class="sigle-result-box" :style="{height:(activeIndex==4 || activeIndex==5)?'calc(100% - 50px)':'100%'}" >
+        <result-item
+          v-for="item in showList"
+          :key="item.title"
+          :activeIndex="activeIndex"
+          :item="item"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -22,19 +36,23 @@ import yanbaoList from '../jsons/yanbao_list.json'
 import newsList from '../jsons/news_list.json'
 import productList from '../jsons/product_list.json'
 import ResultItem from './list/ResultItem'
+import NewsListHeader from './list/NewsListHeader'
+import YanbaoListHeader from './list/YanbaoListHeader'
 import HeaderSearch from '../components/HeaderSearch'
 
 export default {
   name: 'list',
   components: {
     ResultItem,
-    HeaderSearch
+    HeaderSearch,
+    NewsListHeader,
+    YanbaoListHeader
   },
   data () {
     return {
       isGraph: false,
       list: [],
-      activeIndex: 1,
+      activeIndex: 3,
       loading: true
     }
   },
@@ -80,7 +98,7 @@ export default {
   height: calc(100% - 60px);
 }
 
-.main{
+.main {
   height: calc(100% - 80px);
   overflow: auto;
   /* display: flex; */
@@ -92,7 +110,7 @@ export default {
   align-items: center;
   padding-left: 40px;
   box-shadow: 0 3px 3px 3px #eee;
-  justify-content: center
+  justify-content: center;
 }
 .filter-item {
   margin-right: 30px;
@@ -105,9 +123,20 @@ export default {
   color: #023d6f;
   border-bottom: 2px solid #023d6f;
 }
-.sigle-result-box{
+.sigle-result-box {
   padding: 15px 25px;
   width: calc(100% - 100px);
+  height: calc(100% - 50px);
+  overflow: auto
 }
-
+.stock-box{
+  height: 100%;
+}
+.stock-iframe{
+  height: calc(100% + 110px);
+  width: 100%;
+  position: static;
+  z-index: -1;
+  margin-top: -115px;
+}
 </style>
