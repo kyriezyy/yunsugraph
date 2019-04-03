@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo-text">
-      <div class="logo"></div> 化工图谱情报库
+      <div class="logo"></div> 金融图谱情报库
     </div>
     <div class="search-box">
       <div class="search">

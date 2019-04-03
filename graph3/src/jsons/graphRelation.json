@@ -1,0 +1,113 @@
+{
+	"data": [{
+			"nodes": [{
+					"id": "1631-83-0",
+					"name": "氯化二苯基硅烷"
+				},
+				{
+					"id": "80-10-4",
+					"name": "二苯二氯硅烷"
+				},
+				{
+					"id": "947-42-2",
+					"name": "二苯基硅二醇"
+				}
+			],
+			"links": [{
+					"source": "1631-83-0",
+					"target": "80-10-4",
+					"relation": "合成",
+					"factor": "91%",
+					"paper": "Tetrahedron Letters, , vol. 50, # 36 p. 5080 - 5082"
+				},
+				{
+					"source": "80-10-4",
+					"target": "947-42-2",
+					"relation": "合成",
+					"factor": "94%",
+					"paper": "Burkhard Journal of the American Chemical Society, 1945 , vol. 67, p. 2173 Anm.6"
+				}
+			],
+			"similar":{
+				"content": ["共价键单元数量：2", "可旋转化学键数量：5", " 摩尔折射率间距: <5%", "分子量间距: <10"]
+			}
+		},
+		{
+			"nodes": [{
+					"id": "1631-83-0",
+					"name": "氯化二苯基硅烷"
+				},
+				{
+					"id": "98-13-5",
+					"name": "苯基三氯硅烷"
+				},
+				{
+					"id": "2553-19-7",
+					"name": "二苯基二乙氧基硅烷"
+				},
+				{
+					"id": "947-42-2",
+					"name": "二苯基硅二醇"
+				}
+			],
+			"links": [{
+					"source": "1631-83-0",
+					"target": "98-13-5",
+					"relation": "合成",
+					"factor": "31%",
+					"paper": "US2012/46488 A1, ; Page/Page column 2-3"
+				},
+				{
+					"source": "98-13-5",
+					"target": "2553-19-7",
+					"relation": "合成",
+					"factor": "52%",
+					"paper": "Corey, Joyce Y.; Jonh, Christy S.; Ohmsted, Martha C.; Chang, Lihsueh S. Journal of Organometallic Chemistry, 1986 , vol. 304, p. 93 - 106"
+				},
+				{
+					"source": "2553-19-7",
+					"target": "947-42-2",
+					"relation": "合成",
+					"factor": "68%",
+					"paper": "US2012/46488 A1, ; Page/Page column 2"
+				}
+			],
+			"similar":{
+				"content": ["共价键单元数量：2", "可旋转化学键数量：5", " 摩尔折射率间距: <5%", "分子量间距: <10"]
+			}
+		},
+		{
+			"nodes": [{
+					"id": "1631-83-0",
+					"name": "氯化二苯基硅烷"
+				},
+				{
+					"id": "2553-19-7",
+					"name": "二苯基二乙氧基硅烷"
+				},
+				{
+					"id": "947-42-2",
+					"name": "二苯基二乙氧基硅烷"
+				}
+			],
+			"links": [{
+					"source": "1631-83-0",
+					"target": "2553-19-7",
+					"relation": "合成",
+					"factor": "76%",
+					"paper": "Russian Journal of General Chemistry, , vol. 70, # 2 p. 244 - 246"
+				},
+				{
+					"source": "2553-19-7",
+					"target": "947-42-2",
+					"relation": "合成",
+					"factor": "92%",
+					"paper": "Gmelin Handbook: Si: MVol.C, 76, page 212 - 214"
+				}
+			],
+			"similar":{
+				"content": ["共价键单元数量：2", "可旋转化学键数量：5", " 摩尔折射率间距: <5%", "分子量间距: <10"]
+			}
+		}
+	]
+}

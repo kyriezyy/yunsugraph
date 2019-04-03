@@ -1,0 +1,111 @@
+{
+  "cas": "947-42-2",
+  "data": {
+    "synts": [
+      {
+        "front": [
+          {
+            "cas": "80-10-4",
+            "url": "http://p2.molbase.net/molpic/23/0f/77284.png?165x104",
+            "name": "\u4e8c\u82ef\u4e8c\u6c2f\u7845\u70f7"
+          }
+        ],
+        "back": [
+          {
+            "cas": "80-10-4",
+            "url": "http://p2.molbase.net/molpic/23/0f/77284.png?165x104",
+            "name": "\u4e8c\u82ef\u4e8c\u6c2f\u7845\u70f7"
+          }
+        ],
+        "pre": "A:94%",
+        "conditions": "\u6c34\u4e2d\u76841,1-\u4e8c\u7532\u57fa\u4e19-1-\u9187;\u7532\u82efT = 10-12\u2103; 0.166667\u5c0f\u65f6;"
+      },
+      {
+        "front": [
+          {
+            "cas": "2553-19-7",
+            "url": "http://p3.molbase.net/molpic/7e/1b/77062.png?154x152",
+            "name": "\u4e8c\u82ef\u57fa\u4e8c\u4e59\u6c27\u57fa\u7845\u70f7"
+          }
+        ],
+        "back": [
+          {
+            "cas": "2553-19-7",
+            "url": "http://p3.molbase.net/molpic/7e/1b/77062.png?154x152",
+            "name": "\u4e8c\u82ef\u57fa\u4e8c\u4e59\u6c27\u57fa\u7845\u70f7"
+          }
+        ],
+        "pre": "A:88.1%",
+        "conditions": "\u6c22\u6c27\u5316\u94be\u5728\u6c22\u6c27\u5316\u94be\uff08C6H5\uff092Si\uff08OC2H5\uff092\u548c5\uff05aq\u3002\u5ba4\u6e29\u4e0b\u7684KOH\u3002\u6301\u7eed6\u5c0f\u65f6;\u7528\u4e59\u9178\u4e2d\u548c;"
+      },
+      {
+        "front": [
+          {
+            "cas": "5906-79-6",
+            "url": "http://p1.molbase.net/molpic/02/39/2393155.png?177x104",
+            "name": "\u4e8c\u82ef\u57fa\u7845\u70f7\u9187"
+          }
+        ],
+        "back": [
+          {
+            "cas": "5906-79-6",
+            "url": "http://p1.molbase.net/molpic/02/39/2393155.png?177x104",
+            "name": "\u4e8c\u82ef\u57fa\u7845\u70f7\u9187"
+          }
+        ],
+        "pre": "A:75%",
+        "conditions": "2,2,2-\u4e09\u6c1f-1-\u82ef\u57fa - \u4e59\u916e;\u8fc7\u6c27\u5316\u6c22\u5728\u4e59\u9178\u4e59\u916f\u4e2d\u7684\u6eb6\u6db2;\u4e59\u81480.25\u5c0f\u65f6;\u7eff\u8272\u5316\u5b66;"
+      }
+    ],
+    "updown": {
+      "ups": [
+        {
+          "cas": "998-30-1",
+          "url": "http://p1.molbase.net/molpic/bb/59/22355.png?178x122",
+          "name": "\u4e09\u4e59\u6c27\u57fa\u7845\u70f7"
+        },
+        {
+          "cas": "100-51-6",
+          "url": "http://p3.molbase.net/molpic/17/13/4431.png?124x86",
+          "name": "\u82ef\u7532\u9187"
+        },
+        {
+          "cas": "1104-93-4",
+          "url": "http://p1.molbase.net/molpic/82/51/819747.png?191x174",
+          "name": "1,1,3,3-\u56db\u82ef\u57fa-1,3-\u4e8c\u7845\u6c27\u70f7\u4e8c\u9187"
+        },
+        {
+          "cas": "18557-45-4",
+          "url": "http://p3.molbase.net/molpic/01/78/01788455.png?188x169",
+          "name": ""
+        }
+      ],
+      "downs": [
+        {
+          "cas": "108-88-3",
+          "url": "http://p1.molbase.net/molpic/00/00/6842.png?122x82",
+          "name": "\u7532\u82ef"
+        },
+        {
+          "cas": "947-42-2",
+          "url": "http://p1.molbase.net/molpic/35/3b/25242.png?165x104",
+          "name": "\u4e8c\u82ef\u57fa\u7845\u4e8c\u9187"
+        },
+        {
+          "cas": "108-95-2",
+          "url": "http://p2.molbase.net/molpic/00/03/37908.png?114x80",
+          "name": "\u82ef\u915a"
+        },
+        {
+          "cas": "476161-46-3",
+          "url": "http://p2.molbase.net/molpic/03/06/3061885.png?177x121",
+          "name": ""
+        }
+      ]
+    },
+    "info": {
+      "cas": "947-42-2",
+      "url": "http://data.huaxuejia.cn/casimg/947/947-42-2.png"
+    }
+  }
+}
