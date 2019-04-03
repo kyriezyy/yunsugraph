@@ -5,40 +5,29 @@
       <!-- <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div> -->
       <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">产品</div>
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">企业</div>
-      <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">股票</div>
-      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">新闻</div>
-      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">研报</div>
+      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">股票</div>
+      <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
+      <div class="filter-item" :class="{active:activeIndex==5}" @click="switchIndex(5)">研报</div>
     </div>
     <div class="main" v-if="!loading">
       <div class="sigle-result-box">
-          <result-item v-for="item in showList" :key="item.title" :item="item"/>
+        <result-item v-for="item in showList" :key="item.title" :activeIndex="activeIndex" :item="item"/>
       </div>
-         <!--
-      <AllResult :list="showList" v-else /> -->
-      <!-- <div class="result-box">
 
-        <all-list :list="showList" v-else/>
-      </div>
-      <div class="slide-box">
-        sss
-      </div> -->
     </div>
   </div>
 </template>
 <script>
-// import listData from '../jsons/chemical_list.json'
-import listData from '../jsons/list_data.json'
-import ResultItem from '../components/ResultItem'
-import AllList from '../components/AllList'
+import yanbaoList from '../jsons/yanbao_list.json'
+import newsList from '../jsons/news_list.json'
+import productList from '../jsons/product_list.json'
+import ResultItem from './list/ResultItem'
 import HeaderSearch from '../components/HeaderSearch'
-import AllResult from './list/AllResult'
 
 export default {
   name: 'list',
   components: {
     ResultItem,
-    AllList,
-    AllResult,
     HeaderSearch
   },
   data () {
@@ -51,29 +40,27 @@ export default {
   },
   computed: {
     showList () {
-      if (this.activeIndex) {
-        let filterType
-        switch (this.activeIndex) {
-          case 1:
-            filterType = 'chemical'
-            break
-          case 4:
-            filterType = 'news'
-            break
-          case 2:
-            filterType = 'paper'
-            break
-          case 3:
-            filterType = 'patent'
-            break
-          default:
-            filterType = ''
-        }
-
-        return listData.data.filter(item => item.type === filterType)
-      } else {
-        return listData.data
+      let list = []
+      switch (this.activeIndex) {
+        case 1:
+          list = productList.data
+          break
+        case 2:
+          list = []
+          break
+        case 3:
+          list = []
+          break
+        case 4:
+          list = newsList.data
+          break
+        case 5:
+          list = yanbaoList.data
+          break
+        default:
+          list = []
       }
+      return list
     }
   },
   mounted () {
@@ -120,7 +107,7 @@ export default {
 }
 .sigle-result-box{
   padding: 15px 25px;
-  width: calc(100% - 300px);
+  width: calc(100% - 100px);
 }
 
 </style>

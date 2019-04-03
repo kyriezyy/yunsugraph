@@ -18,11 +18,10 @@ import axios from 'axios'
 import D3Graph from '../D3Graph'
 import graphData from '../jsons/graph.json'
 import { execData } from '../chart'
-import listData from '../jsons/list_data.json'
 import tooltip from '../components/tooltip'
-const articleList = listData.data.filter(item => item.type === 'paper')
-const patentList = listData.data.filter(item => item.type === 'patent')
-const newsList = listData.data.filter(item => item.type === 'news')
+const articleList = []
+const patentList = []
+const newsList = []
 const serverUrl = 'http://10.102.20.251:8000'
 export default {
   name: 'graph',

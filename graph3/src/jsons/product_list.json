@@ -1,0 +1,83 @@
+{
+	"data":[
+		{
+			"title":"周<b>成长</b>（净值型）",
+			"type":"product",
+			"number":"JLK150002",
+			"productype":"理财",
+			"state":"上架中",
+			"tag":["中低风险","非保本浮动收益"],
+			"property":[{"key":"业绩比较基准", "value":"4.05%"},{"key":"起购金额", "value":"1万元"},{"key":"投资期限", "value":"7天"}]
+		},{
+			"title":"月<b>成长</b>",
+			"type":"product",
+			"number":"JLK140001",
+			"productype":"理财",
+			"state":"上架中",
+			"tag":["中低风险","非保本浮动收益"],
+			"property":[{"key":"业绩比较基准", "value":"4.20%"},{"key":"起购金额", "value":"1万元"},{"key":"投资期限", "value":"28天"}]
+		},{
+			"title":"天天<b>成长</b>A",
+			"type":"product",
+			"number":"T01LK180001",
+			"productype":"理财",
+			"state":"上架中",
+			"property":[{"key":"七日年化收益率", "value":"3.9671%"},{"key":"万份收益", "value":"1.1518"}],
+			"tag":["中低风险","1万元起购","T+0赎回200万"]
+		},{
+			"title":"景顺新兴<b>成长</b>",
+			"type":"product",
+			"number":"260108",
+			"productype":"公募基金",
+			"state":"上架中",
+			"tag":["混合型","中风险","公募基金"],
+			"property":[{"key":"最新净值", "value":"1.5670"},{"key":"起购金额", "value":"1元"}]
+		},{
+			"title":"诺德<b>成长</b>",
+			"type":"product",
+			"number":"570005",
+			"productype":"公募基金",
+			"state":"上架中",
+			"property":[{"key":"最新净值", "value":"1.9000"},{"key":"起购金额", "value":"1元"}]
+		},{
+			"title":"98天<b>成长</b>1号",
+			"type":"product",
+			"number":"DK6LK180008",
+			"productype":"理财",
+			"state":"上架中",
+			"property":[{"key":"上期年化收益率", "value":"5.71%"},{"key":"投资期限", "value":"98天"},{"key":"起购金额","value":"1万元"}]
+		},{
+			"title":"淡水泉<b>成长</b>四期",
+			"type":"product",
+			"number":"B16001",
+			"productype":"信托",
+			"state":"上架中",
+			"tag":["中低风险","非保本浮动收益"],
+			"property":[{"key":"成立以来涨幅","value":"290.03%"},{"key":"单位净值","value":"401.28"},{"key":"起购金额","value":"101万"}]
+		},{
+			"title":"中欧行业<b>成长</b>A",
+			"type":"product",
+			"number":"166006",
+			"productype":"公募基金",
+			"state":"上架中",
+			"tag":["混合型","中风险","公募基金"],
+			"property":[{"key":"最新净值","value":"1.1476"},{"key":"近三月涨幅","value":"32.62%"}]
+		},{
+			"title":"淡水泉<b>成长</b>五期",
+			"type":"product",
+			"number":"JLK150002",
+			"productype":"理财",
+			"state":"上架中",
+			"tag":["中低风险","非保本浮动收益"],
+			"property":[{"key":"成立以来涨幅","value":"265.93%"},{"key":"单位净值","value":"251.28"},{"key":"起购金额","value":"101万"}]
+		},{
+			"title":"嘉实领先<b>成长</b>混合",
+			"type":"product",
+			"number":"070022",
+			"productype":"公募基金",
+			"state":"上架中",
+			"tag":["混合型","中风险","公募基金"],
+			"property":[{"key":"最新净值","value":"1.0706"},{"key":"近三月涨幅","value":"25.61%"}]
+		}
+	]
+}
