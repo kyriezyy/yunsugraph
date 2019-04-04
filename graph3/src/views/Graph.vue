@@ -9,8 +9,8 @@
         <el-checkbox label="5">研报</el-checkbox>
       </el-checkbox-group>
     </div>
-     <svg class="chart" width="900" height="600"></svg>
-      <tooltip :node="activeNode" />
+     <svg class="chart" width="900" height="550"></svg>
+      <tooltip ref="tooltip" :node="activeNode" />
   </div>
 </template>
 <script>
@@ -39,6 +39,8 @@ export default {
   methods: {
     async getNodeDetail (node) {
       console.log(node)
+      this.activeNode = node
+      this.$refs.tooltip.showBox()
     },
     handleCateChange () {
       this.renderGraph()
@@ -57,14 +59,12 @@ export default {
   display: flex;
   justify-content: center;
   background: url('../assets/noise.png');
-  margin-top: -20px;
   position: relative;
-  padding: 30px 20px;
 }
 .chart{
   /* border:1px solid red; */
    /* background: #f0f0f0; */
-   height: 600px;
+   height: 550px;
    width: 900px;
 }
 .category-box{

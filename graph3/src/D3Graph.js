@@ -86,6 +86,7 @@ class D3Graph {
   }
 
   addNodes = (nodes, links, centerId) => {
+    d3.selectAll('.linetext').remove()
     const oldNodeIds = this.graphData.nodes.map(item => item.id)
     const newNodeIds = nodes.map(item => item.id)
     const centerNode = this.graphData.nodes.find(node => node.id === centerId)
