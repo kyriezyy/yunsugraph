@@ -6,22 +6,27 @@
       <div class="filter-item" :class="{active:activeIndex==6}" @click="switchIndex(6)">图谱</div>
       <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">产品</div>
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">企业</div>
-      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">股票</div>
+      <!-- <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">股票</div> -->
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==5}" @click="switchIndex(5)">研报</div>
     </div>
     <div class="main" v-if="!loading">
       <news-list-header v-if="activeIndex==4" />
       <yanbao-list-header v-if="activeIndex==5" />
+      <product-list-header @switchType="handleSwitchType" v-if="activeIndex==1" />
 
       <div v-if="activeIndex === 6 ">
         <graph />
       </div>
-      <div v-else-if="activeIndex === 2 ">
-        <product-detail />
+      <div v-else-if="activeIndex === 1 && productType==='1'">
+        <product-list :list="showList" />
       </div>
-      <div class="stock-box" v-else-if="activeIndex === 3 ">
+      <div class="stock-box" v-else-if="activeIndex === 1 && productType==='2'">
         <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89%E9%93%B6%E8%A1%8C#/stock" frameborder="0"></iframe>
+        <product-detail :type="productType" />
+      </div>
+      <div v-else-if="activeIndex === 2">
+        <product-detail :type="productType" />
       </div>
       <div v-else class="sigle-result-box" :style="{height:(activeIndex==4 || activeIndex==5)?'calc(100% - 50px)':'100%'}" >
         <result-item
@@ -41,6 +46,8 @@ import productList from '../jsons/product_list.json'
 import ResultItem from './list/ResultItem'
 import NewsListHeader from './list/NewsListHeader'
 import YanbaoListHeader from './list/YanbaoListHeader'
+import ProductListHeader from './list/ProductListHeader'
+import ProductList from './list/ProductList'
 import HeaderSearch from '../components/HeaderSearch'
 import ProductDetail from './detail/ProductDetail'
 import Graph from './Graph'
@@ -53,14 +60,17 @@ export default {
     NewsListHeader,
     YanbaoListHeader,
     ProductDetail,
-    Graph
+    ProductListHeader,
+    Graph,
+    ProductList
   },
   data () {
     return {
       isGraph: false,
       list: [],
       activeIndex: 6,
-      loading: true
+      loading: true,
+      productType: '1'
     }
   },
   computed: {
@@ -96,6 +106,9 @@ export default {
   methods: {
     switchIndex (index) {
       this.activeIndex = index
+    },
+    handleSwitchType (type) {
+      this.productType = type
     }
   }
 }
@@ -118,6 +131,8 @@ export default {
   padding-left: 40px;
   box-shadow: 0 3px 3px 3px #eee;
   justify-content: center;
+  position: relative;
+  z-index: 9999;
 }
 .filter-item {
   margin-right: 30px;
