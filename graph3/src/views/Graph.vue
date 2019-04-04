@@ -24,6 +24,7 @@
 <script>
 import D3Graph from '../D3Graph'
 import kgData from '../jsons/kg_data.json'
+import kgDataSub from '../jsons/kg_data_sup.json'
 import tooltip from '../components/tooltip'
 
 export default {
@@ -69,7 +70,19 @@ export default {
       this.showMenuBox = false
     },
     addOthers () {
-
+      let nodes = kgDataSub.nodes.slice()
+      let links = kgDataSub.links.slice()
+      let centerNode = Object.assign({}, this.activeNode)
+      delete centerNode.x
+      delete centerNode.vx
+      delete centerNode.y
+      delete centerNode.vy
+      delete centerNode.fx
+      delete centerNode.fy
+      delete centerNode.index
+      console.log(centerNode)
+      nodes.push(centerNode)
+      this.d3Graph.addNodes(nodes, links)
     },
     handleCateChange () {
       this.renderGraph()
