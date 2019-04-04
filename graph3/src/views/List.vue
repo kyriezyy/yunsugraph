@@ -22,7 +22,7 @@
         <product-list :list="showList" />
       </div>
       <div class="stock-box" v-else-if="activeIndex === 1 && productType==='2'">
-        <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89%E9%93%B6%E8%A1%8C#/stock" frameborder="0"></iframe>
+        <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89" frameborder="0"></iframe>
         <product-detail :type="productType" />
       </div>
       <div v-else-if="activeIndex === 2">

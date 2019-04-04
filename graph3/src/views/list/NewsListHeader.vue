@@ -1,7 +1,7 @@
 <template>
   <div class="list-header">
     <div>
-      <span class="s-item">约3篇新闻</span>
+      <span class="s-item">约583篇新闻</span>
       <span class="s-item">
         相关性
         <i class="el-icon-sort"></i>

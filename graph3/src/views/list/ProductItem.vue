@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="product-item item">
     <p class="title" >
       <span v-html="item.title"></span>
       <span class="productype" >{{item.productype}} </span>
@@ -32,6 +32,12 @@ export default {
 </script>
 
 <style scoped>
+.product-item{
+  border:1px solid #a0a0a0;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+}
 .title{
   /* margin-bottom: 10px; */
 }
