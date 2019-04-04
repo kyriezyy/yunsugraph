@@ -133,7 +133,7 @@ export default {
               offset: 1,
               color: 'rgb(255, 70, 131)'
             }])
-          },
+          }
         }]
       }
     },
