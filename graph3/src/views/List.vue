@@ -18,7 +18,7 @@
       <div v-if="activeIndex === 6 ">
         <graph />
       </div>
-      <div v-else-if="activeIndex === 1 && productType==='1'">
+      <div  v-else-if="activeIndex === 1 && productType==='1'">
         <product-list :list="showList" />
       </div>
       <div class="stock-box" v-else-if="activeIndex === 1 && productType==='2'">
@@ -26,7 +26,7 @@
         <product-detail :type="productType" />
       </div>
       <div v-else-if="activeIndex === 2">
-        <product-detail :type="productType" />
+       <company-detail />
       </div>
       <div v-else class="sigle-result-box" :style="{height:(activeIndex==4 || activeIndex==5)?'calc(100% - 50px)':'100%'}" >
         <result-item
@@ -50,6 +50,7 @@ import ProductListHeader from './list/ProductListHeader'
 import ProductList from './list/ProductList'
 import HeaderSearch from '../components/HeaderSearch'
 import ProductDetail from './detail/ProductDetail'
+import CompanyDetail from './detail/companyDetail'
 import Graph from './Graph'
 
 export default {
@@ -59,6 +60,7 @@ export default {
     HeaderSearch,
     NewsListHeader,
     YanbaoListHeader,
+    CompanyDetail,
     ProductDetail,
     ProductListHeader,
     Graph,

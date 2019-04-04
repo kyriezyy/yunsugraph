@@ -121,7 +121,19 @@ export default {
           name: '亿',
           data: ys,
           type: 'line',
-          smooth: true
+          smooth: true,
+          itemStyle: {
+            color: 'rgb(255, 70, 131)'
+          },
+          areaStyle: {
+            color: new ECharts.graphic.LinearGradient(0, 0, 0, 1, [{
+              offset: 0,
+              color: 'rgb(255, 158, 68)'
+            }, {
+              offset: 1,
+              color: 'rgb(255, 70, 131)'
+            }])
+          }
         }]
       }
     },
@@ -181,7 +193,7 @@ export default {
     padding: 10px;
     border-bottom: 1px #dddddd solid;;
     margin: 0;
-    background-color: #71b0fb;
+    background-color: #71b0fb70;
   }
 
   .tables, .tabless, .table{
