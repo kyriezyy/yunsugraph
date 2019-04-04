@@ -15,7 +15,7 @@
       <yanbao-list-header v-if="activeIndex==5" />
 
       <div v-if="activeIndex === 6 ">
-        图谱
+        <graph />
       </div>
       <div v-else-if="activeIndex === 2 ">
         <product-detail />
@@ -43,6 +43,7 @@ import NewsListHeader from './list/NewsListHeader'
 import YanbaoListHeader from './list/YanbaoListHeader'
 import HeaderSearch from '../components/HeaderSearch'
 import ProductDetail from './detail/ProductDetail'
+import Graph from './Graph'
 
 export default {
   name: 'list',
@@ -51,13 +52,14 @@ export default {
     HeaderSearch,
     NewsListHeader,
     YanbaoListHeader,
-    ProductDetail
+    ProductDetail,
+    Graph
   },
   data () {
     return {
       isGraph: false,
       list: [],
-      activeIndex: 3,
+      activeIndex: 6,
       loading: true
     }
   },

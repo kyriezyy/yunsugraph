@@ -1,5 +1,6 @@
 import * as d3 from 'd3'
 
+const textFontSize = 14
 function getLineTextDx (d) {
   const sr = 36
   const sx = d.start.x
@@ -33,11 +34,11 @@ function getLineTextAngle (d, bbox) {
 }
 
 const icons = {
-  huaxueIcon: '/static/element.png',
-  newsIcon: '/static/news.png',
-  nodeIcon: '/static/node.png',
-  articleIcon: '/static/articles.png',
-  patentIcon: '/static/patent.png'
+  gongsiIcon: '/static/gongsi.png',
+  farenIcon: '/static/faren.png',
+  newsIcon: '/static/news_icon.png',
+  licaiIcon: '/static/licai.png',
+  yanbaoIcon: '/static/yanbao.png'
 }
 
 class D3Graph {
@@ -66,23 +67,13 @@ class D3Graph {
     this.nodesBox = this.graphBox.append('g')
     let zoom = d3.zoom().scaleExtent([1 / 8, 8])
     this.svg.call(zoom.on('zoom', this.zoomed))
-    zoom.scaleTo(this.svg, 0.7)
-
-    // d3.zoom().scaleTo(this.graphBox, 0.6)
-    // this.graphBox.attr('transform', 'translate(80,60) scale(0.6)')
+    zoom.scaleTo(this.svg, 0.6)
 
     this.simulation = d3.forceSimulation()
-      // .alpha(0.5)
-      // .velocityDecay(0.7)
       .force('collision', d3.forceCollide().radius(30)) // 决定线的长度已经节点之间的间距
-      .force('link', d3.forceLink().distance(120).strength(0.01)) // 决定线的长度已经节点之间的间距
+      .force('link', d3.forceLink().distance(150).strength(0.01)) // 决定线的长度已经节点之间的间距
       .force('charge', d3.forceManyBody()) // 节点是否所在一起 相互吸引 相互排斥相关
       .force('center', d3.forceCenter(this.width / 2, this.height / 2)) // 设置节点中心
-
-      // .force('collision', d3.forceCollide().radius(10))
-      // .force("link", d3.forceLink().distance(50).strength(0.1))  //决定线的长度已经节点之间的间距
-      // .force("charge", d3.forceManyBody()) //节点是否所在一起 相互吸引 相互排斥相关
-      // .force("center", d3.forceCenter(width / 2, height / 2))
   }
 
   graphData = {
@@ -113,10 +104,6 @@ class D3Graph {
       centerNode.fy = centerNode.y
     }
 
-    // 节点
-
-    // this.graphData.nodes = this.graphData.nodes.concat(nodes);
-    // this.graphData.links = this.graphData.links.concat(links);
     this.graphData.nodes = oldNodes.concat(newNodes)
     this.graphData.links = links
     this.simulation.alphaTarget(0.3).restart()
@@ -133,6 +120,7 @@ class D3Graph {
     const bilinks = []
     const nodeIds = nodes.map(item => item.id)
     links = links.filter(item => item.source && item.target)
+
     links = links.filter((item) => {
       if (typeof item.source === 'string') {
         return nodeIds.includes(`${item.source}`) && nodeIds.includes(`${item.target}`)
@@ -146,7 +134,7 @@ class D3Graph {
       if (typeof link.target === 'string') {
         link.target = nodeById.get(link.target)
       }
-      bilinks.push({start: link.source, end: link.target, type: link.value})
+      bilinks.push({start: link.source, end: link.target, type: link.type})
     })
 
     const linksData = this.linksBox
@@ -164,7 +152,7 @@ class D3Graph {
       .append('text')
       .style('font-size', 12)
       .attr('class', 'linetext')
-      // .text(link => link.type)
+      .text(link => link.type)
 
     linksData.exit().remove()
 
@@ -196,44 +184,85 @@ class D3Graph {
     nodesEnter
       .append('circle')
       .attr('r', 25)
-      .attr('fill', '#f0f0f0')
+      .attr('fill', '#a0a0a0')
 
     nodesEnter
       .append('text')
+      .style('font-size', textFontSize)
       .attr('dy', '.35em')
-      .attr('dx', 12)
+      .attr('dx', 14)
       .attr('x', 8)
       .attr('y', 0)
       .text((d) => {
-        let title = ''
-        switch (d.type) {
-          case 'element':
-            title = d.name
-            break
-          case 'news':
-            title = d.name
-            break
-          case 'article':
-            title = d.name.slice(0, 20)
-            break
-          case 'patent':
-            title = d.name.slice(0, 20)
-            break
-          default:
-            title = ''
-            break
+        let names = d.name.split('###')
+        let title = names[0] || ''
+        if (!names[1]) {
+          return title.slice(0, 14)
         }
-
         return title
+      })
+    nodesEnter
+      .append('text')
+      .style('font-size', textFontSize)
+      .attr('dy', '.35em')
+      .style('fill', 'red')
+      .attr('dx', 12)
+      .attr('x', (d) => {
+        let names = d.name.split('###')
+        let title = names[0] || ''
+        return 8 + textFontSize * title.length
+      })
+      .attr('y', 0)
+      .text((d) => {
+        let names = d.name.split('###')
+        let title = names[1] || ''
+        return title
+      })
+    nodesEnter
+      .append('text')
+      .style('font-size', textFontSize)
+      .attr('dy', '.35em')
+      .attr('dx', 12)
+      .attr('x', (d) => {
+        let names = d.name.split('###')
+        let title1 = names[0] || ''
+        let title2 = names[1] || ''
+        return 8 + textFontSize * (title1 + title2).length
+      })
+      .attr('y', 0)
+      .text((d) => {
+        let names = d.name.split('###')
+        let title = (names[2] || '').slice(0, 8)
+        return title + (title && (d.nodetype === '4' || d.nodetype === '5') ? '...' : '')
       })
 
     nodesEnter
       .append('image')
-      .attr('xlink:href', d => icons[d.symbol])
-      .attr('x', -20)
-      .attr('y', -20)
-      .attr('width', 40)
-      .attr('height', 40)
+      .attr('xlink:href', d => {
+        let imgUrl = ''
+        switch (d.nodetype) {
+          case '1':
+            imgUrl = icons.gongsiIcon
+            break
+          case '2':
+            imgUrl = icons.farenIcon
+            break
+          case '3':
+            imgUrl = icons.licaiIcon
+            break
+          case '4':
+            imgUrl = icons.newsIcon
+            break
+          case '5':
+            imgUrl = icons.yanbaoIcon
+            break
+        }
+        return imgUrl
+      })
+      .attr('x', -15)
+      .attr('y', -15)
+      .attr('width', 30)
+      .attr('height', 30)
 
     this.nodesData = nodesEnter.merge(nodesData)
 
@@ -243,7 +272,7 @@ class D3Graph {
   }
   ticked = () => {
     // 缩短重新布局时间
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 5; i++) {
       this.simulation.tick()
     }
 

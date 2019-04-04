@@ -44,7 +44,7 @@ stroke-width: 3px;
 
 .node text {
   fill: #000;
-  font-size: 18;
+  font-size: 24px;
   font: 10px sans-serif;
 }
 .graph-detail .node text{
