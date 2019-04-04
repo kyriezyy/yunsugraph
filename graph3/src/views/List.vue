@@ -18,7 +18,7 @@
         <graph />
       </div>
       <div v-else-if="activeIndex === 2 ">
-        <product-detail />
+        <company-detail />
       </div>
       <div class="stock-box" v-else-if="activeIndex === 3 ">
         <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89%E9%93%B6%E8%A1%8C#/stock" frameborder="0"></iframe>
@@ -43,6 +43,7 @@ import NewsListHeader from './list/NewsListHeader'
 import YanbaoListHeader from './list/YanbaoListHeader'
 import HeaderSearch from '../components/HeaderSearch'
 import ProductDetail from './detail/ProductDetail'
+import CompanyDetail from './detail/companyDetail'
 import Graph from './Graph'
 
 export default {
@@ -52,6 +53,7 @@ export default {
     HeaderSearch,
     NewsListHeader,
     YanbaoListHeader,
+    CompanyDetail,
     ProductDetail,
     Graph
   },
