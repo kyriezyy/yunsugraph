@@ -147,6 +147,10 @@ class D3Graph {
           this.onClickNode(d)
         }
       })
+      .on('contextmenu', (d, e) => {
+        d3.event.preventDefault()
+        this.onClickMenuBox(d, d3.event)
+      })
       .call(drag)
 
     nodesData.exit().remove()
@@ -262,9 +266,9 @@ class D3Graph {
   }
   ticked = () => {
     // 缩短重新布局时间
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
       this.simulation.tick()
-    }
+    // }
 
     this.linksData.attr('d', this.positionLink) // 每个link上有三个点，每次tick 都要重新画一遍link
     this.nodesData.attr('transform', this.positionNode)

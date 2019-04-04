@@ -75,7 +75,7 @@ export default {
   margin-bottom: 5px;
 }
 .param{
-  margin-right: 15px;
+  margin-right: 35px;
 }
 
 .tags{
@@ -85,7 +85,7 @@ export default {
 .tag{
   padding: 3px 5px;
   border:1px solid #023d6f;
-  margin-right: 5px;
+  margin-right: 15px;
   font-size: 12px;
   border-radius: 3px;
 }

@@ -151,8 +151,28 @@ class D3Graph {
 
     nodesEnter
       .append('circle')
-      .attr('r', 30)
-      .attr('fill', '#a0a0a0')
+      .attr('r', 25)
+      .attr('fill', d => {
+        let color = '#a0a0a0'
+        switch (d.nodetype) {
+          case '1':
+            color = '#6f3e02'
+            break
+          case '2':
+            color = '#375a07'
+            break
+          case '3':
+            color = '#3e075a'
+            break
+          case '4':
+            color = '#075a56'
+            break
+          case '5':
+            color = '#5a0748'
+            break
+        }
+        return color
+      })
 
     nodesEnter
       .append('text')
@@ -227,10 +247,10 @@ class D3Graph {
         }
         return imgUrl
       })
-      .attr('x', -21)
-      .attr('y', -21)
-      .attr('width', 42)
-      .attr('height', 42)
+      .attr('x', -15)
+      .attr('y', -15)
+      .attr('width', 30)
+      .attr('height', 30)
 
     this.nodesData = nodesEnter.merge(nodesData)
 
