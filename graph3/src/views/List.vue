@@ -6,7 +6,7 @@
       <div class="filter-item" :class="{active:activeIndex==6}" @click="switchIndex(6)">图谱</div>
       <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">产品</div>
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">企业</div>
-      <!-- <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">股票</div> -->
+      <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">股票</div>
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==5}" @click="switchIndex(5)">研报</div>
     </div>
