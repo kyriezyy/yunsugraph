@@ -1,10 +1,11 @@
 import * as d3 from 'd3'
-
+const textFontSize = 14
 const icons = {
-  huaxueIcon: '/static/element.png',
-  newsIcon: '/static/news.png',
-  nodeIcon: '/static/node.png',
-  articleIcon: '/static/articles.png'
+  gongsiIcon: '/static/gongsi.png',
+  farenIcon: '/static/faren.png',
+  newsIcon: '/static/news_icon.png',
+  licaiIcon: '/static/licai.png',
+  yanbaoIcon: '/static/yanbao.png'
 }
 
 class D3Graph {
@@ -37,7 +38,7 @@ class D3Graph {
 
     this.simulation = d3.forceSimulation()
       .force('collision', d3.forceCollide().radius(30)) // 决定线的长度已经节点之间的间距
-      .force('link', d3.forceLink().distance(250).strength(0.1)) // 决定线的长度已经节点之间的间距
+      .force('link', d3.forceLink().distance(250).strength(0.9)) // 决定线的长度已经节点之间的间距
       .force('charge', d3.forceManyBody()) // 节点是否所在一起 相互吸引 相互排斥相关
       .force('center', d3.forceCenter(this.width / 2, this.height / 2)) // 设置节点中心
   }
@@ -75,7 +76,7 @@ class D3Graph {
       if (typeof link.target === 'string') {
         link.target = nodeById.get(link.target)
       }
-      bilinks.push({start: link.source, end: link.target, relation: link.relation, raw: link})
+      bilinks.push({start: link.source, end: link.target, relation: link.type, raw: link})
     })
 
     const linksData = this.linksBox
@@ -85,6 +86,21 @@ class D3Graph {
     const linksEnter = linksData.enter()
       .append('path')
       .attr('class', 'link')
+      .style('stroke', d => {
+        let color = '#777'
+        switch (d.relation) {
+          case '参股':
+            color = '#095a02'
+            break
+          case '董事':
+            color = '#d04b04'
+            break
+          case '董事长':
+            color = '#f508e7'
+            break
+        }
+        return color
+      })
       .attr('marker-end', 'url(#resolved)')
       .on('click', (d) => {
         if (this.onClickLink) {
@@ -135,26 +151,106 @@ class D3Graph {
 
     nodesEnter
       .append('circle')
-      .attr('r', 30)
-      .attr('fill', '#f0f0f0')
+      .attr('r', 25)
+      .attr('fill', d => {
+        let color = '#a0a0a0'
+        switch (d.nodetype) {
+          case '1':
+            color = '#6f3e02'
+            break
+          case '2':
+            color = '#375a07'
+            break
+          case '3':
+            color = '#3e075a'
+            break
+          case '4':
+            color = '#075a56'
+            break
+          case '5':
+            color = '#5a0748'
+            break
+        }
+        return color
+      })
 
     nodesEnter
       .append('text')
+      .style('font-size', textFontSize)
       .attr('dy', '.35em')
-      .attr('dx', 12)
-      .attr('x', 12)
+      .attr('dx', 14)
+      .attr('x', 8)
       .attr('y', 0)
       .text((d) => {
-        return d.name
+        let names = d.name.split('###')
+        let title = names[0] || ''
+        if (!names[1]) {
+          return title.slice(0, 14)
+        }
+        return title
+      })
+    nodesEnter
+      .append('text')
+      .style('font-size', textFontSize)
+      .attr('dy', '.35em')
+      .style('fill', 'red')
+      .attr('dx', 12)
+      .attr('x', (d) => {
+        let names = d.name.split('###')
+        let title = names[0] || ''
+        return 8 + textFontSize * title.length
+      })
+      .attr('y', 0)
+      .text((d) => {
+        let names = d.name.split('###')
+        let title = names[1] || ''
+        return title
+      })
+    nodesEnter
+      .append('text')
+      .style('font-size', textFontSize)
+      .attr('dy', '.35em')
+      .attr('dx', 12)
+      .attr('x', (d) => {
+        let names = d.name.split('###')
+        let title1 = names[0] || ''
+        let title2 = names[1] || ''
+        return 8 + textFontSize * (title1 + title2).length
+      })
+      .attr('y', 0)
+      .text((d) => {
+        let names = d.name.split('###')
+        let title = (names[2] || '').slice(0, 8)
+        return title + (title && (d.nodetype === '4' || d.nodetype === '5') ? '...' : '')
       })
 
     nodesEnter
       .append('image')
-      .attr('xlink:href', d => icons.huaxueIcon)
-      .attr('x', -21)
-      .attr('y', -21)
-      .attr('width', 42)
-      .attr('height', 42)
+      .attr('xlink:href', d => {
+        let imgUrl = ''
+        switch (d.nodetype) {
+          case '1':
+            imgUrl = icons.gongsiIcon
+            break
+          case '2':
+            imgUrl = icons.farenIcon
+            break
+          case '3':
+            imgUrl = icons.licaiIcon
+            break
+          case '4':
+            imgUrl = icons.newsIcon
+            break
+          case '5':
+            imgUrl = icons.yanbaoIcon
+            break
+        }
+        return imgUrl
+      })
+      .attr('x', -15)
+      .attr('y', -15)
+      .attr('width', 30)
+      .attr('height', 30)
 
     this.nodesData = nodesEnter.merge(nodesData)
 

@@ -1,28 +1,31 @@
 <template>
-  <div class="graph graph-detail" v-loading="loading">
+  <div class="graph graph-detail" v-loading="loading" @click="showMenuBox = false">
     <div class="category-box">
       <el-checkbox-group v-model="checkedCate" @change="handleCateChange">
-        <el-checkbox label="element" disabled >化学品</el-checkbox>
-        <el-checkbox label="news">新闻</el-checkbox>
-        <el-checkbox label="article">论文</el-checkbox>
-        <el-checkbox label="patent">专利</el-checkbox>
+        <el-checkbox label="1" disabled >公司</el-checkbox>
+        <el-checkbox label="2">法人</el-checkbox>
+        <el-checkbox label="3">产品</el-checkbox>
+        <el-checkbox label="4">新闻</el-checkbox>
+        <el-checkbox label="5">研报</el-checkbox>
       </el-checkbox-group>
     </div>
-     <svg class="chart" width="900" height="600"></svg>
-<tooltip :node="activeNode" />
+    <svg class="chart" width="900" height="550"></svg>
+    <tooltip ref="tooltip" :node="activeNode" />
+
+    <div class="menu-box" ref="menuBox" v-show="showMenuBox">
+      <div class="btn-item" @click="addOthers">相关企业</div>
+      <div class="btn-item">相关新闻</div>
+      <div class="btn-item">相关产品</div>
+      <div class="btn-item">合作伙伴</div>
+      <div class="btn-item" @click="removeOthers()">隐藏节点</div>
+    </div>
   </div>
 </template>
 <script>
-import dotProp from 'dot-prop'
-import axios from 'axios'
 import D3Graph from '../D3Graph'
-import graphData from '../jsons/graph.json'
-import { execData } from '../chart'
+import kgData from '../jsons/kg_data.json'
 import tooltip from '../components/tooltip'
-const articleList = []
-const patentList = []
-const newsList = []
-const serverUrl = 'http://10.102.20.251:8000'
+
 export default {
   name: 'graph',
   components: {
@@ -32,125 +35,50 @@ export default {
     return {
       d3Graph: null,
       loading: false,
-      checkedCate: ['element', 'news', 'article', 'patent'],
-      graph: {},
-      activeNode: null
+      checkedCate: ['1', '2', '3', '4', '5'],
+      activeNode: null,
+      showMenuBox: false
     }
   },
   mounted () {
     this.d3Graph = new D3Graph('.chart')
     this.d3Graph.onClickNode = this.getNodeDetail
-    this.addNodes('947-42-2', '二苯基硅二醇')
+    this.d3Graph.onClickMenuBox = this.onClickMenuBox
+    this.renderGraph()
   },
   methods: {
-    async getNodeDetail (node) {
-      if (node.type === 'element') {
-        // cas
-        const res = await axios.get(`${serverUrl}/cas/?cas=${node.id}`).catch(() => {
-          this.$message.error('当前数据库中无此CAS号数据')
-        })
-
-        if (res && res.data.code !== -1) {
-          // const name = dotProp.get(res, 'data.data.product_info.名称') || node.id
-          // this.addNodes(node.id, name)
-          this.activeNode = res.data.data
-          this.activeNode.type = 'element'
-        }
-      }
-      if (node.type === 'news') {
-        // 新闻节点
-        this.activeNode = node
-      }
-      if (node.type === 'article') {
-        // 新闻节点
-        this.activeNode = node
-      }
-      if (node.type === 'patent') {
-        // 新闻节点
-        this.activeNode = node
-      }
-      console.log(node)
+    getNodeDetail (node) {
+      this.activeNode = node
+      this.$refs.tooltip.showBox()
     },
-    async addNodes (cas, name) {
-      this.loading = true
-      const res = await axios.get(`${serverUrl}/relaction?cas=${cas}`)
-      // get news
-      // const newRes = await axios.get(`${serverUrl}/search_new?kw=${name}`)
-      // get articles
-      // const articleRes = await axios.get(`${serverUrl}/searchDoc?cas=${cas}`)
-      const graph = execData(res.data.data, cas, [], [])
+    onClickMenuBox (node, event) {
+      let x = event.clientX
+      let y = event.clientY
 
-      let otherLinks = []
-      let newses = newsList.map((item, index) => {
-        otherLinks.push({source: cas, target: `news${index}`, value: '新闻'})
-        return {
-          type: 'news',
-          name: item.title.slice(0, 10) + '...',
-          id: `news${index}`,
-          symbol: 'newsIcon',
-          raw: item
-        }
-      })
-      let articles = articleList.map((item, index) => {
-        otherLinks.push({source: cas, target: `article${index}`, value: '论文'})
-        return {
-          type: 'article',
-          name: item.title.slice(0, 10) + '...',
-          id: `article${index}`,
-          symbol: 'articleIcon',
-          raw: item
-        }
-      })
-      let patents = patentList.map((item, index) => {
-        otherLinks.push({source: cas, target: `patent${index}`, value: '专利'})
-        return {
-          type: 'patent',
-          name: item.title.slice(0, 10) + '...',
-          id: `patent${index}`,
-          symbol: 'patentIcon',
-          raw: item
-        }
-      })
+      setTimeout(() => {
+        this.showMenuBox = true
+      }, 200)
 
-      graph.nodes = graph.nodes.concat(newses)
-      graph.nodes = graph.nodes.concat(articles)
-      graph.nodes = graph.nodes.concat(patents)
+      this.activeNode = node
+      this.$refs.menuBox.style.top = (y - 145) + 'px'
+      this.$refs.menuBox.style.left = x + 'px'
+    },
+    removeOthers () {
+      let node = this.activeNode
+      this.d3Graph.addNodes([node], [])
+      this.showMenuBox = false
+    },
+    addOthers () {
 
-      graph.links = graph.links.concat(otherLinks)
-
-      // let graph = this.$store.state.graph
-      // graph = graph || { nodes: [], links: [] }
-
-      // graph.nodes = removeDuplicateNodes(graph.nodes.concat(result.nodes))
-      // graph.links = graph.links.concat(result.links)
-
-      // this.$store.commit('updateGraph', graph)
-      this.graph = graph
-      this.renderGraph(cas)
-
-      this.loading = false
     },
     handleCateChange () {
       this.renderGraph()
     },
-    renderGraph (cas) {
-      const graph = this.graph
-      // if (graph) {
-      const originNodes = graph.nodes
-      const originLinks = graph.links
-
-      const nodes = originNodes.filter(item => this.checkedCate.includes(item.type) || !item.type || item.category === 0)
-      //   const options = getOption({ nodes, links: originLinks });
-      this.d3Graph.addNodes(nodes, originLinks, cas)
-      //   this.chartApp.clear();
-      //   this.chartApp.setOption(options, true);
-      // }
-      //  const res = await axios.get(`${serverUrl}/relaction?cas=${casData.id}`);
-      // const result = execDataNew(res.data.data, casData.id);
-      // this.d3Graph.addNodes(result.nodes, result.links, cas);
-    },
-    render () {
-      this.d3Graph.addNodes(graphData.nodes, graphData.links)
+    renderGraph () {
+      const originNodes = kgData.nodes
+      const originLinks = kgData.links
+      const nodes = originNodes.filter(item => this.checkedCate.includes(item.nodetype))
+      this.d3Graph.addNodes(nodes, originLinks)
     }
   }
 }
@@ -160,14 +88,12 @@ export default {
   display: flex;
   justify-content: center;
   background: url('../assets/noise.png');
-  margin-top: -20px;
   position: relative;
-  padding: 30px 20px;
 }
 .chart{
   /* border:1px solid red; */
    /* background: #f0f0f0; */
-   height: 600px;
+   height: 550px;
    width: 900px;
 }
 .category-box{
@@ -175,5 +101,25 @@ export default {
   top:20px;
   left:20px;
   z-index: 999;
+}
+.menu-box{
+    border: 1px solid #023d6f;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -20px;
+    background: #fff;
+    z-index: 999;
+    padding: 4px 0;
+}
+.btn-item{
+  height: 36px;
+  line-height: 36px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+.btn-item:before{
+  content: "•";
+  color:#a0a0a0;
+  margin-right: 5px;
 }
 </style>
