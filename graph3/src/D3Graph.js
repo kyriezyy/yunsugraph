@@ -1,37 +1,6 @@
 import * as d3 from 'd3'
 
 const textFontSize = 14
-function getLineTextDx (d) {
-  const sr = 36
-  const sx = d.start.x
-  const sy = d.start.y
-  const tx = d.end.x
-  const ty = d.end.y
-
-  const distance = Math.sqrt(Math.pow(tx - sx, 2) + Math.pow(ty - sy, 2))
-
-  // const textLength = d.label.length;
-  const textLength = d.type.length
-  const deviation = 8 // 调整误差
-  const dx = (distance - sr - textLength * 12) / 2 + deviation
-
-  return dx || 0
-}
-function getLineTextAngle (d, bbox) {
-  if (d.end.x < d.start.x) {
-    const {
-      x,
-      y,
-      width,
-      height
-    } = bbox
-    const rx = x + width / 2
-    const ry = y + height / 2
-    return 'rotate(180 ' + rx + ' ' + ry + ')'
-  } else {
-    return 'rotate(0)'
-  }
-}
 
 const icons = {
   gongsiIcon: '/static/gongsi.png',
@@ -185,7 +154,27 @@ class D3Graph {
     nodesEnter
       .append('circle')
       .attr('r', 25)
-      .attr('fill', '#a0a0a0')
+      .attr('fill', d => {
+        let color = '#a0a0a0'
+        switch (d.nodetype) {
+          case '1':
+            color = '#6f3e02'
+            break
+          case '2':
+            color = '#375a07'
+            break
+          case '3':
+            color = '#3e075a'
+            break
+          case '4':
+            color = '#075a56'
+            break
+          case '5':
+            color = '#5a0748'
+            break
+        }
+        return color
+      })
 
     nodesEnter
       .append('text')

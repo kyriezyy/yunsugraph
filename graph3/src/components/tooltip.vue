@@ -4,7 +4,7 @@
     <div @click="show = false" class="show-btn" v-else>收起</div>
 <template v-if="show && activeNode.nodetype==='1'">
       <div class="type">公司信息</div>
-      <div class="content ">
+      <div class="content company-box">
         <div class="content-item">
           <div class="label">名称</div>
           <div class="value" v-html="activeNode.name"></div>
@@ -183,6 +183,8 @@ export default {
           /###平安银行###/g,
           '<b>平安银行</b>'
         )
+
+        newNode.name = newNode.name.replace('###上海钜派###', '<b>上海钜派</b>')
         newNode.name = newNode.name.replace('###成长###', '<b>成长</b>')
         newNode.name = newNode.name.replace('###000001###', '<b>000001</b>')
       }
@@ -275,6 +277,9 @@ export default {
 }
 .licai-content .label{
   width: 120px;
+}
+.company-box .label{
+   width: 120px;
 }
 
 </style>
