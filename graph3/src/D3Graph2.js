@@ -58,6 +58,9 @@ class D3Graph {
     this.graphData.links = links
     this.simulation.alphaTarget(0.3).restart()
     this.render()
+    setTimeout(() => {
+      this.simulation.alphaTarget(0)
+    }, 3000)
   }
 
   render = () => {
@@ -301,10 +304,11 @@ class D3Graph {
   }
 
   dragended = (d) => {
-    // d.fx = d3.event.x, d.fy = d3.event.y;
+    d.fx = d3.event.x
+    d.fy = d3.event.y
     if (!d3.event.active) this.simulation.alphaTarget(0)
-    d.fx = null
-    d.fy = null
+    // d.fx = null
+    // d.fy = null
   }
 }
 

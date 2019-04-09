@@ -76,8 +76,11 @@ class D3Graph {
 
     this.graphData.nodes = oldNodes.concat(newNodes)
     this.graphData.links = links
-    this.simulation.alphaTarget(0.3).restart()
+    this.simulation.alphaTarget(0.4).restart()
     this.render()
+    setTimeout(() => {
+      this.simulation.alphaTarget(0)
+    }, 3000)
   }
 
   render = () => {
@@ -267,7 +270,7 @@ class D3Graph {
   ticked = () => {
     // 缩短重新布局时间
     // for (let i = 0; i < 5; i++) {
-      this.simulation.tick()
+    this.simulation.tick()
     // }
 
     this.linksData.attr('d', this.positionLink) // 每个link上有三个点，每次tick 都要重新画一遍link
@@ -307,10 +310,11 @@ class D3Graph {
   }
 
   dragended = (d) => {
-    // d.fx = d3.event.x, d.fy = d3.event.y;
+    d.fx = d3.event.x
+    d.fy = d3.event.y
     if (!d3.event.active) this.simulation.alphaTarget(0)
-    d.fx = null
-    d.fy = null
+    // d.fx = null
+    // d.fy = null
   }
 }
 

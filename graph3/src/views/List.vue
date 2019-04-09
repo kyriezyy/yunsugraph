@@ -11,47 +11,56 @@
       <div class="filter-item" :class="{active:activeIndex==5}" @click="switchIndex(5)">研报</div>
     </div>
     <div class="main" v-if="!loading">
-      <news-list-header v-if="activeIndex==4" />
-      <yanbao-list-header v-if="activeIndex==5" />
-      <product-list-header @switchType="handleSwitchType" v-if="activeIndex==1" />
+      <news-list-header v-if="activeIndex==4"/>
+      <yanbao-list-header v-if="activeIndex==5"/>
+      <product-list-header @switchType="handleSwitchType" v-if="activeIndex==1"/>
 
       <div v-if="activeIndex === 6 ">
-        <graph />
+        <graph/>
       </div>
-      <div  v-else-if="activeIndex === 1 && productType==='1'">
-        <product-list :list="showList" />
+      <div v-else-if="activeIndex === 1 && productType==='1'">
+        <product-list :list="showList"/>
       </div>
       <div class="stock-box" v-else-if="activeIndex === 1 && productType==='2'">
-        <iframe class="stock-iframe" src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89" frameborder="0"></iframe>
-        <product-detail :type="productType" />
+        <iframe
+          class="stock-iframe"
+          src="http://www.tigerobo.com/search/?query=%E5%B9%B3%E5%AE%89"
+          frameborder="0"
+        ></iframe>
       </div>
       <div v-else-if="activeIndex === 2">
-       <company-detail />
+        <company-detail/>
       </div>
-      <div v-else class="sigle-result-box" :style="{height:(activeIndex==4 || activeIndex==5)?'calc(100% - 50px)':'100%'}" >
+      <div
+        v-else
+        class="sigle-result-box"
+        :style="{height:(activeIndex==4 || activeIndex==5)?'calc(100% - 50px)':'100%'}"
+      >
         <result-item
           v-for="item in showList"
           :key="item.title"
           :activeIndex="activeIndex"
           :item="item"
+          size="large"
         />
+        <el-pagination class="pagination" background layout="prev, pager, next" :total="1000"></el-pagination>
       </div>
     </div>
   </div>
 </template>
 <script>
-import yanbaoList from '../jsons/yanbao_list.json'
-import newsList from '../jsons/news_list.json'
-import productList from '../jsons/product_list.json'
-import ResultItem from './list/ResultItem'
-import NewsListHeader from './list/NewsListHeader'
-import YanbaoListHeader from './list/YanbaoListHeader'
-import ProductListHeader from './list/ProductListHeader'
-import ProductList from './list/ProductList'
-import HeaderSearch from '../components/HeaderSearch'
-import ProductDetail from './detail/ProductDetail'
-import CompanyDetail from './detail/companyDetail'
-import Graph from './Graph'
+import yanbaoList from '../jsons/yanbao_list.json';
+import newsList from '../jsons/news_list.json';
+import productList from '../jsons/product_list.json';
+import ResultItem from './list/ResultItem';
+import NewsListHeader from './list/NewsListHeader';
+import YanbaoListHeader from './list/YanbaoListHeader';
+import ProductListHeader from './list/ProductListHeader';
+import ProductList from './list/ProductList';
+import HeaderSearch from '../components/HeaderSearch';
+import ProductDetail from './detail/ProductDetail';
+import CompanyDetail from './detail/companyDetail';
+import Graph from './Graph';
 
 export default {
   name: 'list',
@@ -81,19 +90,19 @@ export default {
       switch (this.activeIndex) {
         case 1:
           list = productList.data
-          break
+          break;
         case 2:
           list = []
-          break
+          break;
         case 3:
           list = []
-          break
+          break;
         case 4:
           list = newsList.data
-          break
+          break;
         case 5:
           list = yanbaoList.data
-          break
+          break;
         default:
           list = []
       }
@@ -151,12 +160,12 @@ export default {
   padding: 15px 25px;
   width: calc(100% - 100px);
   height: calc(100% - 50px);
-  overflow: auto
+  overflow: auto;
 }
-.stock-box{
+.stock-box {
   height: 100%;
 }
-.stock-iframe{
+.stock-iframe {
   height: calc(100% + 110px);
   width: 100%;
   position: static;

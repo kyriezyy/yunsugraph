@@ -73,3 +73,12 @@ stroke-width: 3px;
 .slide-box .el-tabs--right .el-tabs__header.is-right{
   float: left;
 }
+
+.el-pagination{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background: #023d6f;
+}
