@@ -19,7 +19,7 @@ class D3Graph {
       .attr('id', 'resolved')
       .attr('markerUnits', 'userSpaceOnUse')
       .attr('viewBox', '0 -5 10 10')// 坐标系的区域
-      .attr('refX', 24)// 箭头坐标
+      .attr('refX', 21)// 箭头坐标
       .attr('refY', 0)
       .attr('markerWidth', 16)// 标识的大小
       .attr('markerHeight', 16)

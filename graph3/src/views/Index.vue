@@ -13,7 +13,7 @@
             <input type="text" placeholder="实体B">
           </template>
         </div>
-        <div class="search-btn search-icon" @click="handleSearch"></div>
+        <div class="search-btn el-icon-search" @click="handleSearch"></div>
       </div>
       <div class="search-checkbox">
         <input id="checkbox" type="checkbox" v-model="isGraph">
@@ -109,6 +109,11 @@ export default {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #003d72;
+  font-weight: bold
 }
 .label-text {
   font-size: 14px;
