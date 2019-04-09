@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-const textFontSize = 14
+const textFontSize = 16
 
 const icons = {
   gongsiIcon: '/static/gongsi.png',
@@ -118,14 +118,63 @@ class D3Graph {
       .append('path')
       .attr('class', 'link')
       .attr('marker-end', 'url(#resolved)')
+      .on('mouseover', (d, index) => {
+        let eleIndex = index + 1
+        let a = d3.select('.linetext:nth-child(' + eleIndex + ')')
+        a.style('display', 'inline')
+        let bilink = bilinks[index]
+        let startIndex = bilink.start.index + 1
+        let endIndex = bilink.end.index + 1
+        let startNode = d3.select('.node:nth-child(' + startIndex + ')')
+        let endNode = d3.select('.node:nth-child(' + endIndex + ')')
+        startNode.attr('class', 'node active')
+        endNode.attr('class', 'node active')
+      })
+      .on('mouseout', (d, index) => {
+        let eleIndex = index + 1
+        let a = d3.select('.linetext:nth-child(' + eleIndex + ')')
+        a.style('display', 'none')
+        let bilink = bilinks[index]
+        let startIndex = bilink.start.index + 1
+        let endIndex = bilink.end.index + 1
+        let startNode = d3.select('.node:nth-child(' + startIndex + ')')
+        let endNode = d3.select('.node:nth-child(' + endIndex + ')')
+        startNode.attr('class', 'node')
+        endNode.attr('class', 'node')
+      })
 
     this.lineText = this.graphBox.append('g').selectAll('.linetext')
       .data(bilinks)
       .enter()
       .append('text')
-      .style('font-size', 12)
+      .style('font-size', 16)
       .attr('class', 'linetext')
+      .attr('filter', 'url(#solid)')
       .text(link => link.type)
+      .on('mouseover', (d, index) => {
+        let eleIndex = index + 1
+        let a = d3.select('.linetext:nth-child(' + eleIndex + ')')
+        a.style('display', 'inline')
+        let bilink = bilinks[index]
+        let startIndex = bilink.start.index + 1
+        let endIndex = bilink.end.index + 1
+        let startNode = d3.select('.node:nth-child(' + startIndex + ')')
+        let endNode = d3.select('.node:nth-child(' + endIndex + ')')
+        startNode.attr('class', 'node active')
+        endNode.attr('class', 'node active')
+      })
+      .on('mouseout', (d, index) => {
+        let eleIndex = index + 1
+        let a = d3.select('.linetext:nth-child(' + eleIndex + ')')
+        a.style('display', 'none')
+        let bilink = bilinks[index]
+        let startIndex = bilink.start.index + 1
+        let endIndex = bilink.end.index + 1
+        let startNode = d3.select('.node:nth-child(' + startIndex + ')')
+        let endNode = d3.select('.node:nth-child(' + endIndex + ')')
+        startNode.attr('class', 'node')
+        endNode.attr('class', 'node')
+      })
 
     linksData.exit().remove()
 

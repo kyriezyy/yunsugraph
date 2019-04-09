@@ -9,7 +9,14 @@
         <el-checkbox label="5">研报</el-checkbox>
       </el-checkbox-group>
     </div>
-    <svg class="chart" width="900" height="550"></svg>
+    <svg class="chart" width="900" height="550">
+      <defs>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="yellow"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+    </svg>
     <tooltip ref="tooltip" :node="activeNode" />
 
     <div class="menu-box" ref="menuBox" v-show="showMenuBox">

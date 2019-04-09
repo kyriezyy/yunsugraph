@@ -12,7 +12,14 @@
         >· 平安银行 —[{{item.links.length}}]— 上海钜派</div>
       </div>
       <div class="graph-box" >
-        <svg class="chart" width="900" height="600"></svg>
+        <svg class="chart" width="900" height="600">
+          <defs>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="yellow"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+        </svg>
          <tooltip ref="tooltip" :node="activeNode" />
       </div>
     </div>

@@ -36,7 +36,7 @@ i{
   stroke-width: 1.5px;
 }
 .link:hover{
-stroke-width: 3px;
+stroke-width: 5px;
 }
 .node circle {
   stroke-width: 1.5px;
@@ -46,9 +46,10 @@ stroke-width: 3px;
   fill: #000;
   font-size: 24px;
   font: 10px sans-serif;
+  /* display: none; */
 }
 .graph-detail .node text{
-  /* display: none; */
+  display: none;
 }
 
 .node:hover circle {
@@ -58,7 +59,19 @@ stroke-width: 3px;
 .node:hover text {
   display: inline;
 }
+.node.active circle {
+  fill: #023d6f;
+}
 
+.node.active text {
+  display: inline;
+}
+.graph-detail .linetext{
+ display: none;
+}
+/* .linetext:hover{
+  visibility: visible;
+} */
 .cell {
   fill: none;
   pointer-events: all;
