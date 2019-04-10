@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item item">
+  <div class="product-item item" @click="$router.push('/productDetail')">
     <p class="title" >
       <span v-html="item.title"></span>
       <span class="productype" >{{item.productype}} </span>
@@ -37,6 +37,11 @@ export default {
   width: 300px;
   margin: 10px;
   padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.product-item:hover{
+  box-shadow: 0 0 6px #a0a0a0;
 }
 .title{
   /* margin-bottom: 10px; */

@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+<div class="page">
+   <header-search/>
+   <div class="container">
+
     <div class="block introduce">
       <h1>{{introduce.name}}</h1>
       <span>{{ introduce.versions }}</span>
@@ -57,13 +60,19 @@
       </el-table>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>
 import {data} from '../../jsons/productDetail'
+import HeaderSearch from '../../components/HeaderSearch'
 
 export default {
   name: 'productDetail',
+  components: {
+    HeaderSearch
+  },
   data () {
     return {
       ...data
@@ -76,8 +85,11 @@ export default {
 </script>
 
 <style scoped>
+.page{
+  height: 100%;
+}
   .container {
-    height: calc(100% - 1px);
+    height: calc(100% - 100px);
     overflow: auto;
     margin: 0 auto;
     width: 80%;

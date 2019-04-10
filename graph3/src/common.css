@@ -1,25 +1,23 @@
-html {
+html{
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
-
-html, body, #app {
+html,body,#app{
   height: 100%;
   overflow: hidden;
   position: absolute;
   width: 100%;
 }
-
-*, *:before, *:after {
+*,*:before,*:after{
   padding: 0;
   margin: 0;
   box-sizing: border-box
 }
-
-i {
+i{
   font-style: normal
 }
+
 
 /* 图谱节点UI */
 
@@ -37,11 +35,9 @@ i {
   stroke-opacity: 0.7;
   stroke-width: 1.5px;
 }
-
-.link:hover {
-  stroke-width: 5px;
+.link:hover{
+stroke-width: 5px;
 }
-
 .node circle {
   stroke-width: 1.5px;
 }
@@ -52,8 +48,7 @@ i {
   font: 10px sans-serif;
   /* display: none; */
 }
-
-.graph-detail .node text {
+.graph-detail .node text{
   display: none;
 }
 
@@ -64,7 +59,6 @@ i {
 .node:hover text {
   display: inline;
 }
-
 .node.active circle {
   fill: #023d6f;
 }
@@ -72,11 +66,9 @@ i {
 .node.active text {
   display: inline;
 }
-
-.graph-detail .linetext {
-  display: none;
+.graph-detail .linetext{
+ display: none;
 }
-
 /* .linetext:hover{
   visibility: visible;
 } */
@@ -85,23 +77,27 @@ i {
   pointer-events: all;
 }
 
-.search-icon {
+.search-icon{
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoBAMAAAB+0KVeAAAALVBMVEUAAAAAZv8AbP8AZ/8AZv8AZ/8AZv8Aaf8AZ/8AZv8AZv8AZv8AZv8AZ/8AZv8+C/vWAAAADnRSTlMAvhA83FnKJlDzq6KQfoDSshoAAAEHSURBVCjPY4AA1Y2eU6SDGFBA4zswkEAWM3sHBckIMZ53cHAAJsYk9+7ds8tF6rZ57949VIAKqrx796oAxGBf9+6dE1RQ7t0TAwiL2e/dQ7iJQjCTFGGm2oFl4boeg+k8sDlw85+BKI537wwQgszv3jUAKcZ3r5D9se6dAJDUe/ccWbDu3SMgGfcuAVmQ7d1TILnv3QVkQd53r8GOMEAWZAY70O9dAbIg+7snQHLeOwVkQaZ3L3EJYmrHZRGmk3A5HtObuAIEM+hwBDJmdGCPOMwofheAJTG8e4qRbEAgACOBHQUqxUyKcUClGImWFaEUkbwRShEArPQFAwaIA4Y9plJsggwtHgCWScTIN/I35QAAAABJRU5ErkJggg==)
 }
 
+
 /* reset element-ui */
-.slide-box .el-tabs--right .el-tabs__header.is-right {
+.slide-box .el-tabs--right .el-tabs__header.is-right{
   float: left;
 }
 
-.el-pagination {
+.el-pagination{
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
 }
-
-.el-pagination.is-background .el-pager li:not(.disabled).active {
+.el-pagination.is-background .el-pager li:not(.disabled).active{
   background: #023d6f;
+}
+
+.item b {
+  color: red;
 }
 
 .block .el-tabs__item.is-active {
