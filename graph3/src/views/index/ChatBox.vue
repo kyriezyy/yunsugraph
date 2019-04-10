@@ -9,9 +9,22 @@
         <li v-for="(item,index) in dialogList" :key="index" class="log-item" :class="[item.type?'mylog-item':'robotlog-item']">
           <div class="user-head"></div>
           <div class="content">
-            <div class="content-text">
+              <div class="content-text" v-if="item.text">
                {{item.text}}
               </div>
+
+              <table class="table" v-if="item.list">
+                <thead>
+                  <td>序号</td>
+                  <td>企业名称</td>
+                  <td>职位</td>
+                </thead>
+                <tr  v-for="row in item.list" :key="row.index">
+                  <td>{{row.index}} </td>
+                  <td>{{row.name}}</td>
+                  <td>{{row.position}}</td>
+                </tr>
+              </table>
           </div>
         </li>
       </ul>
@@ -28,7 +41,8 @@ export default {
   data () {
     return {
       question: '',
-      dialogList: []
+      dialogList: [],
+      questionIndex: 0
     }
   },
   watch: {
@@ -38,11 +52,30 @@ export default {
   },
   methods: {
     async hanldeGetchAnswer (question) {
-      this.dialogList.push({
-        type: 0,
-        text: '哈哈哈哈哈哈',
-        timestamp: Date.now()
-      })
+      if (this.questionIndex === 0) {
+        this.dialogList.push({
+          type: 0,
+          text: '平安银行的法人是谢永林',
+          timestamp: Date.now()
+        })
+      }
+      if (this.questionIndex === 1) {
+        this.dialogList.push({
+          type: 0,
+          list: [{
+            index: '1',
+            name: '昆明诺泰医药产业投资合伙企业',
+            position: '曾任职'
+          }, {
+            index: '2',
+            name: '平安银行股份有限公司',
+            position: '法人，董事长'
+          }],
+          timestamp: Date.now()
+        })
+      }
+
+      this.questionIndex = this.questionIndex + 1
     },
 
     handleAddQuestion () {
@@ -177,4 +210,16 @@ export default {
   margin-right: 10px;
   cursor: pointer;
 }
+.table{
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.table td{
+  border:1px solid #e0e0e0;
+  text-align: center;
+}
+.table td:nth-child(1){
+  width: 40px;
+}
+
 </style>

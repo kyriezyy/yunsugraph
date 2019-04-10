@@ -362,6 +362,7 @@ class D3Graph {
     d.fx = d3.event.x
     d.fy = d3.event.y
     if (!d3.event.active) this.simulation.alphaTarget(0)
+    console.log(this.graphData.nodes)
     // d.fx = null
     // d.fy = null
   }

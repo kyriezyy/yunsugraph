@@ -37,6 +37,11 @@ export default {
   width: 300px;
   margin: 10px;
   padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.product-item:hover{
+  box-shadow: 0 0 6px #a0a0a0;
 }
 .title{
   /* margin-bottom: 10px; */

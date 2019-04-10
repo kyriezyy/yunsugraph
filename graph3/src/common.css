@@ -95,3 +95,7 @@ stroke-width: 5px;
 .el-pagination.is-background .el-pager li:not(.disabled).active{
   background: #023d6f;
 }
+
+.item b {
+  color: red;
+}
