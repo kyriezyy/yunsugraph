@@ -34,9 +34,9 @@ class D3Graph {
     this.graphBox = this.svg.append('g')
     this.linksBox = this.graphBox.append('g')
     this.nodesBox = this.graphBox.append('g')
-    let zoom = d3.zoom().scaleExtent([1 / 8, 8])
-    this.svg.call(zoom.on('zoom', this.zoomed))
-    zoom.scaleTo(this.svg, 0.6)
+    this.zoom = d3.zoom().scaleExtent([1 / 8, 8])
+    this.svg.call(this.zoom.on('zoom', this.zoomed))
+    this.zoom.scaleTo(this.svg, 0.6)
 
     this.simulation = d3.forceSimulation()
       .force('collision', d3.forceCollide().radius(30)) // 决定线的长度已经节点之间的间距
@@ -362,9 +362,26 @@ class D3Graph {
     d.fx = d3.event.x
     d.fy = d3.event.y
     if (!d3.event.active) this.simulation.alphaTarget(0)
-    console.log(this.graphData.nodes)
+    // console.log(this.graphData.nodes)
     // d.fx = null
     // d.fy = null
+  }
+  zoomIn = () => {
+    let eleTransform = this.graphBox.attr('transform')
+    let eleTransformArr = eleTransform.split('(')
+    if (eleTransformArr[2]) {
+      let curScale = parseFloat(eleTransformArr[2])
+      this.zoom.scaleTo(this.svg, curScale + 0.1)
+    }
+  }
+  zoomOut = () => {
+    let eleTransform = this.graphBox.attr('transform')
+    let eleTransformArr = eleTransform.split('(')
+    if (eleTransformArr[2]) {
+      let curScale = parseFloat(eleTransformArr[2])
+      let targetScale = (curScale - 0.1) > 0.125 ? (curScale - 0.1) : 0.125
+      this.zoom.scaleTo(this.svg, targetScale)
+    }
   }
 }
 

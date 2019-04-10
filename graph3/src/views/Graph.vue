@@ -9,6 +9,28 @@
         <el-checkbox label="5">研报</el-checkbox>
       </el-checkbox-group>
     </div>
+    <div class="icon-box">
+        <div class="icon-item">
+          <div class="icon icon1"></div>
+          <div class="icon-name">公司</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon icon2"></div>
+          <div class="icon-name">法人</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon icon3"></div>
+          <div class="icon-name">新闻</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon icon4"></div>
+          <div class="icon-name">理财产品</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon icon5"></div>
+          <div class="icon-name">研报</div>
+        </div>
+    </div>
     <svg class="chart" width="900" height="550">
       <defs>
     <filter x="0" y="0" width="1" height="1" id="solid">
@@ -18,6 +40,11 @@
   </defs>
     </svg>
     <tooltip ref="tooltip" :node="activeNode" />
+
+    <div class="zoom-btns">
+      <div class="zoom-btn el-icon-zoom-in" @click="handleZoomIn"></div>
+      <div class="zoom-btn el-icon-zoom-out" @click="handleZoomOut"></div>
+    </div>
 
     <div class="menu-box" ref="menuBox" v-show="showMenuBox">
       <div class="btn-item" @click="addOthers">相关企业</div>
@@ -99,6 +126,12 @@ export default {
       const originLinks = kgData.links
       const nodes = originNodes.filter(item => this.checkedCate.includes(item.nodetype))
       this.d3Graph.addNodes(nodes, originLinks)
+    },
+    handleZoomIn () {
+      this.d3Graph.zoomIn()
+    },
+    handleZoomOut () {
+      this.d3Graph.zoomOut()
     }
   }
 }
@@ -142,4 +175,62 @@ export default {
   color:#a0a0a0;
   margin-right: 5px;
 }
+.zoom-btns{
+  position:absolute;
+  right: 30px;
+  bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+.zoom-btn{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: #a0a0a0;
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+}
+
+.icon-box{
+  padding-top: 60px;
+}
+.icon-item{
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.icon{
+  height: 30px;
+  width: 30px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+.icon-name{
+  font-size: 13px;
+  color: #888;
+}
+.icon1{
+  background:#6f3e02 url("/static/gongsi.png") no-repeat center center / 20px 20px;
+}
+.icon2{
+  background: #375a07 url("/static/faren.png") no-repeat center center / 20px 20px;
+}
+.icon3{
+  background: #3e075a url("/static/news_icon.png") no-repeat center center / 20px 20px;
+}
+.icon4{
+  background: #075a56 url("/static/licai.png") no-repeat center center / 20px 20px;
+}
+.icon5{
+  background: #5a0748 url("/static/yanbao.png") no-repeat center center / 20px 20px;
+}
+ /* gongsiIcon: '/static/gongsi.png',
+  farenIcon: '/static/faren.png',
+  newsIcon: '/static/news_icon.png',
+  licaiIcon: '/static/licai.png',
+  yanbaoIcon: '/static/yanbao.png' */
 </style>
