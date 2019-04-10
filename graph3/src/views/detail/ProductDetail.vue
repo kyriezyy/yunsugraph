@@ -104,7 +104,7 @@ export default {
     padding: 10px;
     border-bottom: 1px #dddddd solid;;
     margin: 0;
-    background-color: #71b0fb;
+    background-color: #003d728f;
   }
 
   .introduce span {
