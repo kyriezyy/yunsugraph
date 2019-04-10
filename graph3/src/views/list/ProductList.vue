@@ -1,5 +1,5 @@
 <template>
-  <div class="product-list">
+  <div class="product-list" @click="$emit('switchType','3')">
      <product-item v-for="item in list" :key="item.name" :item="item" />
   </div>
 </template>

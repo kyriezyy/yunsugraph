@@ -13,13 +13,16 @@
     <div class="main" v-if="!loading">
       <news-list-header v-if="activeIndex==4"/>
       <yanbao-list-header v-if="activeIndex==5"/>
-      <product-list-header @switchType="handleSwitchType" v-if="activeIndex==1"/>
+      <product-list-header @switchType="handleSwitchType" v-if="activeIndex==1 && productType!=='3'"/>
 
       <div v-if="activeIndex === 6 ">
         <graph/>
       </div>
       <div v-else-if="activeIndex === 1 && productType==='1'">
-        <product-list :list="showList"/>
+        <product-list :list="showList" @switchType="handleSwitchType" />
+      </div>
+      <div v-else-if="activeIndex === 1 && productType==='3'">
+        <product-detail />
       </div>
       <div class="stock-box" v-else-if="activeIndex === 1 && productType==='2'">
         <iframe
@@ -49,18 +52,18 @@
   </div>
 </template>
 <script>
-import yanbaoList from '../jsons/yanbao_list.json';
-import newsList from '../jsons/news_list.json';
-import productList from '../jsons/product_list.json';
-import ResultItem from './list/ResultItem';
-import NewsListHeader from './list/NewsListHeader';
-import YanbaoListHeader from './list/YanbaoListHeader';
-import ProductListHeader from './list/ProductListHeader';
-import ProductList from './list/ProductList';
-import HeaderSearch from '../components/HeaderSearch';
-import ProductDetail from './detail/ProductDetail';
-import CompanyDetail from './detail/companyDetail';
-import Graph from './Graph';
+import yanbaoList from '../jsons/yanbao_list.json'
+import newsList from '../jsons/news_list.json'
+import productList from '../jsons/product_list.json'
+import ResultItem from './list/ResultItem'
+import NewsListHeader from './list/NewsListHeader'
+import YanbaoListHeader from './list/YanbaoListHeader'
+import ProductListHeader from './list/ProductListHeader'
+import ProductList from './list/ProductList'
+import HeaderSearch from '../components/HeaderSearch'
+import ProductDetail from './detail/ProductDetail'
+import CompanyDetail from './detail/companyDetail'
+import Graph from './Graph'
 
 export default {
   name: 'list',
@@ -90,19 +93,19 @@ export default {
       switch (this.activeIndex) {
         case 1:
           list = productList.data
-          break;
+          break
         case 2:
           list = []
-          break;
+          break
         case 3:
           list = []
-          break;
+          break
         case 4:
           list = newsList.data
-          break;
+          break
         case 5:
           list = yanbaoList.data
-          break;
+          break
         default:
           list = []
       }
@@ -117,6 +120,7 @@ export default {
   methods: {
     switchIndex (index) {
       this.activeIndex = index
+      this.productType = '1'
     },
     handleSwitchType (type) {
       this.productType = type
