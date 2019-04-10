@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item item">
+  <div class="product-item item" @click="$router.push('/productDetail')">
     <p class="title" >
       <span v-html="item.title"></span>
       <span class="productype" >{{item.productype}} </span>

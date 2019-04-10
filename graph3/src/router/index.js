@@ -6,7 +6,7 @@ import List from '../views/List'
 import Detail from '../views/Detail'
 import Relation from '../views/Relation'
 // import Analysis from '../views/Analysis'
-// import CompanyDetail from '../views/detail/companyDetail'
+import ProductDetail from '../views/detail/ProductDetail'
 
 Vue.use(Router)
 
@@ -32,6 +32,11 @@ export default new Router({
       path: '/relation',
       name: 'Relation',
       component: Relation
+    },
+    {
+      path: '/productDetail',
+      name: 'ProductDetail',
+      component: ProductDetail
     }
   ]
 })
