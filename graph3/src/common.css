@@ -99,3 +99,15 @@ stroke-width: 5px;
 .item b {
   color: red;
 }
+
+.block .el-tabs__item.is-active {
+  color: #003d72;
+}
+
+.block .el-tabs__active-bar {
+  background-color: #003d72;
+}
+
+.block .el-tabs__item:hover {
+  color: #003d72;
+}

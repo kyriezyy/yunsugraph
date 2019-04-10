@@ -7,7 +7,7 @@
         <div style="width: 75px" class="logo">
           <img src="../../assets/companyLogo.png" class="logo" width="75px"/>
         </div>
-          <div>
+        <div>
           <div class="title">
             <h2>{{basic.name}}</h2>
             <el-tag type="success">{{basic.state}}</el-tag>
@@ -79,7 +79,7 @@
       <el-tabs tab-position="left" style="margin: 10px" @tab-click="handleClick" v-model="activeName">
         <el-tab-pane v-for="(item, index) in finance.data" :label="item.info" :key="index" :name="index.toString()">
           <div :id="'line'+index" :ref="'line'+index" class="graph">
-        </div>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -123,15 +123,15 @@ export default {
           type: 'line',
           smooth: true,
           itemStyle: {
-            color: 'rgb(255, 70, 131)'
+            color: '#003d72'
           },
           areaStyle: {
             color: new ECharts.graphic.LinearGradient(0, 0, 0, 1, [{
               offset: 0,
-              color: 'rgb(255, 158, 68)'
+              color: 'rgba(0, 71, 130, 0.15)'
             }, {
               offset: 1,
-              color: 'rgb(255, 70, 131)'
+              color: 'rgba(0, 63, 117, 0.56)'
             }])
           }
         }]
@@ -193,10 +193,10 @@ export default {
     padding: 10px;
     border-bottom: 1px #dddddd solid;;
     margin: 0;
-    background-color: #71b0fb70;
+    background-color: #003d728f;
   }
 
-  .tables, .tabless, .table{
+  .tables, .tabless, .table {
     width: 95%;
     margin: 10px auto;
     background-color: transparent;
@@ -233,13 +233,13 @@ export default {
 
   .tables th {
     width: 15%;
-    background-color: aliceblue;
+    background-color: #003d721c;
     border: #E4EEF6 1px solid
   }
 
   .tabless th {
     width: 15%;
-    background-color: aliceblue;
+    background-color: #003d721c;
     /*border: #E4EEF6 1px solid*/
   }
 
@@ -248,7 +248,7 @@ export default {
   }
 
   .table th {
-    background-color: aliceblue;
+    background-color: #003d721c;
     border: #E4EEF6 1px solid
   }
 
@@ -261,9 +261,9 @@ export default {
     display: flex;
     line-height: 31px;
     margin: 10px 0;
-   }
+  }
 
-  .title h2{
+  .title h2 {
     margin-top: 0px;
     margin-bottom: 0px;
     display: inline;
@@ -275,18 +275,18 @@ export default {
     margin-right: 15px;
   }
 
-  .page{
+  .page {
     display: flex;
     justify-content: space-between;
   }
 
-  .logo{
+  .logo {
     width: 75px;
     height: 75px;
     margin: 15px;
   }
 
-  .graph{
+  .graph {
     width: 100%;
     height: 500px;
     /*padding: 30px;*/
