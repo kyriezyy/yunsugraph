@@ -228,9 +228,4 @@ export default {
 .icon5{
   background: #5a0748 url("/static/yanbao.png") no-repeat center center / 20px 20px;
 }
- /* gongsiIcon: '/static/gongsi.png',
-  farenIcon: '/static/faren.png',
-  newsIcon: '/static/news_icon.png',
-  licaiIcon: '/static/licai.png',
-  yanbaoIcon: '/static/yanbao.png' */
 </style>
