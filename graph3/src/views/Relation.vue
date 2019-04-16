@@ -2,7 +2,35 @@
   <div class="container" v-loading="loading">
     <header-search/>
     <div class="main" v-if="!loading">
-      <div class="result-box">
+       <div class="category-box">
+      <div class="category-item">
+        <p class="category-title">节点类型</p>
+        <div class="category-content">
+          <el-checkbox-group v-model="checkedCate" @change="handleCateChange">
+            <el-checkbox label="1" disabled>公司</el-checkbox>
+            <el-checkbox label="2">人员</el-checkbox>
+            <el-checkbox label="3">产品</el-checkbox>
+            <el-checkbox label="4">新闻</el-checkbox>
+            <!-- <el-checkbox label="5">研报</el-checkbox> -->
+          </el-checkbox-group>
+        </div>
+      </div>
+
+      <div class="category-item">
+        <p class="category-title">节点关系</p>
+        <div class="category-content">
+          <el-checkbox-group v-model="checkedRelaton" @change="handleCateChange">
+            <el-checkbox :label="1">董事</el-checkbox>
+            <el-checkbox :label="2">参股</el-checkbox>
+            <el-checkbox :label="3">董事长</el-checkbox>
+            <!-- <el-checkbox :label="3">负面新闻</el-checkbox> -->
+            <!-- <el-checkbox :label="3">研报</el-checkbox> -->
+            <!-- <el-checkbox :label="3">旗下产品</el-checkbox> -->
+          </el-checkbox-group>
+        </div>
+      </div>
+    </div>
+      <!-- <div class="result-box">
         <div
           class="result-item"
           v-for="(item,index) in graphRelation"
@@ -10,7 +38,7 @@
           :class="{active:index===activeIndex}"
           :key="index"
         >· 平安银行 —[{{item.links.length}}]— 上海钜派</div>
-      </div>
+      </div> -->
       <div class="graph-box" >
         <svg class="chart" width="900" height="600">
           <defs>
@@ -46,7 +74,9 @@ export default {
       activeData: 0,
       timer: null,
       loading: true,
-      activeNode: null
+      activeNode: null,
+      checkedCate: ['1', '2', '3', '4', '5'],
+      checkedRelaton: [1, 2, 3, 4]
     }
   },
   mounted () {
@@ -63,6 +93,7 @@ export default {
   methods: {
     handleClose () {
     },
+    handleCateChange () {},
     render () {
       let graph = relationData.data[this.activeIndex]
       this.d3Graph.addNodes(graph.nodes, graph.links)
@@ -124,5 +155,32 @@ export default {
 .result-item.active {
   color: #023d6f;
 }
+.category-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  border:1px solid #023d6f;
+  width: 100px;
+}
+.category-title{
+  background: #023d6f;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color:#fff;
+  padding-left: 10px;
+  font-size: 14px;
+}
 
+.category-content{
+  padding: 10px;
+}
+</style>
+<style>
+.el-checkbox{
+  margin-right: 5px;
+  margin-bottom: 10px;
+  display: block;
+}
 </style>

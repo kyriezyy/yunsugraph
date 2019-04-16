@@ -20,19 +20,6 @@
           <div class="r-rate-str">万份收益（2019-4-15）</div>
         </div>
       </div>
-      <div class="des">
-        <p>
-          本产品是开放式净值型非保本浮动收益理财产品，无固定投资期限，按照固定
-          费率扣除产品相关费用后，投资者可以在约定的交易日按照“金额申购，份额
-          赎回”的原则对本产品进行申购赎回。
-        </p>
-        <p> .</p>
-        <p>
-          本产品向有投资经验个人投资者销售。平安银行建议：经我行风险承受度评估，
-          评定为“进取型”、“成长型”、“平衡型”、“稳健型”的个人投资者适合购买本
-          产品。
-        </p>
-      </div>
     </div>
     <div class="line"></div>
      <!-- <product-list :list="showList"  /> -->
@@ -45,17 +32,7 @@
   </div>
 </template>
 <script>
-// {
-// 	"data": {
-// 		"name": "天天成长A",
-// 		"type": "理财产品(T01LK180001)",
-// 		"tag": ["中低风险", "1万元起购", "T+0赎回200万"],
-// 		"annualized": "3.721%",
-// 		"income": "1.0489元",
-// 		"progress": "99.99%",
-// 		"undrawn": "6996.82"
-// 	}
-// }
+
 import productList from '../../jsons/news_list.json'
 
 import ResultItem from './ResultItem'
@@ -78,7 +55,7 @@ export default {
 .inline-container {
   padding: 20px;
   border: 1px solid #023d6f;
-  /* max-width: 800px; */
+  max-width: 500px;
 }
 .r-title {
   font-size: 22px;
@@ -102,10 +79,10 @@ export default {
 }
 .r-content-box {
   background: #023d6f30;
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
-  padding: 40px 0;
-  max-width: 500px;
+  padding: 10px 0;
+  max-width: 450px;
 }
 .r-rate-box:first-child {
   border-right: 1px solid #888;
@@ -119,7 +96,7 @@ export default {
 }
 .r-rate {
   color: #444;
-  font-size: 32px;
+  font-size: 22px;
 }
 .r-rate-str {
   color: #666;
@@ -128,11 +105,7 @@ export default {
 .r-rate-box:first-child .r-rate {
   color: #023d6f;
 }
-.des {
-  margin-top: 30px;
-  font-size: 14px;
-  color: #888;
-}
+
 .line{
   border-top: 3px solid #e0e0e0;
   margin: 20px 0;
