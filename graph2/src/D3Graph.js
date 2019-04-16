@@ -121,6 +121,10 @@ class D3Graph {
     this.graphData.links = links
     this.simulation.alphaTarget(0.3).restart()
     this.render()
+
+    setTimeout(() => {
+      this.simulation.alphaTarget(0)
+    }, 3000)
   }
 
   render = () => {

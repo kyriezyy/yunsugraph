@@ -61,6 +61,44 @@ import kgData from '../jsons/kg_data.json'
 import kgDataSub from '../jsons/kg_data_sup.json'
 import tooltip from '../components/tooltip'
 
+let newGraphData = {nodes: kgData.nodes.slice(), links: kgData.links.slice()}
+let nodes2 = []
+let nodes3 = []
+let nodes4 = []
+newGraphData.nodes.forEach(item => {
+  if (item.id !== '1' && item.id !== '2') {
+    nodes2.push(Object.assign({}, item, {
+      id: item.id + '10'
+    }))
+    nodes3.push(Object.assign({}, item, {
+      id: item.id + '100'
+    }))
+    nodes4.push(Object.assign({}, item, {
+      id: item.id + '1000'
+    }))
+  }
+})
+
+let links2 = []
+let links3 = []
+let links4 = []
+newGraphData.links.forEach(item => {
+  if (item.target !== '2') {
+    links2.push(Object.assign({}, item, {
+      target: item.target + '10'
+    }))
+    links3.push(Object.assign({}, item, {
+      target: item.target + '100'
+    }))
+    links4.push(Object.assign({}, item, {
+      target: item.target + '1000'
+    }))
+  }
+})
+newGraphData.links = newGraphData.links.concat(links2).concat(links3).concat(links4)
+newGraphData.nodes = newGraphData.nodes.concat(nodes2).concat(nodes3).concat(nodes4)
+
+// console.log(newGraphData)
 export default {
   name: 'graph',
   components: {
@@ -122,8 +160,8 @@ export default {
       this.renderGraph()
     },
     renderGraph () {
-      const originNodes = kgData.nodes
-      const originLinks = kgData.links
+      const originNodes = newGraphData.nodes
+      const originLinks = newGraphData.links
       const nodes = originNodes.filter(item => this.checkedCate.includes(item.nodetype))
       this.d3Graph.addNodes(nodes, originLinks)
     },

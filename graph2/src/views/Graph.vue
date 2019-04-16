@@ -23,7 +23,7 @@ import tooltip from '../components/tooltip'
 const articleList = listData.data.filter(item => item.type === 'paper')
 const patentList = listData.data.filter(item => item.type === 'patent')
 const newsList = listData.data.filter(item => item.type === 'news')
-const serverUrl = 'http://10.102.20.251:8000'
+const serverUrl = 'http://192.168.50.182:8000'
 export default {
   name: 'graph',
   components: {
