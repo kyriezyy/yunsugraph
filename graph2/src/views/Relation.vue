@@ -2,17 +2,8 @@
   <div class="container" v-loading="loading">
     <header-search/>
     <div class="main" v-if="!loading">
-      <div class="result-box">
-        <!-- <div class="search-key-box">
-          <div class="search-item">
-            <label for>A</label>
-            <input type="text" placeholder="请输入一个起点">
-          </div>
-          <div class="search-item">
-            <label for>B</label>
-            <input type="text" placeholder="请输入一个终点">
-          </div>
-        </div> -->
+      <!-- <div class="result-box">
+
         <div
           class="result-item"
           v-for="(item,index) in graphRelation"
@@ -20,7 +11,36 @@
           :class="{active:index===activeIndex}"
           :key="index"
         >· 二苯基硅二醇 —[{{item.links.length}}]— 氯化二苯基硅烷</div>
+      </div> -->
+
+       <div class="category-box">
+      <div class="category-item">
+        <p class="category-title">节点类型</p>
+        <div class="category-content">
+          <el-checkbox-group v-model="checkedCate" @change="handleCateChange">
+            <el-checkbox label="element" disabled>化学品</el-checkbox>
+            <el-checkbox label="news">事件</el-checkbox>
+            <el-checkbox label="article">文献</el-checkbox>
+            <el-checkbox label="patent">专利</el-checkbox>
+            <el-checkbox label="patent">企业</el-checkbox>
+            <el-checkbox label="patent">人员</el-checkbox>
+          </el-checkbox-group>
+        </div>
       </div>
+
+      <div class="category-item">
+        <p class="category-title">节点关系</p>
+        <div class="category-content">
+          <el-checkbox-group v-model="checkedRelaton" @change="handleCateChange">
+        <el-checkbox :label="1">合成</el-checkbox>
+        <el-checkbox :label="2">上游</el-checkbox>
+        <el-checkbox :label="3">下游</el-checkbox>
+        <el-checkbox :label="3">拥有专利</el-checkbox>
+      </el-checkbox-group>
+        </div>
+      </div>
+
+    </div>
       <div class="graph-box" >
         <svg class="chart" width="800" height="600"></svg>
       </div>
@@ -62,7 +82,9 @@ export default {
       activeIndex: 0,
       activeData: 0,
       timer: null,
-      loading: true
+      loading: true,
+      checkedCate: ['element', 'news', 'article', 'patent'],
+      checkedRelaton: [1, 2, 3, 4, 5, 6, 7]
     }
   },
   mounted () {
@@ -76,6 +98,9 @@ export default {
     }, 1500)
   },
   methods: {
+    handleCateChange () {
+
+    },
     handleClose () {
     },
     render () {
@@ -186,5 +211,27 @@ export default {
 .label{
   width: 80px;
   flex-shrink: 0;
+}
+
+.category-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  border:1px solid #023d6f;
+  width: 100px;
+}
+.category-title{
+  background: #023d6f;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color:#fff;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.category-content{
+  padding: 10px;
 }
 </style>

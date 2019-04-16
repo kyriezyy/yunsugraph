@@ -2,7 +2,7 @@
   <div class="container" v-loading="loading">
     <header-search/>
     <div class="filter-box">
-      <!-- <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div> -->
+      <div class="filter-item" :class="{active:activeIndex==0}" @click="switchIndex(0)">全部</div>
       <div class="filter-item" :class="{active:activeIndex==6}" @click="switchIndex(6)">图谱</div>
       <div class="filter-item" :class="{active:activeIndex==1}" @click="switchIndex(1)">产品</div>
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">企业</div>
@@ -15,7 +15,10 @@
       <yanbao-list-header v-if="activeIndex==5"/>
       <product-list-header @switchType="handleSwitchType" v-if="activeIndex==1 && productType!=='3'"/>
 
-      <div v-if="activeIndex === 6 ">
+      <div v-if="activeIndex === 0 ">
+        <result />
+      </div>
+      <div v-else-if="activeIndex === 6 ">
         <graph/>
       </div>
       <div v-else-if="activeIndex === 1 && productType==='1'">
@@ -56,6 +59,7 @@ import yanbaoList from '../jsons/yanbao_list.json'
 import newsList from '../jsons/news_list.json'
 import productList from '../jsons/product_list.json'
 import ResultItem from './list/ResultItem'
+import Result from './list/Result'
 import NewsListHeader from './list/NewsListHeader'
 import YanbaoListHeader from './list/YanbaoListHeader'
 import ProductListHeader from './list/ProductListHeader'
@@ -76,13 +80,14 @@ export default {
     ProductDetail,
     ProductListHeader,
     Graph,
-    ProductList
+    ProductList,
+    Result
   },
   data () {
     return {
       isGraph: false,
       list: [],
-      activeIndex: 6,
+      activeIndex: 0,
       loading: true,
       productType: '1'
     }

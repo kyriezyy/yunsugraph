@@ -1,15 +1,35 @@
 <template>
   <div class="graph graph-detail" v-loading="loading">
     <div class="category-box">
-      <el-checkbox-group v-model="checkedCate" @change="handleCateChange">
-        <el-checkbox label="element" disabled >化学品</el-checkbox>
-        <el-checkbox label="news">新闻</el-checkbox>
-        <el-checkbox label="article">论文</el-checkbox>
-        <el-checkbox label="patent">专利</el-checkbox>
+      <div class="category-item">
+        <p class="category-title">节点类型</p>
+        <div class="category-content">
+          <el-checkbox-group v-model="checkedCate" @change="handleCateChange">
+            <el-checkbox label="element" disabled>化学品</el-checkbox>
+            <el-checkbox label="news">事件</el-checkbox>
+            <el-checkbox label="article">文献</el-checkbox>
+            <el-checkbox label="patent">专利</el-checkbox>
+            <el-checkbox label="patent">企业</el-checkbox>
+            <el-checkbox label="patent">人员</el-checkbox>
+          </el-checkbox-group>
+        </div>
+      </div>
+
+      <div class="category-item">
+        <p class="category-title">节点关系</p>
+        <div class="category-content">
+          <el-checkbox-group v-model="checkedRelaton" @change="handleCateChange">
+        <el-checkbox :label="1">合成</el-checkbox>
+        <el-checkbox :label="2">上游</el-checkbox>
+        <el-checkbox :label="3">下游</el-checkbox>
+        <el-checkbox :label="3">拥有专利</el-checkbox>
       </el-checkbox-group>
+        </div>
+      </div>
+
     </div>
-     <svg class="chart" width="900" height="600"></svg>
-<tooltip :node="activeNode" />
+    <svg class="chart" width="900" height="600"></svg>
+    <tooltip :node="activeNode"/>
   </div>
 </template>
 <script>
@@ -34,6 +54,7 @@ export default {
       d3Graph: null,
       loading: false,
       checkedCate: ['element', 'news', 'article', 'patent'],
+      checkedRelaton: [1, 2, 3, 4, 5, 6, 7],
       graph: {},
       activeNode: null
     }
@@ -47,13 +68,15 @@ export default {
     async getNodeDetail (node) {
       if (node.type === 'element') {
         // cas
-        const res = await axios.get(`${serverUrl}/cas/?cas=${node.id}`).catch(() => {
-          // this.$message.error('当前数据库中无此CAS号数据')
-        })
+        const res = await axios
+          .get(`${serverUrl}/cas/?cas=${node.id}`)
+          .catch(() => {
+            // this.$message.error('当前数据库中无此CAS号数据')
+          })
 
         if (res && res.data.code !== -1) {
           // const name = dotProp.get(res, 'data.data.product_info.名称') || node.id
-          // this.addNodes(node.id, name)
+          this.addNodes(node.id, name)
           this.activeNode = res.data.data
           this.activeNode.type = 'element'
         }
@@ -73,7 +96,7 @@ export default {
       console.log(node)
     },
     async addNodes (cas, name) {
-      this.loading = true
+      // this.loading = true
       const res = await axios.get(`${serverUrl}/relaction?cas=${cas}`)
       // get news
       // const newRes = await axios.get(`${serverUrl}/search_new?kw=${name}`)
@@ -83,31 +106,43 @@ export default {
 
       let otherLinks = []
       let newses = newsList.map((item, index) => {
-        otherLinks.push({source: cas, target: `news${index}`, value: '新闻'})
+        otherLinks.push({
+          source: cas,
+          target: `news${index}${cas}`,
+          value: '新闻'
+        })
         return {
           type: 'news',
           name: item.title.slice(0, 10) + '...',
-          id: `news${index}`,
+          id: `news${index}${cas}`,
           symbol: 'newsIcon',
           raw: item
         }
       })
       let articles = articleList.map((item, index) => {
-        otherLinks.push({source: cas, target: `article${index}`, value: '论文'})
+        otherLinks.push({
+          source: cas,
+          target: `article${index}${cas}`,
+          value: '论文'
+        })
         return {
           type: 'article',
           name: item.title.slice(0, 10) + '...',
-          id: `article${index}`,
+          id: `article${index}${cas}`,
           symbol: 'articleIcon',
           raw: item
         }
       })
       let patents = patentList.map((item, index) => {
-        otherLinks.push({source: cas, target: `patent${index}`, value: '专利'})
+        otherLinks.push({
+          source: cas,
+          target: `patent${index}${cas}`,
+          value: '专利'
+        })
         return {
           type: 'patent',
           name: item.title.slice(0, 10) + '...',
-          id: `patent${index}`,
+          id: `patent${index}${cas}`,
           symbol: 'patentIcon',
           raw: item
         }
@@ -140,7 +175,12 @@ export default {
       const originNodes = graph.nodes
       const originLinks = graph.links
 
-      const nodes = originNodes.filter(item => this.checkedCate.includes(item.type) || !item.type || item.category === 0)
+      const nodes = originNodes.filter(
+        item =>
+          this.checkedCate.includes(item.type) ||
+          !item.type ||
+          item.category === 0
+      )
       //   const options = getOption({ nodes, links: originLinks });
       this.d3Graph.addNodes(nodes, originLinks, cas)
       //   this.chartApp.clear();
@@ -157,24 +197,46 @@ export default {
 }
 </script>
 <style scoped>
-.graph{
+.graph {
   display: flex;
   justify-content: center;
-  background: url('../assets/noise.png');
+  background: url("../assets/noise.png");
   margin-top: -20px;
   position: relative;
   padding: 30px 20px;
 }
-.chart{
+.chart {
   /* border:1px solid red; */
-   /* background: #f0f0f0; */
-   height: 600px;
-   width: 900px;
+  /* background: #f0f0f0; */
+  height: 600px;
+  width: 900px;
 }
-.category-box{
+.category-box {
   position: absolute;
-  top:20px;
-  left:20px;
+  top: 20px;
+  left: 20px;
   z-index: 999;
+  border:1px solid #023d6f;
+  width: 100px;
+}
+.category-title{
+  background: #023d6f;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color:#fff;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.category-content{
+  padding: 10px;
+}
+</style>
+<style>
+.el-checkbox{
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: block;
 }
 </style>

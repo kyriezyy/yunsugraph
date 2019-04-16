@@ -157,7 +157,7 @@ export default {
   border-radius: 5px;
 }
 .tooltip-box.show{
-width: 350px;
+width: 250px;
 background: rgba(220, 220, 220, 0.9);
 }
 .tooltip-box .type {

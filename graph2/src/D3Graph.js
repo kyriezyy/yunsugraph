@@ -98,7 +98,7 @@ class D3Graph {
     const oldNodeIds = this.graphData.nodes.map(item => item.id)
     const newNodeIds = nodes.map(item => item.id)
     const centerNode = this.graphData.nodes.find(node => node.id === centerId)
-    const oldNodes = this.graphData.nodes.filter(node => newNodeIds.includes(node.id))
+    // const oldNodes = this.graphData.nodes.filter(node => newNodeIds.includes(node.id))
 
     const newNodes = nodes.filter(node => !oldNodeIds.includes(node.id))
 
@@ -115,10 +115,10 @@ class D3Graph {
 
     // 节点
 
-    // this.graphData.nodes = this.graphData.nodes.concat(nodes);
-    // this.graphData.links = this.graphData.links.concat(links);
-    this.graphData.nodes = oldNodes.concat(newNodes)
-    this.graphData.links = links
+    this.graphData.nodes = this.graphData.nodes.concat(newNodes)
+    this.graphData.links = this.graphData.links.concat(links)
+    // this.graphData.nodes = oldNodes.concat(newNodes)
+    // this.graphData.links = links
     this.simulation.alphaTarget(0.3).restart()
     this.render()
 
@@ -288,10 +288,11 @@ class D3Graph {
   }
 
   dragended = (d) => {
-    // d.fx = d3.event.x, d.fy = d3.event.y;
+    d.fx = d3.event.x
+    d.fy = d3.event.y
     if (!d3.event.active) this.simulation.alphaTarget(0)
-    d.fx = null
-    d.fy = null
+    // d.fx = null
+    // d.fy = null
   }
 }
 
