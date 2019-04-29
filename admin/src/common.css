@@ -1,0 +1,13 @@
+html,body{
+  height: 100%;
+}
+
+*,*:after,*:before{
+padding: 0;
+margin: 0;
+box-sizing: border-box
+}
+
+.el-menu{
+  border-right: none
+}
