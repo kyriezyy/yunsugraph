@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div class="header">
+    <!-- <div class="header">
       <span> CloudTree 赟数</span>
-    </div>
+    </div> -->
 
     <router-view/>
   </div>
