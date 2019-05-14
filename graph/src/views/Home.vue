@@ -5,7 +5,7 @@
       <home-aside  class="aside" />
       <div class="main">
         <!-- <chart-box /> -->
-        <points-chart />
+        <!-- <points-chart /> -->
       </div>
     </div>
   </div>
