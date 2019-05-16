@@ -6,6 +6,7 @@
       <div class="main">
         <!-- <chart-box /> -->
         <!-- <points-chart /> -->
+        <graph />
       </div>
     </div>
   </div>
@@ -17,6 +18,7 @@ import dotProp from 'dot-prop';
 import Aside from './components/Aside';
 import ChartBox from './components/ChartBox';
 import PointsChart from './components/PointsChart';
+import Graph from './components/Graph';
 
 export default {
   name: 'home',
@@ -24,6 +26,7 @@ export default {
     HomeAside: Aside,
     ChartBox,
     PointsChart,
+    Graph,
   },
   data() {
     return {};

@@ -19,7 +19,7 @@ const cate2 = ['BA', 'BB', 'BC', 'BD', 'BE'];
 
 const nodes = [];
 
-for (let i = 200; i--;) {
+for (let i = 400; i--;) {
   const random1 = Math.floor(Math.random() * 5);
   const random2 = Math.floor(Math.random() * 5);
   nodes.push({
