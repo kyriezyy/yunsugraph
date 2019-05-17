@@ -4,7 +4,8 @@
 
     <el-button @click="selectProduct"> 选择产品 </el-button>
     <el-button @click="selectCustomer"> 突出客户 </el-button>
-    <el-button @click="highlightLine"> 高亮线 </el-button>
+    <el-button @click="highlightLine(1)"> 高亮线1 </el-button>
+    <el-button @click="highlightLine(2)"> 高亮线2 </el-button>
   </div>
 </template>
 <script>
@@ -34,8 +35,8 @@ export default {
     selectCustomer() {
       this.d3Graph.selectCustomer();
     },
-    highlightLine() {
-      this.d3Graph.highlightLine();
+    highlightLine(index) {
+      this.d3Graph.highlightLine(index);
     },
   },
 };
@@ -66,6 +67,12 @@ export default {
   stroke-opacity: 1;
   stroke-width: 3px;
 }
+
+.activelink{
+    stroke:red;
+    stroke-opacity: 1;
+    stroke-width: 6px;
+  }
   .node circle {
     /* fill: #ccc; */
     /* stroke: #000; */
@@ -87,6 +94,7 @@ export default {
     display: inline;
     /* fill: #ccc; */
   }
+
 
   .cell {
     fill: none;

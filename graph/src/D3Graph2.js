@@ -1,5 +1,7 @@
 import * as d3 from 'd3';
+import demoRelation from './views/components/demo_relation.json';
 
+console.log(demoRelation);
 const colorMap = {
   客户: '#336666',
   产品: '#333399',
@@ -81,29 +83,6 @@ class D3Graph {
   }
 
   addNodes = (nodes, links, centerId) => {
-    // const oldNodeIds = this.graphData.nodes.map(item => item.id);
-    // const newNodeIds = nodes.map(item => item.id);
-    // const centerNode = this.graphData.nodes.find(node => node.id === centerId);
-    // const oldNodes = this.graphData.nodes.filter(node => newNodeIds.includes(node.id));
-
-    // const newNodes = nodes.filter(node => !oldNodeIds.includes(node.id));
-
-    // // 节点去重
-    // if (centerId && centerNode) {
-    //   // 过滤掉已经存在的节点
-    //   newNodes.forEach((node) => {
-    //     node.x = centerNode.x;
-    //     node.y = centerNode.y;
-    //   });
-    //   centerNode.fx = centerNode.x;
-    //   centerNode.fy = centerNode.y;
-    // }
-
-    // 节点
-
-
-    // this.graphData.nodes = this.graphData.nodes.concat(nodes);
-    // this.graphData.links = this.graphData.links.concat(links);
     this.graphData.nodes = nodes;
     this.graphData.links = links;
 
@@ -222,7 +201,7 @@ class D3Graph {
         if (d[0].id === '01--0000' || d[1].id === '01--0000') {
           return 'red';
         }
-        return '#777';
+        // return '#777';
       });
   }
 
@@ -246,13 +225,33 @@ class D3Graph {
       }
       return 16;
     });
-    // .each((data) => {
-    //   console.log(data);
-    // });
   }
 
-  highlightLine = () => {
+  highlightLine = (index) => {
+    const data1 = demoRelation.data[index - 1];
+    const links = data1.links;
+    const linksId = links.map(i => i.linkid);
+    this.linksBox
+      .selectAll('.link').each(function (item) {
+        const lineId = item[2].linkid;
+        if (linksId.includes(lineId)) {
+          d3.select(this).attr('class', 'link activelink');
+          // d3.select(this).style('stroke', 'red').style('stroke-width', '3px').style('stroke-opacity', '3px');
+        } else {
+          d3.select(this).attr('class', 'link');
+          // d3.select(this).style('stroke', '#777');
+        }
+      });
+    // .data(bilinks).style('stroke', (d) => {
+    //   if (d[0].id === '01--0000' || d[1].id === '01--0000') {
+    //     return 'red';
+    //   }
+    //   return '#777';
+    // });
 
+    // links.forEach(item=>{
+    //   console.log
+    // })
   }
   ticked = () => {
     // 缩短重新布局时间
