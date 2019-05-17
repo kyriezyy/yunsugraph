@@ -7,6 +7,7 @@
       <div class="filter-item" :class="{active:activeIndex==2}" @click="switchIndex(2)">文献</div>
       <div class="filter-item" :class="{active:activeIndex==4}" @click="switchIndex(4)">新闻</div>
       <div class="filter-item" :class="{active:activeIndex==3}" @click="switchIndex(3)">专利</div>
+      <div class="filter-item" :class="{active:activeIndex==5}" @click="switchIndex(5)">问答</div>
     </div>
     <div class="main" v-if="!loading">
       <div class="sigle-result-box">
@@ -50,6 +51,9 @@ export default {
   },
   computed: {
     showList () {
+      if (this.activeIndex === 5) {
+        return [{type: 'answer', title: '问答'}]
+      }
       if (this.activeIndex) {
         let filterType
         switch (this.activeIndex) {
