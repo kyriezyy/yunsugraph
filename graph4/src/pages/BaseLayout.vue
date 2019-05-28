@@ -14,7 +14,6 @@
 
                 </div>
                 <div class="main" :style="main" ref="main">
-                    main
                     <div class="left" @click="left('left')" >
                         <i :class="`el-icon-arrow-${arrow}`"></i>
                     </div>
