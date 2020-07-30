@@ -16,7 +16,7 @@
     "d3-array": "^2.0.3",
     "d3-force": "^2.0.0",
     "d3-zoom": "^1.7.3",
-    "dot-prop": "^4.2.0",
+    "dot-prop": "^5.1.1",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.11",
     "lodash": "^4.17.11",
