@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "d3": "^5.9.2",
-    "dot-prop": "^4.2.0",
+    "dot-prop": "^5.1.1",
     "echarts": "^4.2.1",
     "element-ui": "^2.7.0",
     "sass-loader": "^7.1.0",
