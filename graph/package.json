@@ -19,7 +19,7 @@
     "dot-prop": "^4.2.0",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.11",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "vue": "^2.5.2",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
